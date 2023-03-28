@@ -172,6 +172,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -281,6 +282,7 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -349,4 +351,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1582793482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582793484}
+  - component: {fileID: 1582793483}
+  m_Layer: 0
+  m_Name: DungeonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1582793483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582793482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc014719b182f3043bd7b0502c8548ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numbersOfRooms: 0
+  spawnRoom: {fileID: 8219025968074825933, guid: 5d13123ba35deff4187bafd4f73dfde6, type: 3}
+  enemyRooms:
+  - {fileID: 8219025968074825933, guid: 9886b6a4b50ca3040a72dc87af95ccc2, type: 3}
+  - {fileID: 8219025968074825933, guid: b8b0a5af277061b429b6807d6478906c, type: 3}
+  - {fileID: 8219025968074825933, guid: 3d22e1368da377648962de6137a9d418, type: 3}
+  - {fileID: 8219025968074825933, guid: 9c2d29d09418bcc4f8e8b49e29dfac25, type: 3}
+  - {fileID: 8219025968074825933, guid: a7c7ae32e53589342bacb4ed7a721aae, type: 3}
+  - {fileID: 8219025968074825933, guid: 7656a43cd1fe99444bcbb9d8a9a0b3ea, type: 3}
+  - {fileID: 8219025968074825933, guid: 586ef0064a515e04fa56ed40dd3eaf23, type: 3}
+  - {fileID: 8219025968074825933, guid: 444be6e10d9bef248aacf33bd2e6bc99, type: 3}
+  bossRoom: {fileID: 8219025968074825933, guid: 81c389926bf3edc499e9ad38abe11494, type: 3}
+  dungeonRooms: []
+  gicamu: {fileID: 0}
+  alchies: {fileID: 0}
+--- !u!4 &1582793484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582793482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.54289675, y: -0.14374681, z: 0.07715393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
