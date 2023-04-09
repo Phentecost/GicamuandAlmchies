@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Alchemist
+  - Wizard
+  - DroppingFloor
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Alchemist
+  - Wizard
+  - BulletWizard
+  - BulletAlchemist
+  - Floor
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3160745715
+    locked: 0
+  - name: ParallaxBackground
+    uniqueID: 4005405093
+    locked: 0
+  - name: Players
+    uniqueID: 4165138257
+    locked: 0
+  - name: a
+    uniqueID: 2719973179
+    locked: 0
+  - name: Enemies
+    uniqueID: 1202713175
+    locked: 0
+  - name: Items
+    uniqueID: 2121493179
+    locked: 0
+  - name: Platforms
+    uniqueID: 1855366491
+    locked: 0
