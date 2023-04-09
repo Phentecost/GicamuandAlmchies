@@ -382,6 +382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numbersOfRooms: 0
+  initialSecretRoomProbability: 10
+  incrisingProbabilityRate: 10
+  currentProbability: 0
   spawnRoom: {fileID: 8219025968074825933, guid: 5d13123ba35deff4187bafd4f73dfde6, type: 3}
   enemyRooms:
   - {fileID: 8219025968074825933, guid: 9886b6a4b50ca3040a72dc87af95ccc2, type: 3}
@@ -393,7 +396,9 @@ MonoBehaviour:
   - {fileID: 8219025968074825933, guid: 586ef0064a515e04fa56ed40dd3eaf23, type: 3}
   - {fileID: 8219025968074825933, guid: 444be6e10d9bef248aacf33bd2e6bc99, type: 3}
   bossRoom: {fileID: 8219025968074825933, guid: 81c389926bf3edc499e9ad38abe11494, type: 3}
+  secretRoom: {fileID: 8219025968074825933, guid: 2a89d41317b11c546936b0986363463c, type: 3}
   dungeonRooms: []
+  secretRooms: []
   gicamu: {fileID: 0}
   alchies: {fileID: 0}
 --- !u!4 &1582793484

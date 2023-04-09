@@ -12,13 +12,17 @@ namespace Code_DungeonSystem
         [Header("Dungeon Configuration")]
         [Space(10)]
         [SerializeField] private int numbersOfRooms;
-
+        [SerializeField] private float initialSecretRoomProbability;
+        [SerializeField] private float incrisingProbabilityRate;
+        [SerializeField]private float currentProbability;
         [Header("Rooms Collection")]
         [Space(10)]
         [SerializeField] private GameObject spawnRoom;
         [SerializeField] private List<GameObject> enemyRooms = new List<GameObject>();
         [SerializeField] private GameObject bossRoom;
+        [SerializeField] private GameObject secretRoom;
         [SerializeField] private List<GameObject> dungeonRooms;
+        [SerializeField] private List<GameObject> secretRooms;
         [Header("Characters")]
         [SerializeField] private GameObject gicamu;
         [SerializeField] private GameObject alchies;
@@ -34,6 +38,7 @@ namespace Code_DungeonSystem
 
             instance = this;
 
+            currentProbability = initialSecretRoomProbability;
             GenerateDungeon();
         }
 
@@ -53,6 +58,19 @@ namespace Code_DungeonSystem
                 r.transform.parent = null;
                 dungeonRooms.Add(r);
                 spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x, spawnRoomPosition.y);
+                int x = Random.Range(0, 101);
+                if (x<= currentProbability)
+                {
+                    Vector3 spawnSecretRoomPosition = new Vector3(r.transform.position.x,-r.transform.localScale.y);
+                    r = Instantiate(secretRoom, spawnSecretRoomPosition, Quaternion.identity);
+                    r.transform.parent = null;
+                    secretRooms.Add(r);
+                    currentProbability = initialSecretRoomProbability;
+                }
+                else
+                {
+                    currentProbability += incrisingProbabilityRate;
+                }
             }
 
             r = Instantiate(bossRoom, spawnRoomPosition, Quaternion.identity);
