@@ -213,6 +213,7 @@ namespace Code_EnemiesAndAI
         protected Vector3 RawMovement { get; private set; }
         protected void MoveCharacter()
         {
+            Flip();
             var pos = transform.position;
             RawMovement = new Vector3(_currentHorizontalSpeed, _currentVerticalSpeed);
             var move = RawMovement * Time.deltaTime;
@@ -259,6 +260,23 @@ namespace Code_EnemiesAndAI
         protected virtual void Attack() 
         {
             
+        }
+
+        #endregion
+
+        #region Flip
+
+        protected bool isFacingRight = true;
+
+        protected void Flip() 
+        {
+            if (isFacingRight && _currentHorizontalSpeed< 0f || !isFacingRight && _currentHorizontalSpeed > 0f)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
         }
 
         #endregion
