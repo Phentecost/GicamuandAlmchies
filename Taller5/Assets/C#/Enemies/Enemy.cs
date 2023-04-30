@@ -9,6 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 using Code;
 using Code_DungeonSystem;
 using Code_Core;
+using UnityEngine.Rendering;
 
 namespace Code_EnemiesAndAI
 {
@@ -18,7 +19,7 @@ namespace Code_EnemiesAndAI
         #region CORE
         protected enum State
         {
-            Idle, Walking, Shooting, Dying
+            Idle, Walking, Shooting
         }
 
         [Header("CORE")]
@@ -38,6 +39,7 @@ namespace Code_EnemiesAndAI
 
         void Update()
         {
+            Life();
             Behaviour();
         }
 
@@ -55,7 +57,20 @@ namespace Code_EnemiesAndAI
         [Header("LIFE")]
         [SerializeField] protected int life;
         protected int _currentLife;
-        protected bool IsDead;
+
+        protected void Life() 
+        {
+            if (_currentLife <= 0)
+            {
+                OnDying();
+            }
+        }
+
+        protected void OnDying() 
+        {
+            DataBase.Instance.RemoveRegister(_currentRoom.ID, this);
+            Destroy(gameObject);
+        }
 
         #endregion
 

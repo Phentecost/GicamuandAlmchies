@@ -13,20 +13,11 @@ namespace Code_EnemiesAndAI
         #region Behaviour
         protected override void Behaviour()
         {
-            if (!IsDead)
-            {
-                _target = GetClosestPlayer();
-                distance = Vector2.Distance(_target.transform.position, transform.position);
-                CalculateCollisions();
-                CalculateGravity();
-
-            }
-            else
-            {
-                _currentState = State.Dying;
-            }
-
-
+           
+            _target = GetClosestPlayer();
+            distance = Vector2.Distance(_target.transform.position, transform.position);
+            CalculateCollisions();
+            CalculateGravity();
 
             switch (base._currentState)
             {
@@ -95,13 +86,6 @@ namespace Code_EnemiesAndAI
                     }
                     _currentHorizontalSpeed = 0;
                     MoveCharacter();
-
-                    break;
-
-                case State.Dying:
-
-                    Destroy(this.gameObject, 2);
-                    _currentState = State.Idle;
 
                     break;
 

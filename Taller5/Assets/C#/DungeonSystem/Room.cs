@@ -9,7 +9,9 @@ namespace Code_DungeonSystem
     public class Room : MonoBehaviour
     {
         public Bounds roomBounds;
-        public int ID; 
+        public int ID;
+        public GameObject wall;
+        public bool secretRoom;
 
         private void OnDrawGizmos()
         {
@@ -23,6 +25,19 @@ namespace Code_DungeonSystem
             {
                 enemy.SetUp(DataBase.Instance.Gicamu,DataBase.Instance.Alchies);
             }
+        }
+
+        private void Update()
+        {
+            if (DataBase.Instance.EnemyPerRoom[ID].Count == 0) 
+            {
+                UnlockNextRoom();
+            }
+        }
+
+        private void UnlockNextRoom() 
+        {
+            Destroy(wall);
         }
     }
 }

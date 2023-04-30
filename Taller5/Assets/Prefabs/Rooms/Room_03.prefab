@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6367138831903863179}
   - component: {fileID: 4523302587825231542}
   m_Layer: 3
-  m_Name: InvisibleWall
+  m_Name: InvisibleWall_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 5225752075432095983}
   - component: {fileID: 1082259504182325708}
   m_Layer: 3
-  m_Name: InvisibleWall (2)
+  m_Name: InvisibleWall_Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7049152923876588950}
   - component: {fileID: 2205788944584929966}
   m_Layer: 3
-  m_Name: InvisibleWall (1)
+  m_Name: InvisibleWall_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,6 +535,8 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   ID: 0
+  wall: {fileID: 5401491320923137664}
+  secretRoom: 0
 --- !u!1001 &3329777581493147623
 PrefabInstance:
   m_ObjectHideFlags: 0

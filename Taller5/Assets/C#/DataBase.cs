@@ -46,12 +46,21 @@ namespace Code_Core
             }
         }
 
-        public void AddRegister(Player p) 
+        public void RemoveRegister(int id, Enemy enemy) 
         {
-            /*if ()
-            {
+            _enemyPerRoom[id].Remove(enemy);
+        }
 
-            }*/
+        public void AddRegister(Player p, int id) 
+        {
+            if (id == 0)
+            {
+                _gicamu = p;
+            }
+            else if (id == 1)
+            {
+                _alchies = p;
+            }
         }
     }
 }
