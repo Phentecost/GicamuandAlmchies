@@ -114,7 +114,7 @@ namespace Code_EnemiesAndAI
             Vector3 vec2tar = _target.transform.position - transform.position;
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.transform.parent = null;
-            bullet.GetComponent<Proyectile>().SetMovement(ATKspeed, vec2tar);
+            bullet.GetComponent<Proyectile>().SetMovement(ATKspeed, vec2tar,false);
             waitForTimerATK = 3;
 
         }

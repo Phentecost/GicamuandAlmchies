@@ -49,21 +49,27 @@ namespace Code_DungeonSystem
             r = Instantiate(spawnRoom,spawnRoomPosition,Quaternion.identity);
             r.transform.parent = null;
             dungeonRooms.Add(r);
-            spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x, spawnRoomPosition.y);
+            spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 15, spawnRoomPosition.y);
             Shuffle(enemyRooms);
+
+            int count = 0;
 
             for (int i = 0; i < enemyRooms.Count; i++)
             {
+
                 r = Instantiate(enemyRooms[i], spawnRoomPosition, Quaternion.identity);
                 r.transform.parent = null;
+                r.GetComponent<Room>().ID = count;
                 dungeonRooms.Add(r);
-                spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x, spawnRoomPosition.y);
+                spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 15, spawnRoomPosition.y);
                 int x = Random.Range(0, 101);
                 if (x<= currentProbability)
                 {
-                    Vector3 spawnSecretRoomPosition = new Vector3(r.transform.position.x,-r.transform.localScale.y);
+                    count++;
+                    Vector3 spawnSecretRoomPosition = new Vector3(r.transform.position.x,-r.transform.localScale.y-5);
                     r = Instantiate(secretRoom, spawnSecretRoomPosition, Quaternion.identity);
                     r.transform.parent = null;
+                    r.GetComponent<Room>().ID = count;
                     secretRooms.Add(r);
                     currentProbability = initialSecretRoomProbability;
                 }
@@ -71,12 +77,14 @@ namespace Code_DungeonSystem
                 {
                     currentProbability += incrisingProbabilityRate;
                 }
+
+                count++;
             }
 
             r = Instantiate(bossRoom, spawnRoomPosition, Quaternion.identity);
             r.transform.parent = null;
             dungeonRooms.Add(r);
-            spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x, spawnRoomPosition.y);
+            spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 15, spawnRoomPosition.y);
 
         }
 

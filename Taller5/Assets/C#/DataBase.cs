@@ -9,7 +9,7 @@ namespace Code_Core
 {
     public class DataBase : MonoBehaviour 
     {
-        private static DataBase Instance { get; set; } = null;
+        public static DataBase Instance { get; set; } = null;
 
         private Player _gicamu, _alchies;
         public Player Gicamu { get => _gicamu; }
@@ -22,7 +22,7 @@ namespace Code_Core
 
         public Dictionary<int, List<Enemy>> EnemyPerRoom { get => _enemyPerRoom;}
         
-        private void Start()
+        private void Awake()
         {
             if (Instance != null)
             {
@@ -35,7 +35,7 @@ namespace Code_Core
 
         public void AddRegister(int id, Enemy enemy) 
         {
-            if (_enemyPerRoom[id] == null)
+            if (!_enemyPerRoom.ContainsKey(id))
             {
                 _enemyPerRoom.Add(id, new List<Enemy>());
                 _enemyPerRoom[id].Add(enemy);

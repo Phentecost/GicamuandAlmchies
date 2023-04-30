@@ -1,71 +1,50 @@
+using TarodevController;
+using Code;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TarodevController;
-using Unity.IO.LowLevel.Unsafe;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using Code;
 using Code_DungeonSystem;
-using Code_Core;
 
-namespace Code_EnemiesAndAI
+namespace Code_Boses
 {
-    public class Enemy : MonoBehaviour
+    public class BossStateManager : MonoBehaviour
     {
+        [SerializeField] BaseState _currentState;
+        public BaseState idle;
+        [SerializeField] List<BaseState> _states;
+        [SerializeField] Player _gicamu, _alchies;
+        public Room currentRoom;
+        public bool left = true;
 
-        #region CORE
-        protected enum State
+
+        void Start()
         {
-            Idle, Walking, Shooting, Dying
+            _currentState = _states.Find(x => x.GetType() == typeof(State_Idle));
+            _currentState.EnterState(this);
+
         }
 
-        [Header("CORE")]
-        [SerializeField] protected Player _gicamu, _alchies;
-        [SerializeField] protected Room _currentRoom;
-        protected State _currentState = State.Idle;
-        protected Player _target;
-        protected float distance;
-        protected float _waitForTimer = 1.0f;
-        
-
-        private void Start()
-        {
-            DataBase.Instance.AddRegister(_currentRoom.ID, this);
-            gameObject.SetActive(false);
-        }
-
+        // Update is called once per frame
         void Update()
         {
-            Behaviour();
+            _currentState.UpdateState(this);
         }
 
-        public void SetUp(Player _gicamu, Player _alchies) 
+        public void SwichState() 
         {
-            this._gicamu= _gicamu;
-            this._alchies= _alchies;
-            gameObject.SetActive(true);
+            _currentState = _states.Find(x => x.GetType() == typeof(State_JumpATK));
+            _currentState.EnterState(this);
         }
 
-        #endregion
-
-        #region Life
-
-        [Header("LIFE")]
-        [SerializeField] protected int life;
-        protected int _currentLife;
-        protected bool IsDead;
-
-        #endregion
-
-        #region Behaviour
-
-        protected virtual void Behaviour()
+        public void SwichState(BaseState idle)
         {
+            _currentState = idle;
+            _currentState.EnterState(this);
         }
 
-        protected Player GetClosestPlayer()
+        public Player GetClosestPlayer()
         {
             {
                 float EtoGicamu = Vector2.Distance(transform.position, _gicamu.transform.position);
@@ -84,8 +63,6 @@ namespace Code_EnemiesAndAI
             }
         }
 
-        #endregion
-
         #region Walk
 
         [Header("WALKING")][SerializeField] protected float _acceleration = 90f;
@@ -93,9 +70,9 @@ namespace Code_EnemiesAndAI
         [SerializeField] protected float _deAcceleration = 60f;
         protected float _currentHorizontalSpeed, _currentVerticalSpeed;
 
-        protected virtual void CalculateWalk(Player target)
+        public virtual void CalculateWalk(Player target)
         {
-            Vector2 v = target.transform.position-transform.position;
+            Vector2 v = target.transform.position - transform.position;
 
             if (v.x > 1 || v.x < -1)
             {
@@ -119,10 +96,10 @@ namespace Code_EnemiesAndAI
 
         [Header("GRAVITY")][SerializeField] protected float _fallClamp = -40f;
         [SerializeField] protected float _maxFallSpeed = 120f;
-        protected void CalculateGravity()
+        public void CalculateGravity()
         {
             if (_colDown)
-            { 
+            {
                 if (_currentVerticalSpeed < 0) _currentVerticalSpeed = 0;
             }
             else
@@ -147,7 +124,7 @@ namespace Code_EnemiesAndAI
         protected RayRange _raysUp, _raysRight, _raysDown, _raysLeft;
         protected bool _colUp, _colRight, _colDown, _colLeft;
 
-        protected void CalculateCollisions() 
+        public void CalculateCollisions()
         {
             CalculateRaysRanges();
 
@@ -163,19 +140,20 @@ namespace Code_EnemiesAndAI
 
         }
 
-        protected void CalculateRaysRanges() 
+        protected void CalculateRaysRanges()
         {
-            Bounds boxBound = new Bounds(transform.position,_characterBounds.size);
-            _raysUp = new RayRange(boxBound.min.x + _rayBuffer,boxBound.max.y,boxBound.max.x - _rayBuffer,boxBound.max.y,Vector2.up);
-            _raysRight = new RayRange(boxBound.max.x,boxBound.min.y + _rayBuffer,boxBound.max.x,boxBound.max.y-_rayBuffer,Vector2.right);
-            _raysLeft = new RayRange(boxBound.min.x,boxBound.min.y+_rayBuffer,boxBound.min.x,boxBound.max.y- _rayBuffer,Vector2.left);
-            _raysDown = new RayRange(boxBound.min.x + _rayBuffer,boxBound.min.y,boxBound.max.x-_rayBuffer,boxBound.min.y,Vector2.down);
+            Bounds boxBound = new Bounds(transform.position, _characterBounds.size);
+            _raysUp = new RayRange(boxBound.min.x + _rayBuffer, boxBound.max.y, boxBound.max.x - _rayBuffer, boxBound.max.y, Vector2.up);
+            _raysRight = new RayRange(boxBound.max.x, boxBound.min.y + _rayBuffer, boxBound.max.x, boxBound.max.y - _rayBuffer, Vector2.right);
+            _raysLeft = new RayRange(boxBound.min.x, boxBound.min.y + _rayBuffer, boxBound.min.x, boxBound.max.y - _rayBuffer, Vector2.left);
+            _raysDown = new RayRange(boxBound.min.x + _rayBuffer, boxBound.min.y, boxBound.max.x - _rayBuffer, boxBound.min.y, Vector2.down);
         }
 
-        protected IEnumerable<Vector2> CalculatePointsPositions(RayRange range) 
+        protected IEnumerable<Vector2> CalculatePointsPositions(RayRange range)
         {
-            for (var i = 0; i < _detectorCount; i++) {
-                var t = (float)i / (_detectorCount -1);
+            for (var i = 0; i < _detectorCount; i++)
+            {
+                var t = (float)i / (_detectorCount - 1);
                 yield return Vector2.Lerp(range.Start, range.End, t);
             }
         }
@@ -206,9 +184,9 @@ namespace Code_EnemiesAndAI
         #region Jump
         [Header("JUMP")]
         [SerializeField] protected float _jumpHeight = 30;
-        protected virtual void CalculateJump(Player target)
+        public virtual void CalculateJump(Player target)
         {
-            if (target.transform.position.y > transform.position.y +2 && _colDown)
+            if (target.transform.position.y > transform.position.y + 2 && _colDown)
             {
                 _currentVerticalSpeed = _jumpHeight;
             }
@@ -226,7 +204,7 @@ namespace Code_EnemiesAndAI
         [SerializeField, Tooltip("Raising this value increases collision accuracy at the cost of performance.")]
         protected int _freeColliderIterations = 10;
         protected Vector3 RawMovement { get; private set; }
-        protected void MoveCharacter()
+        public void MoveCharacter()
         {
             Flip();
             var pos = transform.position;
@@ -266,37 +244,21 @@ namespace Code_EnemiesAndAI
 
         #endregion
 
-        #region Attack
+        #region Flip
 
-        [Header("ATTACK")]
-        [SerializeField] protected int damage;
-        [SerializeField] protected float attackTheshold;
+        //protected bool isFacingRight = true;
 
-        protected virtual void Attack() 
+        public void Flip()
         {
+            
+            
+                //isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
             
         }
 
         #endregion
-
-        #region Flip
-
-        protected bool isFacingRight = true;
-
-        protected void Flip() 
-        {
-            if (isFacingRight && _currentHorizontalSpeed< 0f || !isFacingRight && _currentHorizontalSpeed > 0f)
-            {
-                isFacingRight = !isFacingRight;
-                Vector3 localScale = transform.localScale;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
-            }
-        }
-
-        #endregion
-
     }
-
-
 }
