@@ -66,7 +66,7 @@ namespace Code_EnemiesAndAI
 
                         }
                         else 
-                        {
+                        { 
                             float newScale = Mathf.SmoothDamp(tongue.localScale.x, 0, ref ATKVelocity, ATKspeed * Time.deltaTime);
                             tongue.localScale = new Vector3(newScale, 0.3f, 1);
                             tongueTimer -= Time.deltaTime;

@@ -34,6 +34,7 @@ namespace Code_EnemiesAndAI
         private void Start()
         {
             DataBase.Instance.AddRegister(_currentRoom.ID, this);
+            _currentLife = life;
             gameObject.SetActive(false);
         }
 

@@ -1,3 +1,4 @@
+using Code_DungeonSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,21 +7,14 @@ namespace Code
 {
     public class Prueba : MonoBehaviour
     {
+        public Room room;
 
-        public float speed;
-        public float velocity = 0;
-        public float distance;
-
-        void Start()
+        private void Update()
         {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            float newScale = Mathf.SmoothDamp(transform.localScale.x,distance,ref velocity,speed*Time.deltaTime);
-            transform.localScale = new Vector3(newScale, 1, 1);
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                room.ActivateEnemies();
+            }
         }
     }
 }

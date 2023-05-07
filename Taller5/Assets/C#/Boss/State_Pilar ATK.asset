@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c1e6f81e8c03e40aa45e772a648879, type: 3}
+  m_Name: State_Pilar ATK
+  m_EditorClassIdentifier: 
+  waitForActivation: 2
+  pilarPrefab: {fileID: 1457376797285514994, guid: a0d4b7dae0256b949befff7bf2654b78, type: 3}
+  sealPrefab: {fileID: 4878629445200974055, guid: 7090376d0b8d42c47bbddd934c28696a, type: 3}
+  pilarVelocity: 100
+  pilarHigh: 5
+  pilarLifeTimerDuration: 2
+  floor: -0.8

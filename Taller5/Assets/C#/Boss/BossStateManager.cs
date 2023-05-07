@@ -21,7 +21,6 @@ namespace Code_Boses
 
         void Start()
         {
-            _currentState = _states.Find(x => x.GetType() == typeof(State_Idle));
             _currentState.EnterState(this);
 
         }
@@ -34,7 +33,7 @@ namespace Code_Boses
 
         public void SwichState() 
         {
-            _currentState = _states.Find(x => x.GetType() == typeof(State_JumpATK));
+            _currentState = _states.Find(x => x.GetType() == typeof(State_LaseATK));
             _currentState.EnterState(this);
         }
 

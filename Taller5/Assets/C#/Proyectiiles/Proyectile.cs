@@ -12,14 +12,16 @@ namespace Code_Proyectiles
         private Vector3 _direction;
         private bool _bounce;
         private int _nBounces;
+        private float _timeBetweenBounces = 0.1f;
+        private float _timer;
         // Update is called once per frame
         void Update()
         {
             CalculateCollisions();
-            if (_colRight)
-            {
-                Debug.Log(_hitRight.collider.gameObject.name);
-            }
+            CalculateCollitionBehaviour();
+
+            _timer -= Time.deltaTime;
+
             transform.position += _speed * _direction * Time.deltaTime;
         }
 
@@ -71,6 +73,35 @@ namespace Code_Proyectiles
                 //return CalculatePointsPositions(range).Any((point) => Physics2D.Raycast(point, range.Dir,out hit,_detectionRayLength, layer));
             }
 
+        }
+
+        protected void CalculateCollitionBehaviour() 
+        {
+            RaycastHit2D hit = ReturnHit();
+            if (hit)
+            {
+                if (_bounce)
+                {
+                    if (_timer <= 0)
+                    {
+                        _direction = Vector3.Reflect(_direction, hit.normal);
+                        _timer = _timeBetweenBounces;
+                    }
+                    
+                }
+                else
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+        }
+
+        protected RaycastHit2D ReturnHit() 
+        {
+            if (_hitRight) return _hitRight;
+            if(_hitUp) return _hitUp;
+            if (_hitDown) return _hitDown;
+            return _hitLeft;
         }
 
         protected void CalculateRaysRanges()

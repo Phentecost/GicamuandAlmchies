@@ -9,7 +9,7 @@ namespace Code_Boses
     [CreateAssetMenu(menuName = "State_JumpATK")]
     public class State_JumpATK : BaseState
     {
-        private enum JumpingState { CalculateJumping, Jumping, Waiting, CalculateLanding, Landing }
+        private enum JumpingState { CalculateJumping, Jumping, Waiting, CalculateLanding, Landing, WaitingLanding}
         private Vector2 pointA , pointB ;
         [SerializeField] float timeBetweenJumps;
         private float _timer;
@@ -23,12 +23,17 @@ namespace Code_Boses
         [SerializeField] float movingDuration;
         [SerializeField] AnimationCurve movingBehaviour;
         private Vector3 _currentBossPosition;
+        [SerializeField] float timerBetweenLandings;
+        private float _landingTimer;
+        private bool _finish;
         public override void EnterState(BossStateManager boss)
         {
             _timer = timeBetweenJumps;
             _count = 0;
             _currentState = JumpingState.CalculateJumping;
             _elapsedTime = 0;
+            _landingTimer = timerBetweenLandings;
+            _finish = false;
         }
 
         public override void UpdateState(BossStateManager boss)
@@ -78,15 +83,41 @@ namespace Code_Boses
 
                 case JumpingState.CalculateLanding:
 
-                    Vector3 playerPos = boss.GetClosestPlayer().transform.position;
-                    float playerY = Mathf.Clamp(playerPos.y + 10, clampingFloor, clampingCeiling);
-                    Vector3 newPosition = new Vector3(playerPos.x, playerY);
-                    boss.transform.position = newPosition;
-                    float newY = Mathf.Clamp(boss.transform.position.y - 10,clampingFloor, clampingCeiling);
-                    _movingTo = new Vector3(boss.transform.position.x, newY);
-                    _currentBossPosition = boss.transform.position;
-                    _elapsedTime = 0;
-                    _currentState = JumpingState.Landing;
+                    if (!_finish) 
+                    {
+                        Vector3 playerPos = boss.GetClosestPlayer().transform.position;
+                        float playerY = Mathf.Clamp(playerPos.y + 10, clampingFloor, clampingCeiling);
+                        Vector3 newPosition = new Vector3(playerPos.x, playerY);
+                        boss.transform.position = newPosition;
+                        float newY = Mathf.Clamp(boss.transform.position.y - 10, clampingFloor, clampingCeiling);
+                        _movingTo = new Vector3(boss.transform.position.x, newY);
+                        _currentBossPosition = boss.transform.position;
+                        _elapsedTime = 0;
+                        _currentState = JumpingState.Landing;
+                    }
+                    else
+                    {
+                        int i = Random.Range(0, 2);
+                        Vector3 pointPosition;
+                        if (i == 0)
+                        {
+                             pointPosition = boss.currentRoom.pointA;
+                        }
+                        else
+                        {
+                             pointPosition = boss.currentRoom.pointB;
+                        }
+
+                        float pointY = Mathf.Clamp(pointPosition.y + 10, clampingFloor, clampingCeiling);
+                        Vector3 newPosition = new Vector3(pointPosition.x, pointY);
+                        boss.transform.position = newPosition;
+                        _movingTo = pointPosition;
+                        _currentBossPosition = boss.transform.position;
+                        _elapsedTime = 0;
+                        _currentState = JumpingState.Landing;
+                    }
+                    
+                    
 
                     break;
 
@@ -98,17 +129,39 @@ namespace Code_Boses
 
                     if (boss.transform.position == _movingTo)
                     {
-                        if (_count == numbersOfJumps)
+                        if (_finish)
                         {
                             boss.SwichState(boss.idle);
                         }
                         else
                         {
-                            _currentState= JumpingState.CalculateJumping;
+                            _currentState = JumpingState.WaitingLanding;
                         }
+                        
                     }
 
                     break;
+
+                case JumpingState.WaitingLanding:
+
+                    if (_landingTimer <= 0)
+                    {
+                        _landingTimer = timerBetweenLandings;
+
+                        if (_count == numbersOfJumps)
+                        {
+                            _finish = true;
+                        }
+
+                        _currentState = JumpingState.CalculateJumping;
+                    }
+                    else
+                    {
+                        _landingTimer -= Time.deltaTime;
+                    }
+
+                    break;
+                        
             }
             
         }

@@ -12,6 +12,8 @@ namespace Code_DungeonSystem
         public int ID;
         public GameObject wall;
         public bool secretRoom;
+        public Vector2 pointA,pointB;
+        public GameObject floor;
 
         private void OnDrawGizmos()
         {
@@ -29,10 +31,10 @@ namespace Code_DungeonSystem
 
         private void Update()
         {
-            if (DataBase.Instance.EnemyPerRoom[ID].Count == 0) 
+            /*if (DataBase.Instance.EnemyPerRoom[ID].Count == 0) 
             {
                 UnlockNextRoom();
-            }
+            }*/
         }
 
         private void UnlockNextRoom() 
