@@ -26,6 +26,7 @@ namespace Code_Boses
         [SerializeField] float timerBetweenLandings;
         private float _landingTimer;
         private bool _finish;
+        private Vector3 currentPos;
         public override void EnterState(BossStateManager boss)
         {
             _timer = timeBetweenJumps;
@@ -34,6 +35,7 @@ namespace Code_Boses
             _elapsedTime = 0;
             _landingTimer = timerBetweenLandings;
             _finish = false;
+            currentPos = boss.transform.position;
         }
 
         public override void UpdateState(BossStateManager boss)
@@ -106,6 +108,11 @@ namespace Code_Boses
                         else
                         {
                              pointPosition = boss.currentRoom.pointB;
+                        }
+
+                        if (Vector3.Distance(pointPosition,currentPos) > 1)
+                        {
+                            boss.Flip();
                         }
 
                         float pointY = Mathf.Clamp(pointPosition.y + 10, clampingFloor, clampingCeiling);

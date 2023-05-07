@@ -10,7 +10,7 @@ namespace Code
 
         void Update()
         {
-            if (life > 0) 
+            if (life <= 0) 
             {
                 Destroy(gameObject);
             }

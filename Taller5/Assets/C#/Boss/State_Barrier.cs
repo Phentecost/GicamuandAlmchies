@@ -31,6 +31,7 @@ namespace Code_Boses
                 GameObject G = Instantiate(barrierPrefab,pos,Quaternion.identity);
                 G.transform.parent = null;
                 G.GetComponent<Barrier>().SetUp(barrierLife);
+                boss.SwichState(boss.idle);
             }
             else
             {

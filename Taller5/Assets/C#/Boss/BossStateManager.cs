@@ -28,12 +28,13 @@ namespace Code_Boses
         // Update is called once per frame
         void Update()
         {
-            _currentState.UpdateState(this);
+             _currentState.UpdateState(this);
         }
 
         public void SwichState() 
         {
-            _currentState = _states.Find(x => x.GetType() == typeof(State_LaseATK));
+            int i = UnityEngine.Random.Range(0, _states.Count);
+            _currentState = _states[i];
             _currentState.EnterState(this);
         }
 
@@ -249,12 +250,11 @@ namespace Code_Boses
 
         public void Flip()
         {
-            
-            
-                //isFacingRight = !isFacingRight;
-                Vector3 localScale = transform.localScale;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
+           
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            left = !left;
+            transform.localScale = localScale;
             
         }
 

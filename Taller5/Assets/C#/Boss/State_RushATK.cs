@@ -12,7 +12,6 @@ namespace Code_Boses
         private float elapsedTime;
         [SerializeField]float waitTimer;
         private float _timer;
-        [SerializeField]Vector3 firstPoint, secondPoint;
         [SerializeField] AnimationCurve _Xcurve;
         [SerializeField] AnimationCurve _Ycurve;
         [SerializeField] float height;
@@ -23,8 +22,8 @@ namespace Code_Boses
         public override void EnterState(BossStateManager boss)
         {
             elapsedTime = 0;
-            pointB = firstPoint;
-            pointA = secondPoint;
+            pointB = boss.currentRoom.pointB;
+            pointA = boss.currentRoom.pointA;
             secondAtk = false;
             _timer = waitTimer;
 
@@ -56,7 +55,6 @@ namespace Code_Boses
                     }
                     else
                     {
-                        boss.left = !boss.left;
                         boss.SwichState(boss.idle);
                     }
                 }
