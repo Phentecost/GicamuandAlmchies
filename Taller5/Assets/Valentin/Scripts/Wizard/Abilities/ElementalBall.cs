@@ -26,7 +26,7 @@ public class ElementalBall : MonoBehaviour
     {
         EnemyPlaceHolder enemy = collision.GetComponent<EnemyPlaceHolder>();
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyInside"))
         {
             enemy.HealthSystem(-2, true);
             Destroy(gameObject);

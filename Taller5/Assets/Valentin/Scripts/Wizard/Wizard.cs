@@ -8,9 +8,7 @@ public class Wizard : PlayerController
 {
     #region Wizard components configuration
 
-    [SerializeField] private ElementalBall abilityQ;
-    //[SerializeField] protected StunSpell abilityE;
-    //[SerializeField] protected HealthStealSpell abilityF;
+    [SerializeField] private ElementalBall abilityB;
 
     [Header("Wizard's Abilities")]
     [Header("Elemental ball")] //velocidad media
@@ -64,25 +62,25 @@ public class Wizard : PlayerController
 
     private void MovementSystem()
     {
-        horizontal = Input.GetAxisRaw("P1_Horizontal");
+        horizontal = Input.GetAxisRaw("P2_Horizontal");
 
         if (IsGrounded())
             coyoteTimeCounter = coyoteTime;
         else
             coyoteTimeCounter -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
             jumpBufferCounter = jumpBufferTime; //Guarda que se preciono la tecla antes de que toque el suelo
         else
             jumpBufferCounter -= Time.deltaTime;
 
         if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
         {
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            rb.velocity = new Vector2(0, jumpForce);
             jumpBufferCounter = 0f;
         }
 
-        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0f) //Salta x altura de acuerdo al tiempo que se presiono la tecla
+        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0f) //Salta x altura de acuerdo al tiempo que se presiono la tecla
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.65f);
             coyoteTimeCounter = 0f;
@@ -104,7 +102,7 @@ public class Wizard : PlayerController
         if (rb.velocity.y < 25)  //Caida automatica mas rapida
             rb.velocity -= gravity * fallFaster * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.S)) //Caida mas rapida
+        if (Input.GetKeyDown(KeyCode.DownArrow)) //Caida mas rapida
             rb.velocity = new Vector2(rb.velocity.x, -jumpForce * 0.5f);
     }
 
@@ -151,7 +149,7 @@ public class Wizard : PlayerController
     private void AbilitiesSystem()
     {
         //Bola elemental diagonal
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             if (ballAmmo > 0f)
             {
@@ -161,15 +159,15 @@ public class Wizard : PlayerController
                     ballCoolDown = 4f;
                     ballActivated = true;
 
-                    abilityQ.projectileXSpeed = 90f;
-                    abilityQ.projectileYSpeed = 15f;
-                    Instantiate(abilityQ, launchPosition.position, transform.rotation);
+                    abilityB.projectileXSpeed = 90f;
+                    abilityB.projectileYSpeed = 15f;
+                    Instantiate(abilityB, launchPosition.position, transform.rotation);
                 }
             }
         }
 
         //Conjuro stunea enemigos
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             if (!stunActivated)
             {
@@ -204,7 +202,7 @@ public class Wizard : PlayerController
         }
 
         //Hechizo roba vida
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             if (healthSpellAmmo > 0)
             {

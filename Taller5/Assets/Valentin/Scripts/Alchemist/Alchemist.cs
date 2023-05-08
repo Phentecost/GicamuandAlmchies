@@ -6,8 +6,8 @@ public class Alchemist : PlayerController
 {
     #region Alchemist components configuration
 
-    [SerializeField] private BoxBarrier abilityB;
-    [SerializeField] private MagicPellets abilityN;
+    [SerializeField] private BoxBarrier abilityQ;
+    [SerializeField] private MagicPellets abilityE;
 
     [Header("Alchemist's Abilities")]
     [Header("Barrier")]
@@ -51,14 +51,14 @@ public class Alchemist : PlayerController
 
     private void MovementSystem()
     {
-        horizontal = Input.GetAxisRaw("P2_Horizontal");
+        horizontal = Input.GetAxisRaw("P1_Horizontal");
 
         if (IsGrounded())
             coyoteTimeCounter = coyoteTime;
         else
             coyoteTimeCounter -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W))
             jumpBufferCounter = jumpBufferTime; //Guarda que se preciono la tecla antes de que toque el suelo
         else
             jumpBufferCounter -= Time.deltaTime;
@@ -69,7 +69,7 @@ public class Alchemist : PlayerController
             jumpBufferCounter = 0f;
         }
 
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0) //Salta x altura de acuerdo al tiempo que se presiono la tecla
+        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0) //Salta x altura de acuerdo al tiempo que se presiono la tecla
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.65f);
             coyoteTimeCounter = 0f;
@@ -84,7 +84,7 @@ public class Alchemist : PlayerController
         if (rb.velocity.y < 25)  //Caida automatica mas rapida
             rb.velocity -= gravity * fallFaster * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)) //Caida mas rapida
+        if (Input.GetKeyDown(KeyCode.S)) //Caida mas rapida
             rb.velocity = new Vector2(rb.velocity.x, -jumpForce * 0.5f);
     }
 
@@ -171,20 +171,20 @@ public class Alchemist : PlayerController
     protected void AbilitiesSystem()
     {
         //Barrera
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if (!barrierActivated)
             {
                 barrierCoolDown = 14.5f;
                 barrierActivated = true;
 
-                abilityB.projectileSpeed = 0f;
-                Instantiate(abilityB, launchPosition.position, transform.rotation);
+                abilityQ.projectileSpeed = 0f;
+                Instantiate(abilityQ, launchPosition.position, transform.rotation);
             }
         }
 
         //Perdigones magicos horizontales
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (pelletsAmmo > 0f)
             {
@@ -194,8 +194,8 @@ public class Alchemist : PlayerController
                     pelletsCoolDown = 0.5f;
                     pelletsActivated = true;
 
-                    abilityN.projectileSpeed = 100f;
-                    Instantiate(abilityN, launchPosition.position, transform.rotation);
+                    abilityE.projectileSpeed = 100f;
+                    Instantiate(abilityE, launchPosition.position, transform.rotation);
                 }
             }
             else
@@ -206,7 +206,7 @@ public class Alchemist : PlayerController
         }
 
         //Heal cercano
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (healAmmo > 0)
             {
