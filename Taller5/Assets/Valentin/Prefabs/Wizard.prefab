@@ -273,7 +273,7 @@ MonoBehaviour:
   - {fileID: 6745050970095556964}
   layerFloor:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 2147487744
   horizontal: 0
   impulse: 0
   minSpeed: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
   attackedCounter: 0
   attacked: 0
   launchPosition: {fileID: 810969649602861254}
-  abilityQ: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
+  abilityB: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
   ballTime: 1.5
   ballCounter: 0
   ballAmmo: 5
@@ -307,7 +307,7 @@ MonoBehaviour:
   random: 0
   layerEnemies:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 3072
   healthStole: 4
   healthSpellAmmo: 2
   stealTime: 2.5

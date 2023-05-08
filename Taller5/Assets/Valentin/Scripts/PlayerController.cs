@@ -109,12 +109,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DroppingFloor"))
         {
-            if (Input.GetKey(KeyCode.S) || (Input.GetKey(KeyCode.W) && !IsGrounded()))
+            if (Input.GetKey(KeyCode.DownArrow) || (Input.GetKey(KeyCode.UpArrow) && !IsGrounded()))
                 Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Wizard").GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("DroppingFloor").GetComponent<Collider2D>(), true);
             else
                 Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Wizard").GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("DroppingFloor").GetComponent<Collider2D>(), false);
 
-            if (Input.GetKey(KeyCode.DownArrow) || (Input.GetKey(KeyCode.UpArrow) && !IsGrounded()))
+            if (Input.GetKey(KeyCode.S) || (Input.GetKey(KeyCode.W) && !IsGrounded()))
                 Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Alchemist").GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("DroppingFloor").GetComponent<Collider2D>(), true);
             else
                 Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Alchemist").GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("DroppingFloor").GetComponent<Collider2D>(), false);

@@ -242,7 +242,7 @@ MonoBehaviour:
   - {fileID: 6327908042206186155}
   layerFloor:
     serializedVersion: 2
-    m_Bits: 2147483648
+    m_Bits: 2147487744
   horizontal: 0
   impulse: 0
   minSpeed: 0
@@ -262,8 +262,8 @@ MonoBehaviour:
   attackedCounter: 0
   attacked: 0
   launchPosition: {fileID: 2333277870996609712}
-  abilityB: {fileID: 9162102179728132213, guid: 0f17e58cbb57e99418586fd9bd65f9fd, type: 3}
-  abilityN: {fileID: 8038840281743550472, guid: a32f9c1108e274c408cf12c0d927cc1c, type: 3}
+  abilityQ: {fileID: 9162102179728132213, guid: 0f17e58cbb57e99418586fd9bd65f9fd, type: 3}
+  abilityE: {fileID: 8038840281743550472, guid: a32f9c1108e274c408cf12c0d927cc1c, type: 3}
   barrierCoolDown: 12
   barrierActivated: 0
   pelletsAmmo: 3
