@@ -443,8 +443,9 @@ MonoBehaviour:
   secretRoom: {fileID: 4206009192890022995, guid: 51e8d483d8d89364ea06877299dba6ea, type: 3}
   dungeonRooms: []
   secretRooms: []
-  gicamu: {fileID: 0}
-  alchies: {fileID: 0}
+  gicamu: {fileID: 6745050969916821381, guid: 9543be3fe1c4195459243105aef521bc, type: 3}
+  alchies: {fileID: 6327908040499586707, guid: 2530dd97c7f5f7243a14b9ebf31601fb, type: 3}
+  spawnOffset: {x: 2, y: 0, z: 0}
 --- !u!4 &1582793484
 Transform:
   m_ObjectHideFlags: 0

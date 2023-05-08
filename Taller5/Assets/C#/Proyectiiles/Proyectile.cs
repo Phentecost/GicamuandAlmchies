@@ -11,7 +11,6 @@ namespace Code_Proyectiles
         private float _speed;
         private Vector3 _direction;
         private bool _bounce;
-        private int _nBounces;
         private float _timeBetweenBounces = 0.1f;
         private float _timer;
         // Update is called once per frame
@@ -30,6 +29,11 @@ namespace Code_Proyectiles
             this._speed = speed;
             this._direction = direction;
             this._bounce = bounce;
+        }
+
+        public void updateBounds(float i) 
+        {
+            _characterBounds.Expand(i/3);
         }
 
         #region Collisions

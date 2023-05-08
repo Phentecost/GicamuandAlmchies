@@ -15,5 +15,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4950402766463259929, guid: 6f51f30cfe26ff843aa45feef1df725a, type: 3}
   timeBetweenBullets: 1
   numberOfBullets: 5
-  bulletSpeed: 10
-  secondATKProbability: 100
+  bulletSpeed: 2
+  secondATKProbability: 50

@@ -15,8 +15,8 @@ MonoBehaviour:
   timeBetweenJumps: 0.5
   numbersOfJumps: 3
   clampingCeiling: 8
-  clampingFloor: -0.3
-  movingDuration: 0.5
+  clampingFloor: 0.3
+  movingDuration: 0.3
   movingBehaviour:
     serializedVersion: 2
     m_Curve:

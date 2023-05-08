@@ -13,30 +13,45 @@ MonoBehaviour:
   m_Name: State_Rush ATK
   m_EditorClassIdentifier: 
   duration: 1
-  elapsedTime: 1.0006411
   waitTimer: 1
-  firstPoint: {x: -8.2, y: -0.3, z: 0}
-  secondPoint: {x: 9.5, y: -0.3, z: 0}
   _Xcurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 0.25
+      outSlope: 0.25
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.05
+      inSlope: 0.25
+      outSlope: 1.9
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.5361197
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7
+      value: 1
+      inSlope: 1.9
+      outSlope: 0
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.09383958
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -47,29 +62,29 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
+      inSlope: -0.2396789
       outSlope: 2
-      tangentMode: 34
+      tangentMode: 69
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.20506327
     - serializedVersion: 3
       time: 0.5
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.1468355
+      outWeight: 0.10886073
     - serializedVersion: 3
       time: 1
       value: 0
       inSlope: -2
-      outSlope: -2
-      tangentMode: 34
+      outSlope: 0.44801477
+      tangentMode: 5
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.15189886
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

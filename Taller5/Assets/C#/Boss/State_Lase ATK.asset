@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: State_Lase ATK
   m_EditorClassIdentifier: 
   castingTimer: 2
-  laserPrefab: {fileID: 2028207419595577963, guid: 74c6e86fbfa66484d895eb522f9e2970, type: 3}
-  laserLength: 12
-  laserSpeed: 50
+  laserPrefab: {fileID: 1532176480820810117, guid: 8a74ca3c180f5704291dd9361e677a87, type: 3}
+  laserLength: 10
+  laserSpeed: 25
   laserDuration: 5
+  _state: 2

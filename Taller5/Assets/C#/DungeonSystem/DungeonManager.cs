@@ -26,6 +26,7 @@ namespace Code_DungeonSystem
         [Header("Characters")]
         [SerializeField] private GameObject gicamu;
         [SerializeField] private GameObject alchies;
+        [SerializeField] private Vector3 spawnOffset;
         
 
         void Start()
@@ -42,6 +43,13 @@ namespace Code_DungeonSystem
             GenerateDungeon();
         }
 
+        private void SpawnPlayers(Room initRoom) 
+        {
+            Vector3 center = initRoom.roomBounds.center;
+            Instantiate(gicamu, center + spawnOffset, Quaternion.identity).transform.parent = null;
+            Instantiate(alchies, center - spawnOffset, Quaternion.identity).transform.parent = null;
+        }
+
         private void GenerateDungeon() 
         {
             Vector3 spawnRoomPosition= Vector3.zero;
@@ -49,6 +57,8 @@ namespace Code_DungeonSystem
             r = Instantiate(spawnRoom,spawnRoomPosition,Quaternion.identity);
             r.transform.parent = null;
             dungeonRooms.Add(r);
+            Room room = r.GetComponent<Room>();
+            SpawnPlayers(room);
             spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 15, spawnRoomPosition.y);
             Shuffle(enemyRooms);
 

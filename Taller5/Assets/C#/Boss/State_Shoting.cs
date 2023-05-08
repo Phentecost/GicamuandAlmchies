@@ -65,7 +65,10 @@ namespace Code_Boses
                     Vector3 vec2tar = boss.GetClosestPlayer().transform.position - boss.transform.position;
                     GameObject bullet = Instantiate(bulletPrefab, boss.transform.position, Quaternion.identity);
                     bullet.transform.parent = null;
-                    bullet.GetComponent<Proyectile>().SetMovement(bulletSpeed/4, vec2tar,true);
+                    bullet.transform.localScale = bullet.transform.localScale * 2.5f;
+                    Proyectile p = bullet.GetComponent<Proyectile>();
+                    p.SetMovement(bulletSpeed / 4, vec2tar, true);
+                    p.updateBounds(2.5f);
                     boss.SwichState(boss.idle);
                 }
                 else

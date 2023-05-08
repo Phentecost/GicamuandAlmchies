@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520c3e7b97b11dd4497d5b4f47b262b9, type: 3}
   m_Name: State_Rock Fall
   m_EditorClassIdentifier: 
-  timeBetweenRocks: 0.5
+  timeBetweenRocks: 0.2
   rockPrefab: {fileID: 4950402766463259929, guid: 6f51f30cfe26ff843aa45feef1df725a, type: 3}
-  numbersOfRocks: 20
+  numbersOfRocks: 50
   ceiling: 8
-  rockFallSpeed: 5
+  rockFallSpeed: 10
