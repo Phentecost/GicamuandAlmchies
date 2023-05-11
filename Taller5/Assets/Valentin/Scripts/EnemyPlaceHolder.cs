@@ -1,3 +1,4 @@
+using Code_EnemiesAndAI;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -37,7 +38,7 @@ public class EnemyPlaceHolder : MonoBehaviour
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         if (amount != 0)
-            Debug.Log("Enemy's health: " + health);
+            //Debug.Log("Enemy's health: " + health);
 
         if (stunned)
             stunnedCounter = stunnedTime;
@@ -54,11 +55,12 @@ public class EnemyPlaceHolder : MonoBehaviour
 
         if (health <= 0)
         {
+            GetComponent<Enemy>().dead();
             Destroy(gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Alchemist")
         {
@@ -69,6 +71,6 @@ public class EnemyPlaceHolder : MonoBehaviour
         {
             wizard.HealthSystem(-2, false);
         }
-    }
+    }*/
 }
 

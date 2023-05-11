@@ -22,8 +22,8 @@ namespace Code_Boses
         public override void EnterState(BossStateManager boss)
         {
             elapsedTime = 0;
-            pointB = boss.currentRoom.pointB;
-            pointA = boss.currentRoom.pointA;
+            pointB = boss.currentRoom.pointB.transform.position;
+            pointA = boss.currentRoom.pointA.transform.position;
             secondAtk = false;
             _timer = waitTimer;
 

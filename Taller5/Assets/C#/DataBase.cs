@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using Code_EnemiesAndAI;
+using System;
+using Code_DungeonSystem;
+using TMPro;
 
 namespace Code_Core
 {
@@ -11,17 +14,20 @@ namespace Code_Core
     {
         public static DataBase Instance { get; set; } = null;
 
-        private Player _gicamu, _alchies;
-        public Player Gicamu { get => _gicamu; }
-        public Player Alchies { get => _alchies; }
+        private PlayerController _gicamu, _alchies;
+        public PlayerController Gicamu { get => _gicamu; }
+        public PlayerController Alchies { get => _alchies; }
 
         //Boss1
         //Boss2
 
-        private Dictionary<int, List<Enemy>> _enemyPerRoom= new Dictionary<int, List<Enemy>>();
+        private int _currentRoom = 0;
 
-        public Dictionary<int, List<Enemy>> EnemyPerRoom { get => _enemyPerRoom;}
-        
+        private List<Room> _rooms = new List<Room>();
+
+        public List<Room> Rooms { get => _rooms;}
+
+
         private void Awake()
         {
             if (Instance != null)
@@ -33,25 +39,12 @@ namespace Code_Core
             Instance = this;
         }
 
-        public void AddRegister(int id, Enemy enemy) 
+        public void ChangeID(int i) 
         {
-            if (!_enemyPerRoom.ContainsKey(id))
-            {
-                _enemyPerRoom.Add(id, new List<Enemy>());
-                _enemyPerRoom[id].Add(enemy);
-            }
-            else
-            {
-                _enemyPerRoom[id].Add(enemy);
-            }
+            _currentRoom= i;
         }
 
-        public void RemoveRegister(int id, Enemy enemy) 
-        {
-            _enemyPerRoom[id].Remove(enemy);
-        }
-
-        public void AddRegister(Player p, int id) 
+        public void AddRegister(PlayerController p, int id) 
         {
             if (id == 0)
             {
@@ -61,6 +54,11 @@ namespace Code_Core
             {
                 _alchies = p;
             }
+        }
+
+        public void AddRegister(Room room) 
+        {
+            _rooms.Add(room);
         }
     }
 }

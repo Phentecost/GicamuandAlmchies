@@ -25,7 +25,7 @@ namespace Code_Boses
         {
             if (_timer <= 0)
             {
-                Vector3 pos = boss.currentRoom.pointB + boss.currentRoom.pointA; 
+                Vector3 pos = boss.currentRoom.pointB.transform.position + boss.currentRoom.pointA.transform.position; 
                 pos = new Vector3(pos.x,pos.y + barrierHight, pos.z);
                 pos -= boss.transform.position/2;
                 GameObject G = Instantiate(barrierPrefab,pos,Quaternion.identity);

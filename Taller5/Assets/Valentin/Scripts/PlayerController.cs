@@ -1,3 +1,4 @@
+using Code_Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Transform[] isGrounded;
     [SerializeField] protected LayerMask layerFloor;
+    [SerializeField] private int ID;
     
     [Header("Parameters configuration")]
     [SerializeField] protected float horizontal;
@@ -65,6 +67,8 @@ public class PlayerController : MonoBehaviour
         stunnedTime = 1f;
         attacked = false;
         attackedTime = 2.5f;
+
+        DataBase.Instance.AddRegister(this,ID);
     }
 
 

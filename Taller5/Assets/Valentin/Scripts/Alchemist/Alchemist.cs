@@ -93,9 +93,9 @@ public class Alchemist : PlayerController
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         if (amount != 0)
         {
-            Debug.Log("Alquimist's health: " + health);
+            //Debug.Log("Alquimist's health: " + health);
             attacked = true;
-            Debug.Log("atacado");
+            //Debug.Log("atacado");
             if (attacked)
                 attackedCounter = attackedTime;
         }
@@ -105,7 +105,7 @@ public class Alchemist : PlayerController
         if (attackedCounter <= 0f)
         {
             attacked = false;
-            Debug.Log("No atacado");
+            //Debug.Log("No atacado");
         }
         /*
         if (stunned)
@@ -259,7 +259,7 @@ public class Alchemist : PlayerController
             }
             else
             {
-                Debug.Log("Cooldown pellets");
+                //Debug.Log("Cooldown pellets");
                 //sfx comando invalido
             }
         }
@@ -267,7 +267,7 @@ public class Alchemist : PlayerController
         if (pelletsAmmo <= 0f)
         {
             pelletsCounter -= Time.deltaTime;
-            Debug.Log("Recargando...");
+            //Debug.Log("Recargando...");
             if (pelletsCounter <= 0f)
                 pelletsAmmo = 3;
         }
@@ -279,7 +279,7 @@ public class Alchemist : PlayerController
 
         if (healActivated)
         {
-            Debug.Log("Curando...");
+            //Debug.Log("Curando...");
             if (healCounter <= 0)
             {
                 if (!attacked)
@@ -291,13 +291,13 @@ public class Alchemist : PlayerController
                     }
                     else
                     {
-                        Debug.Log("Fuera de rango");
+                        //Debug.Log("Fuera de rango");
                         //sfx comando invalido
                     }
                 }
                 else
                 {
-                    Debug.Log("Habilidad cancelada");
+                    //Debug.Log("Habilidad cancelada");
                     //sfx comando invalido
                 }
 

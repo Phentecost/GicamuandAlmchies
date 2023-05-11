@@ -108,7 +108,7 @@ namespace Code_EnemiesAndAI
 
         #region Jump
 
-        protected override void CalculateJump(Player target)
+        protected override void CalculateJump(PlayerController target)
         {
             if (_colDown)
             {

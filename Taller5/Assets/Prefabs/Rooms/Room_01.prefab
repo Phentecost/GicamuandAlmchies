@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &120343840611207537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5711157366338612507}
+  m_Layer: 0
+  m_Name: PointB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5711157366338612507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120343840611207537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.796, y: 0.185, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5016909667632657786}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &186300050242553473
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +134,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.0797873, y: 1.4015999}
+  m_Offset: {x: -1.0797873, y: 1.553678}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -114,7 +145,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.964142, y: 0.24758148}
+  m_Size: {x: 19.964142, y: 0.5517378}
   m_EdgeRadius: 0
 --- !u!1 &878887473783668627
 GameObject:
@@ -212,6 +243,8 @@ Transform:
   - {fileID: 9099594288917850775}
   - {fileID: 3335645969992703790}
   - {fileID: 6812052634521759632}
+  - {fileID: 5711157366338612507}
+  - {fileID: 2887686303452528321}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -280,14 +313,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Center: {x: 10, y: 5, z: 0}
+    m_Extent: {x: 10, y: 5, z: 0}
   ID: 0
   wall: {fileID: 186300050242553473}
   secretRoom: 0
-  pointA: {x: 0, y: 0}
-  pointB: {x: 0, y: 0}
+  pointA: {fileID: 6136820952138078737}
+  pointB: {fileID: 120343840611207537}
   floor: {fileID: 0}
+  portal: {fileID: 8387685329544722614, guid: 1b74d6f7f7d35d64cb39375e0f5b8394, type: 3}
+  enemies: []
+  clear: 0
+  boss: 0
+  bossOBJ: {fileID: 0}
 --- !u!1 &5016909667633190979
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,6 +659,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &6136820952138078737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2887686303452528321}
+  m_Layer: 0
+  m_Name: PointA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2887686303452528321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136820952138078737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.187, y: 0.185, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5016909667632657786}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &433209772081465007
 PrefabInstance:
   m_ObjectHideFlags: 0

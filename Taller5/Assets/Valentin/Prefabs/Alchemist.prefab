@@ -242,23 +242,23 @@ MonoBehaviour:
   - {fileID: 6327908042206186155}
   layerFloor:
     serializedVersion: 2
-    m_Bits: 2147487744
+    m_Bits: 2147483720
   horizontal: 0
-  impulse: 0
-  minSpeed: 0
-  speedMovement: 0
-  maxSpeed: 0
-  jumpForce: 0
-  coyoteTime: 0
+  impulse: 0.1
+  minSpeed: 10
+  speedMovement: 10
+  maxSpeed: 20
+  jumpForce: 20
+  coyoteTime: 0.5
   coyoteTimeCounter: 0
-  jumpBufferTime: 0
+  jumpBufferTime: 0.5
   jumpBufferCounter: 0
-  fallFaster: 0
-  health: 0
-  maxHealth: 0
-  stunnedTime: 0
+  fallFaster: 10
+  health: 10
+  maxHealth: 10
+  stunnedTime: 1
   stunnedCounter: 0
-  attackedTime: 0
+  attackedTime: 2.5
   attackedCounter: 0
   attacked: 0
   launchPosition: {fileID: 2333277870996609712}

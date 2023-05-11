@@ -12,7 +12,7 @@ namespace Code
         // Start is called before the first frame update
         void Start()
         {
-            DataBase.Instance.AddRegister(this,id);
+            //DataBase.Instance.AddRegister(this,id);
         }
 
         // Update is called once per frame

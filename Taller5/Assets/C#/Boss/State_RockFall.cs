@@ -21,8 +21,8 @@ namespace Code_Boses
         {
             _timer = timeBetweenRocks;
             _nRocks = 0;
-            _minX = boss.currentRoom.pointA.x;
-            _maxX = boss.currentRoom.pointB.x;
+            _minX = boss.currentRoom.pointA.transform.position.x;
+            _maxX = boss.currentRoom.pointB.transform.position.x;
         }
 
         public override void UpdateState(BossStateManager boss)

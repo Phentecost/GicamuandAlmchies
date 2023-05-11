@@ -14,25 +14,21 @@ namespace Code_Boses
         [SerializeField] BaseState _currentState;
         public BaseState idle;
         [SerializeField] List<BaseState> _states;
-        [SerializeField] Player _gicamu, _alchies;
+        [SerializeField] PlayerController _gicamu, _alchies;
         public Room currentRoom;
         public bool left = true;
-
-
-        void Start()
-        {
-            _currentState.EnterState(this);
-
-        }
+        private bool ready = false;
 
         void Update()
         {
-             _currentState.UpdateState(this);
+            if (ready)
+            {
+                _currentState.UpdateState(this);
+            }
         }
 
         public void SwichState() 
         {
-            //_currentState = _states.Find(x => x.GetType() == typeof(State_LaseATK));
             int i = UnityEngine.Random.Range(0, _states.Count);
             _currentState = _states[i];
             _currentState.EnterState(this);
@@ -44,7 +40,7 @@ namespace Code_Boses
             _currentState.EnterState(this);
         }
 
-        public Player GetClosestPlayer()
+        public PlayerController GetClosestPlayer()
         {
             {
                 float EtoGicamu = Vector2.Distance(transform.position, _gicamu.transform.position);
@@ -61,6 +57,15 @@ namespace Code_Boses
 
                 return null;
             }
+        }
+
+        public void SetUp(PlayerController _gicamu, PlayerController _alchies, Room currentRoom) 
+        {
+            this._gicamu= _gicamu;
+            this._alchies= _alchies;
+            this.currentRoom=currentRoom;
+            ready= true;
+            _currentState.EnterState(this);
         }
 
         #region Flip

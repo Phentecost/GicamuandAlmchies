@@ -23,28 +23,26 @@ namespace Code_EnemiesAndAI
         }
 
         [Header("CORE")]
-        [SerializeField] protected Player _gicamu, _alchies;
+        [SerializeField] protected PlayerController _gicamu, _alchies;
         [SerializeField] protected Room _currentRoom;
         protected State _currentState = State.Idle;
-        protected Player _target;
+        protected PlayerController _target;
         protected float distance;
         protected float _waitForTimer = 1.0f;
         
 
         private void Start()
         {
-            DataBase.Instance.AddRegister(_currentRoom.ID, this);
-            _currentLife = life;
+            _currentRoom.addRegister(this);
             gameObject.SetActive(false);
         }
 
         void Update()
         {
-            Life();
             Behaviour();
         }
 
-        public void SetUp(Player _gicamu, Player _alchies) 
+        public void SetUp(PlayerController _gicamu, PlayerController _alchies) 
         {
             this._gicamu= _gicamu;
             this._alchies= _alchies;
@@ -53,35 +51,16 @@ namespace Code_EnemiesAndAI
 
         #endregion
 
-        #region Life
-
-        [Header("LIFE")]
-        [SerializeField] protected int life;
-        protected int _currentLife;
-
-        protected void Life() 
+        public void dead() 
         {
-            if (_currentLife <= 0)
-            {
-                OnDying();
-            }
+            _currentRoom.removeRegister(this);
         }
-
-        protected void OnDying() 
-        {
-            DataBase.Instance.RemoveRegister(_currentRoom.ID, this);
-            Destroy(gameObject);
-        }
-
-        #endregion
 
         #region Behaviour
 
-        protected virtual void Behaviour()
-        {
-        }
+        protected virtual void Behaviour(){}
 
-        protected Player GetClosestPlayer()
+        protected PlayerController GetClosestPlayer()
         {
             {
                 float EtoGicamu = Vector2.Distance(transform.position, _gicamu.transform.position);
@@ -109,7 +88,7 @@ namespace Code_EnemiesAndAI
         [SerializeField] protected float _deAcceleration = 60f;
         protected float _currentHorizontalSpeed, _currentVerticalSpeed;
 
-        protected virtual void CalculateWalk(Player target)
+        protected virtual void CalculateWalk(PlayerController target)
         {
             Vector2 v = target.transform.position-transform.position;
 
@@ -222,7 +201,7 @@ namespace Code_EnemiesAndAI
         #region Jump
         [Header("JUMP")]
         [SerializeField] protected float _jumpHeight = 30;
-        protected virtual void CalculateJump(Player target)
+        protected virtual void CalculateJump(PlayerController target)
         {
             if (target.transform.position.y > transform.position.y +2 && _colDown)
             {

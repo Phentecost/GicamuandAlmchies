@@ -111,7 +111,7 @@ public class Wizard : PlayerController
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         if (amount != 0)
         {
-            Debug.Log("Wizard's health: " + health);
+            //Debug.Log("Wizard's health: " + health);
             attacked = true;
             if (attacked)
                 attackedCounter = attackedTime;
@@ -122,7 +122,7 @@ public class Wizard : PlayerController
         if (attackedCounter <= 0f)
         {
             attacked = false;
-            Debug.Log("No atacado");
+            //Debug.Log("No atacado");
         }
 
         if (stunned)
@@ -142,7 +142,7 @@ public class Wizard : PlayerController
         if (health <= 0)
         {
             //Reiniciar nivel
-            Debug.Log("Mago muerto");
+            //(Debug.Log("Mago muerto");
         }
     }
 
@@ -185,12 +185,12 @@ public class Wizard : PlayerController
                     if (stunCounter > 0f)
                     {
 
-                        Debug.Log("Enemigos stuneados");
+                        //Debug.Log("Enemigos stuneados");
                         //speedMovement = 0;
                     }
                     else
                     {
-                        Debug.Log("Enemigos velocidad restaurada");
+                        //Debug.Log("Enemigos velocidad restaurada");
                         //speedMovement = minSpeed;
                         inside = false;
                         
@@ -238,7 +238,7 @@ public class Wizard : PlayerController
             }
             else
             {
-                Debug.Log("Cooldown ball");
+                //Debug.Log("Cooldown ball");
                 //sfx comando invalido
             }
         }
@@ -246,7 +246,7 @@ public class Wizard : PlayerController
         if (ballAmmo <= 0)
         {
             ballCoolDown -= Time.deltaTime;
-            Debug.Log("Recargando elemental ball");
+            //Debug.Log("Recargando elemental ball");
             if (ballCoolDown <= 0f)
                 ballAmmo = 5;
         }
@@ -259,7 +259,7 @@ public class Wizard : PlayerController
         stunCounter -= Time.deltaTime;
         if (stunActivated)
         {
-            Debug.Log("Stuneando...");
+            //Debug.Log("Stuneando...");
             if (stunCounter <= 0f)
             {
                 if (inside)
@@ -312,12 +312,12 @@ public class Wizard : PlayerController
                                 break;
                             }
                         }
-                        Debug.Log("Foreach rompido/terminado");
+                        //Debug.Log("Foreach rompido/terminado");
                     }
                 }
                 else
                 {
-                    Debug.Log("Habilidad cancelada");
+                    //Debug.Log("Habilidad cancelada");
                     //sfx comando invalido
                 }
 
@@ -325,7 +325,7 @@ public class Wizard : PlayerController
             }
             else
             {
-                Debug.Log("coolddown hechizo curacion");
+                //Debug.Log("coolddown hechizo curacion");
                 //sfx comando invalido
             }
         }

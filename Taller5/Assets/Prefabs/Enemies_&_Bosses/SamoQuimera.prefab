@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2218541338793336188}
   - component: {fileID: 2218541338793336189}
   - component: {fileID: 2218541338793336186}
+  - component: {fileID: 29803772867943862}
+  - component: {fileID: 248004942694876267}
   m_Layer: 0
   m_Name: SamoQuimera
   m_TagString: Untagged
@@ -101,7 +103,6 @@ MonoBehaviour:
   _gicamu: {fileID: 0}
   _alchies: {fileID: 0}
   _currentRoom: {fileID: 0}
-  life: 0
   _acceleration: 90
   _moveClamp: 13
   _deAcceleration: 60
@@ -119,16 +120,58 @@ MonoBehaviour:
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
-  _jumpHeight: 30
-  _freeColliderIterations: 10
+  _jumpHeight: 20
+  _freeColliderIterations: 20
   damage: 0
   attackTheshold: 5
   tongue: {fileID: 2218541338935521161}
-  tongueTimer: 3
+  tongueTimer: 1
   waitForTimerATK: 1
   ATKspeed: 50
   ATKVelocity: 0
   ATKdistance: 10
+--- !u!114 &29803772867943862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218541338793336187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475e79e5ececfe14892bfe69a85ac39f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  maxHealth: 10
+  stunnedCounter: 0
+  stunnedTime: 1
+--- !u!61 &248004942694876267
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218541338793336187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
 --- !u!1 &2218541338935521174
 GameObject:
   m_ObjectHideFlags: 0

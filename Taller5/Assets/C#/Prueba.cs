@@ -13,7 +13,7 @@ namespace Code
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-                room.ActivateEnemies();
+                //room.ActivateEnemies();
             }
         }
     }

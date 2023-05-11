@@ -103,11 +103,11 @@ namespace Code_Boses
                         Vector3 pointPosition;
                         if (i == 0)
                         {
-                             pointPosition = boss.currentRoom.pointA;
+                             pointPosition = boss.currentRoom.pointA.transform.position;
                         }
                         else
                         {
-                             pointPosition = boss.currentRoom.pointB;
+                             pointPosition = boss.currentRoom.pointB.transform.position;
                         }
 
                         if (Vector3.Distance(pointPosition,currentPos) > 1)

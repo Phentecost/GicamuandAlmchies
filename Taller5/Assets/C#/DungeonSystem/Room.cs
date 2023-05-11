@@ -1,3 +1,4 @@
+using Code_Boses;
 using Code_Core;
 using Code_EnemiesAndAI;
 using System.Collections;
@@ -12,8 +13,13 @@ namespace Code_DungeonSystem
         public int ID;
         public GameObject wall;
         public bool secretRoom;
-        public Vector2 pointA,pointB;
+        public GameObject pointA,pointB;
         public GameObject floor;
+        public GameObject portal;
+        public List<Enemy> enemies= new List<Enemy>();
+        public bool clear = false;
+        public bool boss;
+        public BossStateManager bossOBJ;
 
         private void OnDrawGizmos()
         {
@@ -21,25 +27,55 @@ namespace Code_DungeonSystem
             Gizmos.DrawWireCube(transform.position + roomBounds.center, roomBounds.size);
         }
 
-        public void ActivateEnemies() 
+        public void addRegister(Enemy en) 
         {
-            foreach (Enemy enemy in DataBase.Instance.EnemyPerRoom[ID])
+            enemies.Add(en);
+        }
+
+        public void removeRegister(Enemy en) 
+        {
+            enemies.Remove(en);
+        }
+
+        public void ActivateEnemies(PlayerController Gicamu, PlayerController Alchies) 
+        {
+            if (boss)
             {
-                enemy.SetUp(DataBase.Instance.Gicamu,DataBase.Instance.Alchies);
+                bossOBJ.SetUp(Gicamu, Alchies, this);
+                return;
+            }
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.SetUp(Gicamu, Alchies);
             }
         }
 
         private void Update()
         {
-            /*if (DataBase.Instance.EnemyPerRoom[ID].Count == 0) 
+
+            if (!clear) 
             {
-                UnlockNextRoom();
-            }*/
+                if (enemies.Count == 0)
+                {
+                    SpawnPortals();
+                    clear = true;
+                }
+            }
         }
 
-        private void UnlockNextRoom() 
+        private void SpawnPortals() 
         {
-            Destroy(wall);
+            if (secretRoom)
+            {
+                Instantiate(portal,pointA.transform.position,Quaternion.identity).GetComponent<Portals>().SetUp(ID);
+                Instantiate(portal, pointB.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID+1);
+
+            }
+            else
+            {
+                Instantiate(portal, pointB.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID);
+            }
+
         }
     }
 }
