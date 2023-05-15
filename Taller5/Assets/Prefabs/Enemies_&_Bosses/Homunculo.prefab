@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 630955306564380855}
   - component: {fileID: 630955306564380854}
   - component: {fileID: 630955306564380849}
-  - component: {fileID: 7983801719271793536}
   - component: {fileID: 1439013894792351212}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Homunculo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,38 +111,24 @@ MonoBehaviour:
     m_Extent: {x: 0.5, y: 0.5, z: 0}
   _blockLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 776
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 840
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
+  fallDownTreshold: 0
   _jumpHeight: 28
   _freeColliderIterations: 10
   damage: 0
   attackTheshold: 2.5
+  StartHealth: 3
   jumpThreshold: 5
   bulletPrefab: {fileID: 4950402766463259929, guid: 6f51f30cfe26ff843aa45feef1df725a, type: 3}
   waitForTimerATK: 3
   waitForTimerJMP: 0
   ATKspeed: 10
---- !u!114 &7983801719271793536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630955306564380848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475e79e5ececfe14892bfe69a85ac39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  maxHealth: 10
-  stunnedCounter: 0
-  stunnedTime: 1
 --- !u!61 &1439013894792351212
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +139,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TarodevController;
 using UnityEngine;
 
 public class Alchemist : PlayerController
 {
-    #region Alchemist components configuration
-
     [SerializeField] private BoxBarrier abilityQ;
     [SerializeField] private MagicPellets abilityE;
+    [SerializeField] private Transform launchPosition;
 
     [Header("Alchemist's Abilities")]
     [Header("Barrier")]
@@ -33,15 +33,11 @@ public class Alchemist : PlayerController
 
     private Wizard wizard;
 
-    #endregion
 
     protected override void Update()
     {
-        wizard = GameObject.FindObjectOfType<Wizard>();
-        inside = Physics2D.OverlapCircle(healRadius.position, 50f, layerOtherPlayer);
-
-        MovementSystem();
-        HealthSystem(0, false);
+        GatherInput();
+        base.Update();
         AbilitiesSystem();
 
         Barrier();
@@ -49,129 +45,29 @@ public class Alchemist : PlayerController
         HealPower();
     }
 
-    private void MovementSystem()
+    protected override void GatherInput()
     {
-        horizontal = Input.GetAxisRaw("P1_Horizontal");
-
-        if (IsGrounded())
-            coyoteTimeCounter = coyoteTime;
-        else
-            coyoteTimeCounter -= Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.W))
-            jumpBufferCounter = jumpBufferTime; //Guarda que se preciono la tecla antes de que toque el suelo
-        else
-            jumpBufferCounter -= Time.deltaTime;
-
-        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+        Input = new FrameInput
         {
-            rb.velocity = new Vector2(0, jumpForce);
-            jumpBufferCounter = 0f;
-        }
-
-        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0) //Salta x altura de acuerdo al tiempo que se presiono la tecla
+            JumpDown = UnityEngine.Input.GetKeyDown(KeyCode.W),
+            JumpUp = UnityEngine.Input.GetKeyUp(KeyCode.W),
+            FallDown = UnityEngine.Input.GetKey(KeyCode.S),
+            X = UnityEngine.Input.GetAxisRaw("P1_Horizontal"),
+            A1 = UnityEngine.Input.GetKey(KeyCode.Q),
+            A2 = UnityEngine.Input.GetKey(KeyCode.E),
+            A3 = UnityEngine.Input.GetKey(KeyCode.F)
+        };
+        if (Input.JumpDown)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.65f);
-            coyoteTimeCounter = 0f;
+            _lastJumpPressed = Time.time;
         }
-
-        //Flip
-        if (horizontal == 1) //mira a la derecha
-            transform.eulerAngles = new Vector2(0, 0);
-        if (horizontal == -1)//mira a la izquierdad
-            transform.eulerAngles = new Vector2(0, 180);
-
-        if (rb.velocity.y < 25)  //Caida automatica mas rapida
-            rb.velocity -= gravity * fallFaster * Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.S)) //Caida mas rapida
-            rb.velocity = new Vector2(rb.velocity.x, -jumpForce * 0.5f);
     }
 
-    public void HealthSystem(int amount, bool stunned)
-    {
-        health = Mathf.Clamp(health + amount, 0, maxHealth);
-        if (amount != 0)
-        {
-            //Debug.Log("Alquimist's health: " + health);
-            attacked = true;
-            //Debug.Log("atacado");
-            if (attacked)
-                attackedCounter = attackedTime;
-        }
-
-        attackedCounter -= Time.deltaTime;
-
-        if (attackedCounter <= 0f)
-        {
-            attacked = false;
-            //Debug.Log("No atacado");
-        }
-        /*
-        if (stunned)
-            stunnedCounter = stunnedTime;
-
-        if (stunnedCounter > 0f)
-        {
-            stunnedCounter -= Time.deltaTime;
-            speedMovement = 0;
-        }
-        else
-        {
-            speedMovement = minSpeed;
-            stunned = false;
-        }
-         */
-
-        if (stunned)
-            stunnedCounter = stunnedTime;
-
-        if (stunnedCounter > 0f)
-        {
-            stunnedCounter -= Time.deltaTime;
-            speedMovement = 0;
-        }
-        else
-        {
-            speedMovement = minSpeed;
-            stunned = false;
-        }
-
-        /*
-        stunnedCounter -= Time.deltaTime;
-
-        if (stunned)
-        {
-            stunnedCounter = stunnedTime;
-            stunned = false;
-        }
-            
-
-        if (stunnedCounter <= 0f)
-        {
-            stunned = false;
-            speedMovement = 0;
-        }
-        else
-        {
-            speedMovement = minSpeed;
-            stunned = false;
-        }
-         */
-
-
-
-        if (health <= 0)
-        {
-            //Reiniciar nivel
-            Debug.Log("Alquimista muerto");
-        }
-    }
 
     protected void AbilitiesSystem()
     {
         //Barrera
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.A1)
         {
             if (!barrierActivated)
             {
@@ -184,7 +80,7 @@ public class Alchemist : PlayerController
         }
 
         //Perdigones magicos horizontales
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.A2)
         {
             if (pelletsAmmo > 0f)
             {
@@ -206,7 +102,7 @@ public class Alchemist : PlayerController
         }
 
         //Heal cercano
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.A3)
         {
             if (healAmmo > 0)
             {
@@ -282,7 +178,7 @@ public class Alchemist : PlayerController
             //Debug.Log("Curando...");
             if (healCounter <= 0)
             {
-                if (!attacked)
+                /*if (!attacked)
                 {
                     if (inside)
                     {
@@ -299,7 +195,7 @@ public class Alchemist : PlayerController
                 {
                     //Debug.Log("Habilidad cancelada");
                     //sfx comando invalido
-                }
+                }*/
 
                 healActivated = false;
             }

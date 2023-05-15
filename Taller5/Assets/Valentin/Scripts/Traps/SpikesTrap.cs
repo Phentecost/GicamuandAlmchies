@@ -65,9 +65,9 @@ public class SpikesTrap : MonoBehaviour
         PlayerController controller = collision.GetComponent<PlayerController>();
 
         if (collision.gameObject.tag == "Alchemist")
-            alchemist.HealthSystem(-1, false);
+            alchemist.TakeDamage(-1);
 
-        if (collision.gameObject.tag == "Wizard")
-            wizard.HealthSystem(-1, false);
+            if (collision.gameObject.tag == "Wizard") ;
+            wizard.TakeDamage(-1);
     }
 }

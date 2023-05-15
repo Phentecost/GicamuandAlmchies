@@ -1,3 +1,4 @@
+using Code;
 using Code_Boses;
 using Code_Core;
 using Code_EnemiesAndAI;
@@ -20,6 +21,7 @@ namespace Code_DungeonSystem
         public bool clear = false;
         public bool boss;
         public BossStateManager bossOBJ;
+        public GameObject relic; 
 
         private void OnDrawGizmos()
         {
@@ -52,7 +54,6 @@ namespace Code_DungeonSystem
 
         private void Update()
         {
-
             if (!clear) 
             {
                 if (enemies.Count == 0)
@@ -74,6 +75,11 @@ namespace Code_DungeonSystem
             else
             {
                 Instantiate(portal, pointB.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID);
+            }
+
+            if (relic != null)
+            {
+                Instantiate(relic, roomBounds.center + transform.position, Quaternion.identity);
             }
 
         }

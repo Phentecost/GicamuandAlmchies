@@ -40,6 +40,8 @@ namespace Code_DungeonSystem
         [Header("Bosses")]
         [SerializeField] GameObject Boss01Prefab;
         [SerializeField] GameObject Boss02Prefab;
+        [Header("Reliquias")]
+        [SerializeField] List<GameObject> Relics;
 
         private void Awake()
         {
@@ -84,13 +86,16 @@ namespace Code_DungeonSystem
             yield return new WaitForSeconds(secondOfTransition);
         }
 
-        private void SpawnPlayers(Room initRoom) 
+        IEnumerator SpawnPlayers(Room initRoom) 
         {
             Vector3 center = initRoom.roomBounds.center;
             _gicamu = Instantiate(gicamuPrefab, center + spawnOffset, Quaternion.identity);
             _gicamu.transform.parent = null;
             _alchies = Instantiate(alchiesPrefab, center - spawnOffset, Quaternion.identity);
             _alchies.transform.parent = null;
+            yield return new WaitForSeconds(2);
+            _gicamu.GetComponent<Wizard>().pauseControllers = false;
+            _alchies.GetComponent<Alchemist>().pauseControllers = false;
         }
 
         private void GenerateDungeon() 
@@ -103,7 +108,7 @@ namespace Code_DungeonSystem
             r.transform.parent = null;
             Room room = r.GetComponent<Room>();
             dungeonRooms.Add(room);
-            SpawnPlayers(room);
+            StartCoroutine(SpawnPlayers(room));
             room.ID = count;
             DataBase.Instance.ChangeID(count);
             spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 15, spawnRoomPosition.y);
@@ -129,6 +134,8 @@ namespace Code_DungeonSystem
                     r.transform.parent = null;
                     room = r.GetComponent<Room>();
                     room.ID = count;
+                    int ran = Random.Range(0,Relics.Count);
+                    room.relic = Relics[ran];
                     dungeonRooms.Add(room);
                     dungeonRooms[count - 1].secretRoom = true;
                     currentProbability = initialSecretRoomProbability;

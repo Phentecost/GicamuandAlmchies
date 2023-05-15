@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8972698391769778673}
   - component: {fileID: 5580194636306756796}
   - component: {fileID: 3865501420025079243}
-  - component: {fileID: 6975053972092758352}
   - component: {fileID: 8038840281743550472}
   m_Layer: 0
   m_Name: Magic Pellets
@@ -108,22 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!58 &6975053972092758352
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8948068397534111195}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &8038840281743550472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,3 +121,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 100
   lifeTime: 0
+  _characterBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.15, y: 0.15, z: 0}
+  _blockLayer:
+    serializedVersion: 2
+    m_Bits: 1096
+  _detectorCount: 3
+  _detectionRayLength: 0.05
+  _rayBuffer: 0.1

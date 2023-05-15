@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using TarodevController;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Wizard : PlayerController
     #region Wizard components configuration
 
     [SerializeField] private ElementalBall abilityB;
+    [SerializeField] private Transform launchPosition;
 
     [Header("Wizard's Abilities")]
     [Header("Elemental ball")] //velocidad media
@@ -44,15 +46,8 @@ public class Wizard : PlayerController
 
     protected override void Update()
     {
-        enemiesInside = GameObject.FindGameObjectsWithTag("EnemyInside");
-        enemies = GameObject.FindObjectsOfType<EnemyPlaceHolder>();
-        
-        alchemist = GameObject.FindObjectOfType<Alchemist>();
-
-        inside = Physics2D.OverlapCircle(stunRadius.position, 150f, layerEnemies);
-
-        MovementSystem();
-        HealthSystem(0, false);
+        GatherInput();
+        base.Update();
         AbilitiesSystem();
 
         ElementalBall();
@@ -60,96 +55,30 @@ public class Wizard : PlayerController
         HealthStealSpeel();
     }
 
-    private void MovementSystem()
+    protected override void GatherInput()
     {
-        horizontal = Input.GetAxisRaw("P2_Horizontal");
-
-        if (IsGrounded())
-            coyoteTimeCounter = coyoteTime;
-        else
-            coyoteTimeCounter -= Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-            jumpBufferCounter = jumpBufferTime; //Guarda que se preciono la tecla antes de que toque el suelo
-        else
-            jumpBufferCounter -= Time.deltaTime;
-
-        if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f)
+        Input = new FrameInput
         {
-            rb.velocity = new Vector2(0, jumpForce);
-            jumpBufferCounter = 0f;
+            JumpDown = UnityEngine.Input.GetKeyDown(KeyCode.UpArrow),
+            JumpUp = UnityEngine.Input.GetKeyUp(KeyCode.UpArrow),
+            FallDown = UnityEngine.Input.GetKey(KeyCode.DownArrow),
+            X = UnityEngine.Input.GetAxisRaw("P2_Horizontal"),
+            A1 = UnityEngine.Input.GetKey(KeyCode.B),
+            A2 = UnityEngine.Input.GetKey(KeyCode.N),
+            A3 = UnityEngine.Input.GetKey(KeyCode.M)
+        };
+        if (Input.JumpDown)
+        {
+            _lastJumpPressed = Time.time;
         }
-
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0f) //Salta x altura de acuerdo al tiempo que se presiono la tecla
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.65f);
-            coyoteTimeCounter = 0f;
-        }
-
-        //Flip
-        if (horizontal == 1) //mira a la derecha
-        {
-            transform.eulerAngles = new Vector2(0, 0);
-            launchPosition.transform.rotation = Quaternion.Euler(0, 0, 75f);
-        } 
-           
-        if (horizontal == -1) //mira a la izquierda
-        {
-            transform.eulerAngles = new Vector2(0, 180);
-            launchPosition.transform.rotation = Quaternion.Euler(0, 0, 75f);
-        } 
-            
-        if (rb.velocity.y < 25)  //Caida automatica mas rapida
-            rb.velocity -= gravity * fallFaster * Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.DownArrow)) //Caida mas rapida
-            rb.velocity = new Vector2(rb.velocity.x, -jumpForce * 0.5f);
     }
 
-    public void HealthSystem(int amount, bool stunned)
-    {
-        health = Mathf.Clamp(health + amount, 0, maxHealth);
-        if (amount != 0)
-        {
-            //Debug.Log("Wizard's health: " + health);
-            attacked = true;
-            if (attacked)
-                attackedCounter = attackedTime;
-        }
-
-        attackedCounter -= Time.deltaTime;
-
-        if (attackedCounter <= 0f)
-        {
-            attacked = false;
-            //Debug.Log("No atacado");
-        }
-
-        if (stunned)
-            stunnedCounter = stunnedTime;
-
-        if (stunnedCounter > 0f)
-        {
-            stunnedCounter -= Time.deltaTime;
-            speedMovement = 0;
-        }
-        else
-        {
-            speedMovement = minSpeed;
-            stunned = false;
-        }
-
-        if (health <= 0)
-        {
-            //Reiniciar nivel
-            //(Debug.Log("Mago muerto");
-        }
-    }
+   
 
     private void AbilitiesSystem()
     {
         //Bola elemental diagonal
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.A1)
         {
             if (ballAmmo > 0f)
             {
@@ -167,7 +96,7 @@ public class Wizard : PlayerController
         }
 
         //Conjuro stunea enemigos
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.A2)
         {
             if (!stunActivated)
             {
@@ -202,7 +131,7 @@ public class Wizard : PlayerController
         }
 
         //Hechizo roba vida
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.A3)
         {
             if (healthSpellAmmo > 0)
             {
@@ -215,7 +144,7 @@ public class Wizard : PlayerController
                     if (enemies[random] != null)
                     {
                         enemies[random].HealthSystem(-healthStole, false);
-                        alchemist.HealthSystem(healthSpellRestored, false);
+                        alchemist.TakeDamage(healthSpellRestored);
                     }
                     
                     //else
@@ -292,7 +221,7 @@ public class Wizard : PlayerController
         {
             if (stealCounter <= 0)
             {
-                if (!attacked)
+                if (_attacked)
                 {
                     if(enemies.Length > 0)
                         healthSpellAmmo--;
@@ -307,7 +236,7 @@ public class Wizard : PlayerController
                             else
                             {
                                 enemies[i].HealthSystem(-healthStole, false);
-                                alchemist.HealthSystem(healthSpellRestored, false);
+                                alchemist.TakeDamage(healthSpellRestored);
                                 Debug.Log("Encontro enemigo");
                                 break;
                             }

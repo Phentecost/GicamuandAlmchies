@@ -40,12 +40,14 @@ namespace Code_EnemiesAndAI
         void Update()
         {
             Behaviour();
+            HealthSystem();
         }
 
         public void SetUp(PlayerController _gicamu, PlayerController _alchies) 
         {
             this._gicamu= _gicamu;
             this._alchies= _alchies;
+            _currentHealth = StartHealth;
             gameObject.SetActive(true);
         }
 
@@ -54,6 +56,7 @@ namespace Code_EnemiesAndAI
         public void dead() 
         {
             _currentRoom.removeRegister(this);
+            Destroy(this.gameObject);
         }
 
         #region Behaviour
@@ -138,24 +141,61 @@ namespace Code_EnemiesAndAI
         [SerializeField] protected int _detectorCount = 3;
         [SerializeField] protected float _detectionRayLength = 0.1f;
         [SerializeField][Range(0.1f, 0.3f)] protected float _rayBuffer = 0.1f;
+        [SerializeField] protected float fallDownTreshold;
 
         protected RayRange _raysUp, _raysRight, _raysDown, _raysLeft;
         protected bool _colUp, _colRight, _colDown, _colLeft;
+        protected RaycastHit2D _hitUp, _hitDown, _hitRight, _hitLeft;
 
         protected void CalculateCollisions() 
         {
             CalculateRaysRanges();
 
-            _colDown = Detection(_raysDown, _groundLayer);
-            _colUp = Detection(_raysUp, _blockLayer);
-            _colLeft = Detection(_raysLeft, _blockLayer);
-            _colRight = Detection(_raysRight, _blockLayer);
+            (_colDown, _hitDown) = GetClosestPlayer().transform.position.y > transform.position.y && Vector2.Distance(GetClosestPlayer().transform.position, transform.position)<fallDownTreshold ?  Detection(_raysDown, _groundLayer) : Detection(_raysDown, _blockLayer);
+            (_colUp, _hitUp) = Detection(_raysUp, _blockLayer);
+            (_colLeft, _hitLeft) = Detection(_raysLeft, _blockLayer);
+            (_colRight, _hitRight) = Detection(_raysRight, _blockLayer);
 
-            bool Detection(RayRange range, LayerMask layer)
+            (bool, RaycastHit2D) Detection(RayRange range, LayerMask layer)
             {
-                return CalculatePointsPositions(range).Any(point => Physics2D.Raycast(point, range.Dir, _detectionRayLength, layer));
+                bool Collition = false;
+                RaycastHit2D ray = new RaycastHit2D();
+
+                foreach (Vector2 point in CalculatePointsPositions(range))
+                {
+                    ray = Physics2D.Raycast(point, range.Dir, _detectionRayLength, layer);
+
+                    if (ray.collider != null)
+                    {
+                        Collition = true;
+                    }
+
+                }
+                return (Collition, ray);
+                //return CalculatePointsPositions(range).Any((point) => Physics2D.Raycast(point, range.Dir,out hit,_detectionRayLength, layer));
             }
 
+        }
+
+        protected void CalculateCollitionBehaviour()
+        {
+            RaycastHit2D hit = ReturnHit();
+            if (hit)
+            {
+                PlayerController pj = hit.collider.GetComponent<PlayerController>();
+                if (pj != null)
+                {
+                    pj.TakeDamage(-1);
+                }
+            }
+        }
+
+        protected RaycastHit2D ReturnHit()
+        {
+            if (_hitRight) return _hitRight;
+            if (_hitUp) return _hitUp;
+            if (_hitDown) return _hitDown;
+            return _hitLeft;
         }
 
         protected void CalculateRaysRanges() 
@@ -286,6 +326,28 @@ namespace Code_EnemiesAndAI
                 Vector3 localScale = transform.localScale;
                 localScale.x *= -1f;
                 transform.localScale = localScale;
+            }
+        }
+
+        #endregion
+
+        #region HealthSystem
+
+        [Header("HealthSystem")]
+        [SerializeField] protected int StartHealth;
+        protected int _currentHealth;
+
+        public void TakeDamage(int damage)
+        {
+            _currentHealth += damage;
+            Debug.Log(_currentHealth);
+        }
+
+        public void HealthSystem() 
+        {
+            if (_currentHealth <= 0)
+            {
+                dead();
             }
         }
 

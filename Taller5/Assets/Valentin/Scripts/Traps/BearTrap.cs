@@ -17,10 +17,18 @@ public class BearTrap : MonoBehaviour
     {
         PlayerController controller = collision.GetComponent<PlayerController>();
 
-        if (collision.gameObject.tag == "Alchemist")
-            alchemist.HealthSystem(-1, true);
+        if (collision.gameObject.tag == "Alchemist") 
+        {
+            alchemist.TakeDamage(-1);
+            alchemist.Stun();
+        }
+            
 
-        if (collision.gameObject.tag == "Wizard")
-            wizard.HealthSystem(-1, true);
+        if (collision.gameObject.tag == "Wizard") 
+        {
+            wizard.TakeDamage(-1);
+            wizard.Stun();
+        }
+            
     }
 }

@@ -8,6 +8,10 @@ namespace TarodevController {
         public float X,Y;
         public bool JumpDown;
         public bool JumpUp;
+        public bool FallDown;
+        public bool A1;
+        public bool A2;
+        public bool A3;
     }
 
     public interface IPlayerController {

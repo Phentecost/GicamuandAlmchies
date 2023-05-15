@@ -124,3 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd952fab4f21775488e9d1f0e4389525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0}
+  _blockLayer:
+    serializedVersion: 2
+    m_Bits: 768
+  _detectorCount: 3
+  _detectionRayLength: 0.1
+  _rayBuffer: 0.1

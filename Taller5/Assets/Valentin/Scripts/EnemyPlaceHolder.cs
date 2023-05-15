@@ -26,12 +26,12 @@ public class EnemyPlaceHolder : MonoBehaviour
     {
         HealthSystem(0, false);
 
-        if (wizard.inside)
+        /*if (wizard.inside)
         {
             this.gameObject.tag = "EnemyInside";
         }
         else
-            this.gameObject.tag = "Enemy";
+            this.gameObject.tag = "Enemy";*/
     }
 
     public void HealthSystem(int amount, bool stunned)

@@ -94,9 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6327908040499586706}
   - component: {fileID: 6327908040499586711}
-  - component: {fileID: 6327908040499586708}
-  - component: {fileID: 6327908040499586709}
   - component: {fileID: 7192141752475873481}
+  - component: {fileID: -402421700406270184}
   m_Layer: 8
   m_Name: Alchemist
   m_TagString: Alchemist
@@ -176,53 +175,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6327908040499586708
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6327908040499586707}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 4
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!61 &6327908040499586709
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6327908040499586707}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: aad9b917712d22945a4991ea0b3e927d, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 64, y: 64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 35, y: 55}
-  m_EdgeRadius: 0
 --- !u!114 &7192141752475873481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,35 +187,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400ea7281114d724c9f554b547e4c579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 6327908040499586708}
-  isGrounded:
-  - {fileID: 6327908041060161374}
-  - {fileID: 6327908040907688207}
-  - {fileID: 6327908042206186155}
-  layerFloor:
+  pauseControllers: 0
+  _characterBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0}
+  _groundLayer:
     serializedVersion: 2
-    m_Bits: 2147483720
-  horizontal: 0
-  impulse: 0.1
-  minSpeed: 10
-  speedMovement: 10
-  maxSpeed: 20
-  jumpForce: 20
-  coyoteTime: 0.5
-  coyoteTimeCounter: 0
-  jumpBufferTime: 0.5
-  jumpBufferCounter: 0
-  fallFaster: 10
-  health: 10
-  maxHealth: 10
-  stunnedTime: 1
-  stunnedCounter: 0
-  attackedTime: 2.5
-  attackedCounter: 0
-  attacked: 0
-  launchPosition: {fileID: 2333277870996609712}
+    m_Bits: 8
+  _roofLayer:
+    serializedVersion: 2
+    m_Bits: 72
+  _detectorCount: 3
+  _detectionRayLength: 0.1
+  _rayBuffer: 0.1
+  _acceleration: 90
+  _moveClamp: 13
+  _deAcceleration: 60
+  _apexBonus: 2
+  _fallClamp: -20
+  _minFallSpeed: 80
+  _maxFallSpeed: 120
+  _jumpHeight: 30
+  _jumpApexThreshold: 10
+  _coyoteTimeThreshold: 0.1
+  _jumpBuffer: 0.1
+  _jumpEndEarlyGravityModifier: 3
+  _freeColliderIterations: 10
+  StartHealth: 10
+  MaxHealth: 10
+  InvensivilityTime: 2
+  StunTimer: 2
   abilityQ: {fileID: 9162102179728132213, guid: 0f17e58cbb57e99418586fd9bd65f9fd, type: 3}
   abilityE: {fileID: 8038840281743550472, guid: a32f9c1108e274c408cf12c0d927cc1c, type: 3}
+  launchPosition: {fileID: 2333277870996609712}
   barrierCoolDown: 12
   barrierActivated: 0
   pelletsAmmo: 3
@@ -279,6 +235,32 @@ MonoBehaviour:
   healCounter: 0
   healAmmo: 3
   healActivated: 0
+--- !u!61 &-402421700406270184
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327908040499586707}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 64, y: 64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 64, y: 64}
+  m_EdgeRadius: 0
 --- !u!1 &6327908040907688204
 GameObject:
   m_ObjectHideFlags: 0

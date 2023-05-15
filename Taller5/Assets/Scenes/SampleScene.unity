@@ -578,6 +578,10 @@ MonoBehaviour:
   secondOfTransition: 1
   Boss01Prefab: {fileID: 2716681079090689393, guid: 53c0899cfc7824f44a9f6b49bcf90afa, type: 3}
   Boss02Prefab: {fileID: 2244855303436442210, guid: f0643c416410de5479dcfcbd60a0b834, type: 3}
+  Relics:
+  - {fileID: 6832245824289524268, guid: 671bc7bff4e7fe941a5c3746637fdb56, type: 3}
+  - {fileID: 6321716973882256995, guid: 55378d34ff6fe6e44874187a904978ee, type: 3}
+  - {fileID: 5230414434262312720, guid: 3a9238b848aca6f40a5dcaf1172f019e, type: 3}
 --- !u!4 &1582793484
 Transform:
   m_ObjectHideFlags: 0

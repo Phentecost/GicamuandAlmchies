@@ -18,6 +18,7 @@ namespace Code_EnemiesAndAI
             _target = GetClosestPlayer();
             distance = Vector2.Distance(_target.transform.position, transform.position);
             CalculateCollisions();
+            CalculateCollitionBehaviour();
             CalculateGravity();
 
             switch (base._currentState) 

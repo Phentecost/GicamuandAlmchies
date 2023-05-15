@@ -17,6 +17,7 @@ namespace Code_EnemiesAndAI
             _target = GetClosestPlayer();
             distance = Vector2.Distance(_target.transform.position, transform.position);
             CalculateCollisions();
+            CalculateCollitionBehaviour();
             CalculateGravity();
 
             switch (base._currentState)
@@ -60,7 +61,7 @@ namespace Code_EnemiesAndAI
                             if (tongueTimer <= 0)
                             {
                                 returning = true;
-                                tongueTimer = 2;
+                                tongueTimer = 1;
 
                             }
 
@@ -73,7 +74,7 @@ namespace Code_EnemiesAndAI
                             if (tongueTimer <= 0)
                             {
                                 returning = false;
-                                tongueTimer = 3;
+                                tongueTimer = 1;
                                 _currentState = State.Walking;
                                 waitForTimerATK = 3;
                             }

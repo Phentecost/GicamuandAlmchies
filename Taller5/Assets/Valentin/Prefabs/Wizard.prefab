@@ -125,8 +125,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6745050969916821380}
   - component: {fileID: 6745050969916821401}
-  - component: {fileID: 6745050969916821402}
-  - component: {fileID: 6745050969916821403}
   - component: {fileID: 6845783457370435093}
   m_Layer: 9
   m_Name: Wizard
@@ -207,53 +205,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6745050969916821402
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6745050969916821381}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 4
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 0
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!61 &6745050969916821403
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6745050969916821381}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: aad9b917712d22945a4991ea0b3e927d, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -4, y: -2}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 64, y: 64}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 35, y: 55}
-  m_EdgeRadius: 0
 --- !u!114 &6845783457370435093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,34 +217,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc61f89cc5f949ab62000e6d11179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 6745050969916821402}
-  isGrounded:
-  - {fileID: 6745050970032828852}
-  - {fileID: 6745050969891790947}
-  - {fileID: 6745050970095556964}
-  layerFloor:
+  _characterBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0}
+  _groundLayer:
     serializedVersion: 2
-    m_Bits: 2147487744
-  horizontal: 0
-  impulse: 0.1
-  minSpeed: 10
-  speedMovement: 10
-  maxSpeed: 20
-  jumpForce: 20
-  coyoteTime: 0.5
-  coyoteTimeCounter: 0
-  jumpBufferTime: 0.5
-  jumpBufferCounter: 0
-  fallFaster: 10
-  health: 10
-  maxHealth: 10
-  stunnedTime: 1
-  stunnedCounter: 0
-  attackedTime: 2.5
-  attackedCounter: 0
-  attacked: 0
-  launchPosition: {fileID: 810969649602861254}
+    m_Bits: 8
+  _roofLayer:
+    serializedVersion: 2
+    m_Bits: 72
+  _detectorCount: 3
+  _detectionRayLength: 0.1
+  _rayBuffer: 0.1
+  _acceleration: 90
+  _moveClamp: 13
+  _deAcceleration: 60
+  _apexBonus: 2
+  _fallClamp: -20
+  _minFallSpeed: 80
+  _maxFallSpeed: 120
+  _jumpHeight: 30
+  _jumpApexThreshold: 10
+  _coyoteTimeThreshold: 0.1
+  _jumpBuffer: 0.1
+  _jumpEndEarlyGravityModifier: 3
+  _freeColliderIterations: 10
+  StartHealth: 10
+  MaxHealth: 10
+  InvensivilityTime: 2
+  StunTimer: 2
   abilityB: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
+  launchPosition: {fileID: 810969649602861254}
   ballTime: 1.5
   ballCounter: 0
   ballAmmo: 5
