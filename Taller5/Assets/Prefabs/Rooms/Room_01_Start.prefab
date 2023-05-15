@@ -511,3 +511,5 @@ MonoBehaviour:
   clear: 0
   boss: 0
   bossOBJ: {fileID: 0}
+  relic: {fileID: 0}
+  CameraScale: 5

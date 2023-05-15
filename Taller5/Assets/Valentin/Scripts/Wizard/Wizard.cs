@@ -10,7 +10,6 @@ public class Wizard : PlayerController
     #region Wizard components configuration
 
     [SerializeField] private ElementalBall abilityB;
-    [SerializeField] private Transform launchPosition;
 
     [Header("Wizard's Abilities")]
     [Header("Elemental ball")] //velocidad media

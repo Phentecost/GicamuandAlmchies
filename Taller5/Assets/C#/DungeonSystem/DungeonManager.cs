@@ -71,14 +71,17 @@ namespace Code_DungeonSystem
         {
             TransitionManager.instance.FadeIn();
             yield return new WaitForSeconds(secondOfTransition);
-            cam.position = dungeonRooms[i].secretRoom? new Vector3(cam.position.x, cam.position.y -10, -10) : new Vector3(cam.position.x + 20, cam.position.y,-10);
+            /*cam.position = dungeonRooms[i].secretRoom? new Vector3(cam.position.x, cam.position.y -10, -10) : new Vector3(cam.position.x + 20, cam.position.y,-10);
             if (cam.position.y < 0)
             {
                 cam.position = new Vector3(cam.position.x, cam.position.y + 10, -10);
-            }
+            }*/
+
             Vector3 center = dungeonRooms[i+1].roomBounds.center;
             _gicamu.transform.position = center + spawnOffset + dungeonRooms[i + 1].transform.position;
             _alchies.transform.position = center - spawnOffset + dungeonRooms[i + 1].transform.position;
+            cam.gameObject.GetComponent<Camera>().orthographicSize = dungeonRooms[i + 1].CameraScale;
+            cam.position = new Vector3(center.x + dungeonRooms[i + 1].transform.position.x, center.y + dungeonRooms[i + 1].transform.position.y, -10);
             PlayerController _gicamuPlayerController = _gicamu.GetComponent<PlayerController>();
             PlayerController _alchiesPlayerController = _alchies.GetComponent<PlayerController>();
             dungeonRooms[i+1].ActivateEnemies(_gicamuPlayerController, _alchiesPlayerController);
@@ -111,7 +114,7 @@ namespace Code_DungeonSystem
             StartCoroutine(SpawnPlayers(room));
             room.ID = count;
             DataBase.Instance.ChangeID(count);
-            spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 15, spawnRoomPosition.y);
+            spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 25, spawnRoomPosition.y);
             Shuffle(enemyRooms);
 
             count++;
@@ -124,7 +127,7 @@ namespace Code_DungeonSystem
                 room = r.GetComponent<Room>();
                 room.ID = count;
                 dungeonRooms.Add(room);
-                spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 15, spawnRoomPosition.y);
+                spawnRoomPosition = new Vector3(spawnRoomPosition.x + r.transform.localScale.x + 25, spawnRoomPosition.y);
                 int x = Random.Range(0, 101);
                 if (x<= currentProbability)
                 {

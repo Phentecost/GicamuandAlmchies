@@ -7,7 +7,7 @@ public class Alchemist : PlayerController
 {
     [SerializeField] private BoxBarrier abilityQ;
     [SerializeField] private MagicPellets abilityE;
-    [SerializeField] private Transform launchPosition;
+    
 
     [Header("Alchemist's Abilities")]
     [Header("Barrier")]
@@ -178,11 +178,11 @@ public class Alchemist : PlayerController
             //Debug.Log("Curando...");
             if (healCounter <= 0)
             {
-                /*if (!attacked)
+                if (_attacked)
                 {
                     if (inside)
                     {
-                        wizard.HealthSystem(healthPowerRestored, false);
+                        wizard.TakeDamage(healthPowerRestored);
                         healAmmo--;
                     }
                     else
@@ -195,7 +195,7 @@ public class Alchemist : PlayerController
                 {
                     //Debug.Log("Habilidad cancelada");
                     //sfx comando invalido
-                }*/
+                }
 
                 healActivated = false;
             }

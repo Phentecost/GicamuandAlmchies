@@ -21,7 +21,8 @@ namespace Code_DungeonSystem
         public bool clear = false;
         public bool boss;
         public BossStateManager bossOBJ;
-        public GameObject relic; 
+        public GameObject relic;
+        public float CameraScale;
 
         private void OnDrawGizmos()
         {

@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 _lastPosition;
     private float _currentHorizontalSpeed, _currentVerticalSpeed;
-
+    [SerializeField] protected Transform launchPosition;
     private void Start()
     {
         SetUp();
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetUp() 
     {
-        _health = StartHealth;
+        _health = 100;
         pauseControllers = true;
     }
 
@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
             // Set horizontal move speed
             _currentHorizontalSpeed += Input.X * _acceleration * Time.deltaTime;
 
+
             // clamped by max frame movement
             _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -_moveClamp, _moveClamp);
 
@@ -295,6 +296,7 @@ public class PlayerController : MonoBehaviour
     // We cast our bounds before moving to avoid future collisions
     private void MoveCharacter()
     {
+        Flip();
         var pos = transform.position;
         RawMovement = new Vector3(_currentHorizontalSpeed, _currentVerticalSpeed); // Used externally
         var move = RawMovement * Time.deltaTime;
@@ -403,6 +405,26 @@ public class PlayerController : MonoBehaviour
             {
                 _stuntimer-= Time.deltaTime;
             }
+        }
+    }
+
+    #endregion
+
+    #region Flip
+
+    protected bool isFacingRight = true;
+
+    protected void Flip()
+    {
+        if (isFacingRight && _currentHorizontalSpeed < 0f || !isFacingRight && _currentHorizontalSpeed > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            Vector3 launchPositionScale = launchPosition.localScale;
+            localScale.x *= -1f;
+            launchPositionScale.x *= -1f;
+            transform.localScale = localScale;
+            launchPosition.localScale = launchPositionScale;
         }
     }
 

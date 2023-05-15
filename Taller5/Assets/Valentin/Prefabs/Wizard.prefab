@@ -217,9 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d07bc61f89cc5f949ab62000e6d11179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseControllers: 0
+  launchPosition: {fileID: 810969649602861254}
   _characterBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0}
+    m_Extent: {x: 0.28, y: 0.37, z: 0}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -247,7 +249,6 @@ MonoBehaviour:
   InvensivilityTime: 2
   StunTimer: 2
   abilityB: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
-  launchPosition: {fileID: 810969649602861254}
   ballTime: 1.5
   ballCounter: 0
   ballAmmo: 5

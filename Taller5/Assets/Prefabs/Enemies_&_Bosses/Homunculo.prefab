@@ -118,7 +118,7 @@ MonoBehaviour:
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
-  fallDownTreshold: 0
+  fallDownTreshold: 2
   _jumpHeight: 28
   _freeColliderIterations: 10
   damage: 0
