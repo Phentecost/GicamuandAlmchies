@@ -11,7 +11,8 @@ namespace Code_DungeonSystem
     public class DungeonManager : MonoBehaviour
     {
         public static DungeonManager instance { get; private set; } = null;
-
+        public GameObject Gicamu { get => _gicamu;}
+        public GameObject Alchies { get => _alchies; }
 
         [Header("Dungeon Configuration")]
         [Space(10)]

@@ -434,4 +434,23 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    #region Reliquias
+
+    public void plusATK(int i) 
+    {
+
+    }
+
+    public void plusHealth() 
+    {
+        
+    }
+
+    public void lessCooldown() 
+    {
+        
+    }
+
+    #endregion
 }
