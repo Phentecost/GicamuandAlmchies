@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Code_Proyectiles;
+using EZCameraShake;
 
 namespace Code_Boses
 {
@@ -31,6 +32,7 @@ namespace Code_Boses
             {
                 if (_timer <= 0)
                 {
+                    CameraShaker.Instance.ShakeOnce(1, 1, .1f, 1);
                     float i = Random.Range(_minX, _maxX);
                     Vector3 pos = new Vector3(i, ceiling);
                     GameObject G = Instantiate(rockPrefab,pos,Quaternion.identity);

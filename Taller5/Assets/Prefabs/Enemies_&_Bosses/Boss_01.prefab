@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2716681079090689399}
   - component: {fileID: 2716681079090689392}
   - component: {fileID: 8560181476657673464}
-  - component: {fileID: -5560876443429394905}
   m_Layer: 0
   m_Name: Boss_01
   m_TagString: Untagged
@@ -132,19 +131,13 @@ MonoBehaviour:
   _alchies: {fileID: 0}
   currentRoom: {fileID: 0}
   left: 1
---- !u!114 &-5560876443429394905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2716681079090689393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475e79e5ececfe14892bfe69a85ac39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  maxHealth: 20
-  stunnedCounter: 0
-  stunnedTime: 1
+  _characterBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 1, y: 1, z: 0}
+  _blockLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _detectorCount: 3
+  _detectionRayLength: 0.1
+  _rayBuffer: 0.1
+  StartHealth: 10

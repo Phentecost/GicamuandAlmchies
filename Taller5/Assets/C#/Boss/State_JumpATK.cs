@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using EZCameraShake;
+using Unity.VisualScripting;
 
 namespace Code_Boses
 {
@@ -136,6 +138,8 @@ namespace Code_Boses
 
                     if (boss.transform.position == _movingTo)
                     {
+                        CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, 1f);
+
                         if (_finish)
                         {
                             boss.SwichState(boss.idle);

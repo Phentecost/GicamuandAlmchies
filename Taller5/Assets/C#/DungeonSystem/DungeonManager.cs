@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using EZCameraShake;
 
 namespace Code_DungeonSystem
 {
@@ -82,7 +83,7 @@ namespace Code_DungeonSystem
             _gicamu.transform.position = center + spawnOffset + dungeonRooms[i + 1].transform.position;
             _alchies.transform.position = center - spawnOffset + dungeonRooms[i + 1].transform.position;
             cam.gameObject.GetComponent<Camera>().orthographicSize = dungeonRooms[i + 1].CameraScale;
-            cam.position = new Vector3(center.x + dungeonRooms[i + 1].transform.position.x, dungeonRooms[i + 1].CamY, -10);
+            CameraShaker.Instance.RestPositionOffset = new Vector3(center.x + dungeonRooms[i + 1].transform.position.x, dungeonRooms[i + 1].CamY, -10);
             PlayerController _gicamuPlayerController = _gicamu.GetComponent<PlayerController>();
             PlayerController _alchiesPlayerController = _alchies.GetComponent<PlayerController>();
             dungeonRooms[i+1].ActivateEnemies(_gicamuPlayerController, _alchiesPlayerController);

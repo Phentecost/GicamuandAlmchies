@@ -1,4 +1,5 @@
 using Code;
+using EZCameraShake;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -72,6 +73,7 @@ namespace Code_Boses
 
                     if (boss.transform.position == pointA)
                     {
+                        CameraShaker.Instance.ShakeOnce(4f,4f,.1f,1f);
                         boss.Flip();
                         boss.SwichState(boss.idle);
                     }
