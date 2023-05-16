@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 6745050969916821380}
   - component: {fileID: 6745050969916821401}
   - component: {fileID: 6845783457370435093}
+  - component: {fileID: -1594514150631080684}
   m_Layer: 9
   m_Name: Wizard
   m_TagString: Wizard
@@ -246,8 +247,8 @@ MonoBehaviour:
   _freeColliderIterations: 10
   StartHealth: 10
   MaxHealth: 10
-  InvensivilityTime: 2
-  StunTimer: 2
+  InvensivilityTime: 3
+  StunTimer: 1
   abilityB: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
   ballTime: 1.5
   ballCounter: 0
@@ -269,6 +270,32 @@ MonoBehaviour:
   stealCounter: 0
   healthStealActivated: 0
   inside: 0
+--- !u!61 &-1594514150631080684
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745050969916821381}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 64, y: 64}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 64, y: 64}
+  m_EdgeRadius: 0
 --- !u!1 &6745050970032828853
 GameObject:
   m_ObjectHideFlags: 0

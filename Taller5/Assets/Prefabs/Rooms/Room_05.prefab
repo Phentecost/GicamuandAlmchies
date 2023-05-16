@@ -4900,6 +4900,7 @@ MonoBehaviour:
   bossOBJ: {fileID: 0}
   relic: {fileID: 0}
   CameraScale: 5
+  CamY: 5
 --- !u!1 &8619090072592789534
 GameObject:
   m_ObjectHideFlags: 0

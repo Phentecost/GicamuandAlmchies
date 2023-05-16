@@ -19,69 +19,14 @@ namespace Code_EnemiesAndAI
             distance = Vector2.Distance(_target.transform.position, transform.position);
             CalculateCollisions();
             CalculateCollitionBehaviour();
-            CalculateGravity();
-
-            switch (base._currentState) 
+            if (waitForTimerATK <= 0 && distance < attackTheshold)
             {
-                case State.Idle:
+                Attack();
 
-                    if (_waitForTimer <= 0)
-                    {
-                        _currentState = State.Walking;
-                        _waitForTimer = 1;
-                    }
-                    else
-                    {
-                        _waitForTimer -= Time.deltaTime;
-                    }
-                    MoveCharacter();
-                    break;
-
-                case State.Walking:
-
-                    if (distance < attackTheshold) 
-                    {
-                        _currentState = State.Shooting;
-                    }
-                    else
-                    {
-                        CalculateWalk(_target);
-                        if (distance < jumpThreshold && waitForTimerJMP <= 0)
-                        {
-                            CalculateJump(_target);
-                            waitForTimerJMP = 3;    
-                        }
-                        else
-                        {
-                            waitForTimerJMP -= Time.deltaTime;
-                        }
-                        
-                    }
-
-                    MoveCharacter();
-                    break;
-
-                case State.Shooting:
-
-                    if (waitForTimerATK <= 0)
-                    {
-                        Attack();
-
-                        if (distance > attackTheshold)
-                        {
-                            _currentState = State.Walking;
-                        }
-                    }
-                    else
-                    {
-                        waitForTimerATK -= Time.deltaTime;
-                    }
-
-                    _currentHorizontalSpeed= 0;
-                    MoveCharacter();
-
-                    break;
-
+            }
+            else
+            {
+                waitForTimerATK -= Time.deltaTime;
             }
         }
 
@@ -90,8 +35,7 @@ namespace Code_EnemiesAndAI
         #region Attack
 
         [SerializeField] protected GameObject bulletPrefab;
-        [SerializeField] protected float waitForTimerATK = 3;
-        [SerializeField] protected float waitForTimerJMP = 0;
+        [SerializeField] protected float waitForTimerATK = 2;
         [SerializeField] protected float ATKspeed;
 
         protected override void Attack()
@@ -100,7 +44,7 @@ namespace Code_EnemiesAndAI
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.transform.parent = null;
             bullet.GetComponent<Proyectile>().SetMovement(ATKspeed, vec2tar,false);
-            waitForTimerATK = 3;
+            waitForTimerATK = 2;
 
         }
         #endregion

@@ -633,6 +633,7 @@ MonoBehaviour:
   bossOBJ: {fileID: 0}
   relic: {fileID: 0}
   CameraScale: 5
+  CamY: 5
 --- !u!1001 &3329777581493147623
 PrefabInstance:
   m_ObjectHideFlags: 0

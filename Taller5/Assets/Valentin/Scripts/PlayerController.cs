@@ -348,12 +348,14 @@ public class PlayerController : MonoBehaviour
     protected bool _attacked;
     private int _health;
     private bool _dead = false;
+    private bool _invensible;
     public void TakeDamage(int dagame) 
     {
-        if (_attacked) return;
-        _health = Mathf.Clamp(_health+dagame, 0, MaxHealth);
+        if (_attacked || _invensible) return;
+        _health = Mathf.Clamp(_health + dagame, 0, MaxHealth);
         _attacked= true;
         _invensibleTimer = InvensivilityTime;
+        _invensible = true;
         Debug.Log(_health);
     }
 
@@ -364,11 +366,12 @@ public class PlayerController : MonoBehaviour
             _dead= true;
         }
 
-        if (_attacked) 
+        if (_attacked || _invensible) 
         {
             if (_invensibleTimer <= 0)
             {
                 _attacked= false;
+                _invensible= false;
             }
             else
             {
@@ -387,12 +390,14 @@ public class PlayerController : MonoBehaviour
 
     public void Stun() 
     {
+        if(_stuned || _invensible) return;
         _stuntimer = StunTimer;
         _stuned = true;
     }
 
     private void StunSystem() 
     {
+        Debug.Log(_stuned);
         if (_stuned) 
         {
             _currentHorizontalSpeed = 0;

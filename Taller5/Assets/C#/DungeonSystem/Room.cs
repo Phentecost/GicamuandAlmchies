@@ -23,6 +23,7 @@ namespace Code_DungeonSystem
         public BossStateManager bossOBJ;
         public GameObject relic;
         public float CameraScale;
+        public float CamY;
 
         private void OnDrawGizmos()
         {

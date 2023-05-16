@@ -20,6 +20,8 @@ public class ElementalBall : MonoBehaviour
 
     void Update()
     {
+        CalculateCollisions();
+        CalculateCollitionBehaviour();
         transform.position += transform.up * Time.deltaTime * projectileYSpeed;
         transform.position += transform.right * Time.deltaTime * projectileXSpeed;
     }
