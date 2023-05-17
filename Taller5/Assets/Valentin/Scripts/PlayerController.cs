@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
 using TarodevController;
+using Code;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetUp() 
     {
-        _health = 100;
+        _health = MaxHealth;
         pauseControllers = true;
     }
 
@@ -347,6 +348,7 @@ public class PlayerController : MonoBehaviour
     private float _invensibleTimer;
     protected bool _attacked;
     private int _health;
+    public int Health { get => _health;}
     private bool _dead = false;
     private bool _invensible;
     public void TakeDamage(int dagame) 
@@ -356,6 +358,7 @@ public class PlayerController : MonoBehaviour
         _attacked= true;
         _invensibleTimer = InvensivilityTime;
         _invensible = true;
+        GameUIManager.instance.UpdateLife();
         Debug.Log(_health);
     }
 

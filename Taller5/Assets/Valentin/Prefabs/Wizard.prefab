@@ -245,8 +245,8 @@ MonoBehaviour:
   _jumpBuffer: 0.1
   _jumpEndEarlyGravityModifier: 3
   _freeColliderIterations: 10
-  StartHealth: 10
-  MaxHealth: 10
+  StartHealth: 6
+  MaxHealth: 6
   InvensivilityTime: 3
   StunTimer: 1
   abilityB: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
