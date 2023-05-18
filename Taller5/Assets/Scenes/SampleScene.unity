@@ -493,7 +493,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.37
+  m_Intensity: 0.4
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -865,7 +865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 61.2, y: -17.8}
+  m_AnchoredPosition: {x: 61.19995, y: -17.799988}
   m_SizeDelta: {x: 32.0804, y: 32.0804}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &920067056
@@ -1301,11 +1301,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numbersOfRooms: 0
   initialSecretRoomProbability: 10
-  incrisingProbabilityRate: 10
+  incrisingProbabilityRate: 20
   currentProbability: 0
   spawnRoom: {fileID: 8422183762335144074, guid: 39f74cc01a0043d4883fa97ba42a40a3, type: 3}
-  enemyRooms: []
-  bossRoom: {fileID: 8422183762335144074, guid: 0e33750605464d84a8b56d5918cc5765, type: 3}
+  enemyRooms:
+  - {fileID: 5016909667632657784, guid: c132451a3bdf7a347a475ff1d417302e, type: 3}
+  bossRoom: {fileID: 8422183762335144074, guid: 36dfdcdb910af1a46b53b1a576331e70, type: 3}
   secretRoom: {fileID: 4206009192890022995, guid: 51e8d483d8d89364ea06877299dba6ea, type: 3}
   dungeonRooms: []
   gicamuPrefab: {fileID: 6745050969916821381, guid: 9543be3fe1c4195459243105aef521bc, type: 3}
@@ -1436,7 +1437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 61.2, y: -17.8}
+  m_AnchoredPosition: {x: 61.19995, y: -17.799988}
   m_SizeDelta: {x: 32.0804, y: 32.0804}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1700782840
