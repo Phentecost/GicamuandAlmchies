@@ -1,6 +1,8 @@
+using Code_EnemiesAndAI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TarodevController;
 
 public class BoxBarrier : MonoBehaviour
 {
@@ -8,10 +10,10 @@ public class BoxBarrier : MonoBehaviour
     [SerializeField] private float lifeTime;
     private Rigidbody2D rb;
 
-    void Start()
+    [SerializeField] Animator animator;
+
+    void Awake()
     {
-        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Barrier").GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Wizard").GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Barrier").GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Alchemist").GetComponent<Collider2D>(), true);
         rb = GetComponent<Rigidbody2D>();
         lifeTime = 2.5f;
         Destroy(gameObject, lifeTime);
@@ -19,6 +21,7 @@ public class BoxBarrier : MonoBehaviour
 
     void Update()
     {
-        
+        animator = GetComponent<Animator>();
+        animator.SetFloat("LifeTime", lifeTime);
     }
 }

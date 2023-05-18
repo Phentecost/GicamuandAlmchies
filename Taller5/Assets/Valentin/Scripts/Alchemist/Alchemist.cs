@@ -33,6 +33,9 @@ public class Alchemist : PlayerController
 
     private Wizard wizard;
 
+    [Header("Animation")]
+    [SerializeField] Animator animator;
+
 
     protected override void Update()
     {
@@ -40,6 +43,8 @@ public class Alchemist : PlayerController
         base.Update();
         AbilitiesSystem();
 
+        animator = GetComponent<Animator>();
+        
         Barrier();
         MagicPellets();
         HealPower();
@@ -53,14 +58,24 @@ public class Alchemist : PlayerController
             JumpUp = UnityEngine.Input.GetKeyUp(KeyCode.W),
             FallDown = UnityEngine.Input.GetKey(KeyCode.S),
             X = UnityEngine.Input.GetAxisRaw("P1_Horizontal"),
-            A1 = UnityEngine.Input.GetKey(KeyCode.Q),
-            A2 = UnityEngine.Input.GetKey(KeyCode.E),
-            A3 = UnityEngine.Input.GetKey(KeyCode.F)
+            A1 = UnityEngine.Input.GetKeyDown(KeyCode.Q),
+            A2 = UnityEngine.Input.GetKeyDown(KeyCode.E),
+            A3 = UnityEngine.Input.GetKeyDown(KeyCode.F)
         };
+
+        animator.SetFloat("Horizontal", Mathf.Abs(Input.X));
+
         if (Input.JumpDown)
         {
             _lastJumpPressed = Time.time;
+
+            animator.SetBool("Grounded", Input.JumpUp);
         }
+
+        if (!Input.A1 && !Input.A2 && !Input.A3)
+            animator.SetBool("Attack", false);
+        else
+            animator.SetBool("Attack", true);
     }
 
 
@@ -76,6 +91,7 @@ public class Alchemist : PlayerController
 
                 abilityQ.projectileSpeed = 0f;
                 Instantiate(abilityQ, launchPosition.position, transform.rotation);
+                //animator.SetBool("Attack", Input.A1);
             }
         }
 
@@ -90,8 +106,10 @@ public class Alchemist : PlayerController
                     pelletsCoolDown = 0.5f;
                     pelletsActivated = true;
 
-                    abilityE.projectileSpeed = 100f;
+                    abilityE.projectileSpeed = 10f;
                     Instantiate(abilityE, launchPosition.position, transform.rotation);
+
+                    //animator.SetBool("Attack", Input.A2);
                 }
             }
             else
@@ -101,6 +119,7 @@ public class Alchemist : PlayerController
             }
         }
 
+        
         //Heal cercano
         if (Input.A3)
         {
@@ -112,6 +131,8 @@ public class Alchemist : PlayerController
                     {
                         healCounter = healTime;
                         healActivated = true;
+
+                        //animator.SetBool("Attack", Input.A3);
                     }
                 }
                 else
@@ -121,6 +142,7 @@ public class Alchemist : PlayerController
                 }
             }
         }
+        
     }
 
     private void Barrier()

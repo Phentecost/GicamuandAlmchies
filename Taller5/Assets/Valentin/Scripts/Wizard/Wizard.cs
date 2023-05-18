@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using TarodevController;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -41,6 +42,9 @@ public class Wizard : PlayerController
     private Alchemist alchemist;
     public bool inside;
 
+    [Header("Animation")]
+    [SerializeField] Animator animator;
+
     #endregion
 
     protected override void Update()
@@ -49,6 +53,8 @@ public class Wizard : PlayerController
         base.Update();
         AbilitiesSystem();
 
+        animator = GetComponent<Animator>();
+        
         ElementalBall();
         StunSpell();
         HealthStealSpeel();
@@ -62,23 +68,32 @@ public class Wizard : PlayerController
             JumpUp = UnityEngine.Input.GetKeyUp(KeyCode.UpArrow),
             FallDown = UnityEngine.Input.GetKey(KeyCode.DownArrow),
             X = UnityEngine.Input.GetAxisRaw("P2_Horizontal"),
-            A1 = UnityEngine.Input.GetKey(KeyCode.B),
-            A2 = UnityEngine.Input.GetKey(KeyCode.N),
-            A3 = UnityEngine.Input.GetKey(KeyCode.M)
+            A1 = UnityEngine.Input.GetKeyDown(KeyCode.B),
+            A2 = UnityEngine.Input.GetKeyDown(KeyCode.N),
+            A3 = UnityEngine.Input.GetKeyDown(KeyCode.M)
         };
+
+        animator.SetFloat("Horizontal", Mathf.Abs(Input.X));
+
         if (Input.JumpDown)
         {
             _lastJumpPressed = Time.time;
-        }
-    }
 
-   
+            animator.SetBool("Grounded", Input.JumpUp);
+        }
+
+        if (!Input.A1 && !Input.A2 && !Input.A3)
+            animator.SetBool("Attack", false);
+        else
+            animator.SetBool("Attack", true);
+    }
 
     private void AbilitiesSystem()
     {
         //Bola elemental diagonal
         if (Input.A1)
         {
+            
             if (ballAmmo > 0f)
             {
                 if (!ballActivated)
@@ -87,8 +102,8 @@ public class Wizard : PlayerController
                     ballCoolDown = 4f;
                     ballActivated = true;
 
-                    abilityB.projectileXSpeed = 90f;
-                    abilityB.projectileYSpeed = 15f;
+                    abilityB.projectileXSpeed = 5f;
+                    abilityB.projectileYSpeed = 5f;
                     Instantiate(abilityB, launchPosition.position, transform.rotation);
                 }
             }
@@ -107,7 +122,6 @@ public class Wizard : PlayerController
                         stunCounter = stunTime;
 
                         stunActivated = true;
-
                     }
 
                     if (stunCounter > 0f)
@@ -125,8 +139,6 @@ public class Wizard : PlayerController
                     }
                 }
             }
-
-            
         }
 
         //Hechizo roba vida
@@ -151,6 +163,7 @@ public class Wizard : PlayerController
                 }
             }
         }
+            
     }
 
     private void ElementalBall()
