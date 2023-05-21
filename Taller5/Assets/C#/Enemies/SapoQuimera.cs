@@ -55,6 +55,7 @@ namespace Code_EnemiesAndAI
                     {
                         if (!returning)
                         {
+                            tongueAnim.Play("Sapo_Lengua");
                             float newScale = Mathf.SmoothDamp(tongue.localScale.x, ATKdistance, ref ATKVelocity, ATKspeed * Time.deltaTime);
                             tongue.localScale = new Vector3(newScale, 0.3f, 1);
                             tongueTimer -= Time.deltaTime;
@@ -67,7 +68,8 @@ namespace Code_EnemiesAndAI
 
                         }
                         else 
-                        { 
+                        {
+                            tongueAnim.Play("Sapo_Lengua2");
                             float newScale = Mathf.SmoothDamp(tongue.localScale.x, 0, ref ATKVelocity, ATKspeed * Time.deltaTime);
                             tongue.localScale = new Vector3(newScale, 0.3f, 1);
                             tongueTimer -= Time.deltaTime;
@@ -103,6 +105,7 @@ namespace Code_EnemiesAndAI
         [SerializeField] protected float ATKspeed;
         [SerializeField] protected float ATKVelocity = 0;
         [SerializeField] protected float ATKdistance;
+        [SerializeField] protected Animator tongueAnim;
         protected bool returning = false;
 
         #endregion
@@ -122,5 +125,11 @@ namespace Code_EnemiesAndAI
         }
 
         #endregion
+
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            AudioManager.instance.PlayAudio(3);
+        }
     }
 }

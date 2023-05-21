@@ -49,5 +49,11 @@ namespace Code_EnemiesAndAI
         }
         #endregion
 
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            AudioManager.instance.PlayAudio(2);
+        }
+
     }
 }

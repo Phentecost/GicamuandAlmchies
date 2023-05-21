@@ -337,7 +337,7 @@ namespace Code_EnemiesAndAI
         [SerializeField] protected int StartHealth;
         protected int _currentHealth;
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             _currentHealth += damage;
             Debug.Log(_currentHealth);

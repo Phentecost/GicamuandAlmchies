@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a50a5540b8bdd040b596e9a9e7c0c63, type: 3}
   m_Name: State_Shoting
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4950402766463259929, guid: 6f51f30cfe26ff843aa45feef1df725a, type: 3}
+  bulletPrefab: {fileID: 4950402766463259929, guid: 76cd4572fcfc7fb49905f487345bd6ee, type: 3}
   timeBetweenBullets: 1
   numberOfBullets: 5
   bulletSpeed: 2

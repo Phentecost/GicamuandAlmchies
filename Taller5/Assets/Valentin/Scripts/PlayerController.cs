@@ -21,12 +21,24 @@ public class PlayerController : MonoBehaviour
 
     public bool pauseControllers = false;
 
+    private GameObject footsteps;
+
     private Vector3 _lastPosition;
     private float _currentHorizontalSpeed, _currentVerticalSpeed;
     [SerializeField] protected Transform launchPosition;
+
+    public static event Action OnChangeLife, OnWining, OnLosing;
     private void Start()
     {
         SetUp();
+        footsteps = Instantiate(new GameObject(),transform.position,Quaternion.identity);
+        AudioSource a = footsteps.AddComponent<AudioSource>();
+        Sound s = AudioManager.instance.GetSound(1);
+        a.clip = s.clip;
+        a.pitch= s.pitch;
+        a.volume= s.volume;
+        a.loop = true;
+        a.Play();
     }
 
     public void SetUp() 
@@ -183,17 +195,21 @@ public class PlayerController : MonoBehaviour
             // Apply bonus at the apex of a jump
             var apexBonus = Mathf.Sign(Input.X) * _apexBonus * _apexPoint;
             _currentHorizontalSpeed += apexBonus * Time.deltaTime;
+
+            footsteps.SetActive(true);
         }
         else
         {
             // No input. Let's slow the character down
             _currentHorizontalSpeed = Mathf.MoveTowards(_currentHorizontalSpeed, 0, _deAcceleration * Time.deltaTime);
+            footsteps.SetActive(false);
         }
 
         if (_currentHorizontalSpeed > 0 && _colRight || _currentHorizontalSpeed < 0 && _colLeft)
         {
             // Don't walk through walls
             _currentHorizontalSpeed = 0;
+            footsteps.SetActive(false);
         }
     }
 
@@ -267,6 +283,7 @@ public class PlayerController : MonoBehaviour
             _coyoteUsable = false;
             _timeLeftGrounded = float.MinValue;
             JumpingThisFrame = true;
+            AudioManager.instance.PlayAudio(0);
         }
         else
         {
@@ -302,6 +319,7 @@ public class PlayerController : MonoBehaviour
         RawMovement = new Vector3(_currentHorizontalSpeed, _currentVerticalSpeed); // Used externally
         var move = RawMovement * Time.deltaTime;
         var furthestPoint = pos + move;
+        
 
         // check furthest movement. If nothing hit, move and don't do extra checks
         var hit = Physics2D.OverlapBox(furthestPoint, _characterBounds.size, 0, _groundLayer);
@@ -358,8 +376,8 @@ public class PlayerController : MonoBehaviour
         _attacked= true;
         _invensibleTimer = InvensivilityTime;
         _invensible = true;
-        GameUIManager.instance.UpdateLife();
-        Debug.Log(_health);
+        OnChangeLife();
+        AudioManager.instance.PlayAudio(4);
     }
 
     private void HealthSystem() 
@@ -367,6 +385,7 @@ public class PlayerController : MonoBehaviour
         if (_health == 0) 
         {
             _dead= true;
+            OnLosing();
         }
 
         if (_attacked || _invensible) 
@@ -447,7 +466,9 @@ public class PlayerController : MonoBehaviour
 
     public void plusHealth() 
     {
-        
+        MaxHealth = 8;
+        _health = 8;
+        OnChangeLife();
     }
 
     public void lessCooldown() 
