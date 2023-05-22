@@ -9,21 +9,19 @@ public class ElementalBall : MonoBehaviour
     [SerializeField] public float projectileXSpeed;
     [SerializeField] public float projectileYSpeed;
     [SerializeField] private float lifeTime;
-    private Rigidbody2D rb;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         lifeTime = 10f;
         Destroy(gameObject, lifeTime);
     }
 
     void Update()
     {
-        CalculateCollisions();
-        CalculateCollitionBehaviour();
         transform.position += transform.up * Time.deltaTime * projectileYSpeed;
         transform.position += transform.right * Time.deltaTime * projectileXSpeed;
+        CalculateCollisions();
+        CalculateCollitionBehaviour();
     }
 
     #region Collisions

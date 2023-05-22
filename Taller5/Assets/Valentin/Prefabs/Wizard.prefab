@@ -251,6 +251,8 @@ MonoBehaviour:
   InvensivilityTime: 3
   StunTimer: 1
   abilityB: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
+  abilityN: {fileID: 8370765928761216842, guid: 95a4951e7d8c7b94ea42e25c2a41175a, type: 3}
+  abilityM: {fileID: 2998161133914083781, guid: dedfcbe48f6f877458011cc63e421a3b, type: 3}
   ballTime: 1.5
   ballCounter: 0
   ballAmmo: 5

@@ -118,7 +118,6 @@ public class PlayerController : MonoBehaviour
 
         _colDown = groundedCheck;
 
-
         _colUp = RunDetection(_raysUp, _groundLayer);
         _colLeft = RunDetection(_raysLeft, _groundLayer);
         _colRight = RunDetection(_raysRight, _groundLayer);
@@ -139,7 +138,6 @@ public class PlayerController : MonoBehaviour
         _raysLeft = new RayRange(b.min.x, b.min.y + _rayBuffer, b.min.x, b.max.y - _rayBuffer, Vector2.left);
         _raysRight = new RayRange(b.max.x, b.min.y + _rayBuffer, b.max.x, b.max.y - _rayBuffer, Vector2.right);
     }
-
 
     private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
     {
@@ -449,16 +447,22 @@ public class PlayerController : MonoBehaviour
 
     protected void Flip()
     {
-        if (isFacingRight && _currentHorizontalSpeed < 0f || !isFacingRight && _currentHorizontalSpeed > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            Vector3 launchPositionScale = launchPosition.localScale;
-            localScale.x *= -1f;
-            launchPositionScale.x *= -1f;
-            transform.localScale = localScale;
-            launchPosition.localScale = launchPositionScale;
-        }
+        //Flip
+        if (Input.X == 1) //mira a la derecha
+            transform.eulerAngles = new Vector2(0, 0);
+        if (Input.X == -1)//mira a la izquierdad
+            transform.eulerAngles = new Vector2(0, 180);
+
+        //if (isFacingRight && _currentHorizontalSpeed < 0f || !isFacingRight && _currentHorizontalSpeed > 0f)
+        //{
+        //    isFacingRight = !isFacingRight;
+        //    Vector3 localScale = transform.localScale;
+        //    Vector3 launchPositionScale = launchPosition.localScale;
+        //    localScale.x *= -1f;
+        //    launchPositionScale.x *= -1f;
+        //    transform.localScale = localScale;
+        //    launchPosition.localScale = launchPositionScale;
+        //}
     }
 
     #endregion

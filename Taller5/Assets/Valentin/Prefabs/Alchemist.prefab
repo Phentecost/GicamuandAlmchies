@@ -221,6 +221,7 @@ MonoBehaviour:
   StunTimer: 1
   abilityQ: {fileID: 9162102179728132213, guid: 0f17e58cbb57e99418586fd9bd65f9fd, type: 3}
   abilityE: {fileID: 8038840281743550472, guid: a32f9c1108e274c408cf12c0d927cc1c, type: 3}
+  abilityF: {fileID: 7991257390832787297, guid: c5bdc344bb865704c9bdd4cdd3f0d8f9, type: 3}
   barrierCoolDown: 12
   barrierActivated: 0
   pelletsAmmo: 3
@@ -231,7 +232,7 @@ MonoBehaviour:
   healRadius: {fileID: 2518671796615821980}
   layerOtherPlayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   healTime: 1.5
   healCounter: 0
   healAmmo: 3

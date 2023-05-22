@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 0
   lifeTime: 0
+  animator: {fileID: 1016049088045406383}
 --- !u!95 &1016049088045406383
 Animator:
   serializedVersion: 5
