@@ -44,8 +44,8 @@ namespace Code_EnemiesAndAI
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.transform.parent = null;
             bullet.GetComponent<Proyectile>().SetMovement(ATKspeed, vec2tar,false);
-            waitForTimerATK = 2;
-
+            waitForTimerATK = 5;
+             
         }
         #endregion
 

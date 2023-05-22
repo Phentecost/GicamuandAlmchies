@@ -3,6 +3,7 @@ using Code_DungeonSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,14 @@ namespace Code
 
         [SerializeField] private GameObject LosePanel, WinPanel;
 
+        [SerializeField] private List<CoolDownDataStructure> coolDownDataStructures= new List<CoolDownDataStructure>();
+
+        private List<CoolDownDataStructure> cds = new List<CoolDownDataStructure>();
+
+        [SerializeField] RectTransform t;
+
+        [SerializeField] float p;
+
         private bool extraHeart = false;
 
         private void Awake()
@@ -33,11 +42,52 @@ namespace Code
             LosePanel.SetActive(false);
         }
 
+        private void Update()
+        {
+            if (cds.Count > 0)
+            {
+                foreach (CoolDownDataStructure cd in cds.ToList())
+                {
+                    cd.img.fillAmount += 1 / cd.cd * Time.deltaTime;
+
+                    if (cd.img.fillAmount <= 1)
+                    {
+                        cd.pref.SetActive(false);
+                        cds.Remove(cd);
+                    }
+                }
+            }
+        }
+
+        private void cooldownUI(int i) 
+        {
+            
+            cds.Add(coolDownDataStructures[i]);
+
+            int h = cds.Count - 1;
+            cds[h].pref.SetActive(true);
+            if (cds.Count -1 > 0)
+            {
+                
+                cds[h].pref.GetComponent<RectTransform>().position = cds[h - 1].pref.GetComponent<RectTransform>().position + new Vector3(40,0);
+
+            }
+            else
+            {
+                cds[h].pref.GetComponent<RectTransform>().position = t.position;
+            }
+
+            cds[h].img.fillAmount = 0;
+            
+
+        }
+
         private void Start()
         {
             PlayerController.OnChangeLife += UpdateLife;
             PlayerController.OnLosing += Lose;
             PlayerController.OnWining+= Win;
+            PlayerController.CoolDown += cooldownUI;
         }
 
         private void OnDestroy()
@@ -45,6 +95,7 @@ namespace Code
             PlayerController.OnChangeLife -= UpdateLife;
             PlayerController.OnLosing -= Lose;
             PlayerController.OnWining -= Win;
+            PlayerController.CoolDown -= cooldownUI;
         }
         private void UpdateLife() 
         {
@@ -96,5 +147,13 @@ namespace Code
         public Sprite aimg;
         public int life;
         public int index;
+    }
+
+    [Serializable]
+    public class CoolDownDataStructure 
+    {
+        public GameObject pref;
+        public Image img;
+        public float cd;
     }
 }

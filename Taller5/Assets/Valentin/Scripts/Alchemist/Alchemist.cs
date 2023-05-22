@@ -109,6 +109,8 @@ public class Alchemist : PlayerController
                     abilityE.projectileSpeed = 10f;
                     Instantiate(abilityE, launchPosition.position, transform.rotation);
 
+                    cd(2);
+
                     //animator.SetBool("Attack", Input.A2);
                 }
             }

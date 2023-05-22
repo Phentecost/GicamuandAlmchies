@@ -127,7 +127,7 @@ MonoBehaviour:
   StartHealth: 3
   tongue: {fileID: 2218541338935521161}
   tongueTimer: 1
-  waitForTimerATK: 1
+  waitForTimerATK: 3
   ATKspeed: 30
   ATKVelocity: 0
   ATKdistance: 10

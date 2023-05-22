@@ -2,14 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TarodevController;
+using UnityEngine.UIElements;
+using static UnityEngine.ParticleSystem;
 
 namespace Code
 {
     public class Reliquia : MonoBehaviour
     {
+        protected bool ready = false;
+
+        Material mat;
+        [SerializeField] private float disolveTimer;
+        [SerializeField] GameObject ligth;
+        [SerializeField] private ParticleSystem particles;
+
+        private void Start()
+        {
+            SetUp();
+        }
+
+        public void SetUp()
+        {
+            mat = GetComponent<SpriteRenderer>().material;
+            ready = false;
+            mat.SetFloat("_DisolveAmount", 1);
+        }
+
 
         private void Update()
         {
+            if (!ready) 
+            {
+                float i = mat.GetFloat("_DisolveAmount");
+                i = Mathf.Lerp(i, 0, disolveTimer);
+                mat.SetFloat("_DisolveAmount", i);
+
+                if (i < 0.1)
+                {
+                    mat.SetFloat("_DisolveAmount", 0);
+                    ligth.SetActive(true);
+                    particles.Play();
+                    ready = true;
+                }
+            }
+                
             CalculateCollisions();
             CalculateCollitionBehaviour();
         }

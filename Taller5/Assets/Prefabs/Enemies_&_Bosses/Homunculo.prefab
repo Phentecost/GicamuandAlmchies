@@ -127,8 +127,8 @@ MonoBehaviour:
   StartHealth: 3
   jumpThreshold: 5
   bulletPrefab: {fileID: 4950402766463259929, guid: 6f51f30cfe26ff843aa45feef1df725a, type: 3}
-  waitForTimerATK: 3
-  ATKspeed: 10
+  waitForTimerATK: 5
+  ATKspeed: 1
 --- !u!61 &1439013894792351212
 BoxCollider2D:
   m_ObjectHideFlags: 0

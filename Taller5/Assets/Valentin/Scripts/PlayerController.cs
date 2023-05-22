@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Transform launchPosition;
 
     public static event Action OnChangeLife, OnWining, OnLosing;
+    public static event Action<int> CoolDown;
     private void Start()
     {
         SetUp();
@@ -39,6 +40,11 @@ public class PlayerController : MonoBehaviour
         a.volume= s.volume;
         a.loop = true;
         a.Play();
+    }
+
+    protected void cd(int i) 
+    {
+        CoolDown(i);
     }
 
     public void SetUp() 

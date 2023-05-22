@@ -83,7 +83,8 @@ namespace Code_DungeonSystem
 
                 if (relic != null)
                 {
-                    Instantiate(relic, roomBounds.center + transform.position, Quaternion.identity);
+                    GameObject g = Instantiate(relic, roomBounds.center + transform.position, Quaternion.identity);
+                    g.GetComponent<Reliquia>().SetUp();
                 }
             }
         }
