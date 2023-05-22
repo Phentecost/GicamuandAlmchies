@@ -1,3 +1,6 @@
+using Code_Boses;
+using Code_DungeonSystem;
+using Code_EnemiesAndAI;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +35,8 @@ public class Wizard : PlayerController
 
     [Header("Health steal spell")] //rango global - random
     [SerializeField] private int random;
-    private EnemyPlaceHolder[] enemies;
+    [SerializeField] private Enemy[] enemies;
+    [SerializeField] private BossStateManager boss;
     [SerializeField] private LayerMask layerEnemies;
     [SerializeField] private int healthStole = 4;
     private int healthSpellRestored = 2;
@@ -40,7 +44,8 @@ public class Wizard : PlayerController
     [SerializeField] private float stealTime = 2.5f; 
     [SerializeField] private float stealCounter;
     [SerializeField] private bool healthStealActivated = false;
-    
+
+    private Room room;
     private Alchemist alchemist;
     public bool inside;
 
@@ -55,7 +60,13 @@ public class Wizard : PlayerController
         base.Update();
         AbilitiesSystem();
 
-        inside = Physics2D.OverlapCircle(stunRadius.position, 50f, layerEnemies);
+        inside = Physics2D.OverlapCircle(stunRadius.position, 1f, layerEnemies);
+
+        room = GameObject.FindObjectOfType<Room>();
+
+        alchemist = GameObject.FindObjectOfType<Alchemist>();
+
+        boss = GameObject.FindObjectOfType<BossStateManager>();
 
         animator = GetComponent<Animator>();
         
@@ -156,18 +167,25 @@ public class Wizard : PlayerController
                     stealCounter = stealTime;
                     healthStealActivated = true;
 
+                    enemies = GameObject.FindObjectsOfType<Enemy>();
+
                     random = Random.Range(0, enemies.Length);
-                    if (enemies[random] != null)
+                    if (room.enemies.Count != 0)
+                    {
+                        if (enemies[random] != null)
+                        {
+                            abilityM.projectileSpeed = 0f;
+                            Instantiate(abilityM, launchPosition.position, transform.rotation);
+                        }
+                    }
+                    
+                    else if (boss != null)
                     {
                         abilityM.projectileSpeed = 0f;
                         Instantiate(abilityM, launchPosition.position, transform.rotation);
-
-                        enemies[random].HealthSystem(-healthStole, false);
-                        alchemist.TakeDamage(healthSpellRestored);
                     }
-                    
-                    //else
-                    //    healthStealActivated = false;
+                    else
+                        healthStealActivated = false;
                 }
             }
         }
@@ -241,27 +259,32 @@ public class Wizard : PlayerController
         {
             if (stealCounter <= 0)
             {
-                if (_attacked)
+                if (!_attacked)
                 {
                     if(enemies.Length > 0)
                         healthSpellAmmo--;
 
                     if (enemies[random] == null)
                     {
-                        foreach (EnemyPlaceHolder e in enemies)
+                        foreach (Enemy e in enemies)
                         {
                             int i = 0;
                             if (enemies[i] == null)
                                 i++;
                             else
                             {
-                                enemies[i].HealthSystem(-healthStole, false);
+                                enemies[i].TakeDamage(-healthStole);
                                 alchemist.TakeDamage(healthSpellRestored);
                                 Debug.Log("Encontro enemigo");
                                 break;
                             }
                         }
                         //Debug.Log("Foreach rompido/terminado");
+                    }
+                    else if (boss != null)
+                    {
+                        boss.TakeDamage(-healthStole);
+                        alchemist.TakeDamage(healthSpellRestored);
                     }
                 }
                 else

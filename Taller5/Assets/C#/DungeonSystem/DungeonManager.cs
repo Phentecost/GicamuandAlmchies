@@ -124,7 +124,7 @@ namespace Code_DungeonSystem
             for (int i = 0; i < enemyRooms.Count; i++)
             {
 
-                r = Instantiate(enemyRooms[i], spawnRoomPosition, Quaternion.identity);
+                r = Instantiate(enemyRooms[i], spawnRoomPosition, Quaternion.identity); 
                 r.transform.parent = null;
                 room = r.GetComponent<Room>();
                 room.ID = count;

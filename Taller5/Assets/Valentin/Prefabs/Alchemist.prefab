@@ -232,7 +232,7 @@ MonoBehaviour:
   healRadius: {fileID: 2518671796615821980}
   layerOtherPlayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   healTime: 1.5
   healCounter: 0
   healAmmo: 3

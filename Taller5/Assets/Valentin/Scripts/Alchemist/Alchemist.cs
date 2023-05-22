@@ -50,7 +50,7 @@ public class Alchemist : PlayerController
         base.Update();
         AbilitiesSystem();
 
-        inside = Physics2D.OverlapCircle(healRadius.position, 50f, layerOtherPlayer);
+        inside = Physics2D.OverlapCircle(healRadius.position, 0.5f, layerOtherPlayer);
 
         animator = GetComponent<Animator>();
         
@@ -135,7 +135,7 @@ public class Alchemist : PlayerController
                 {
                     if (!healActivated)
                     {
-                        Debug.Log("activando");
+                        Debug.Log("activado");
                         healCounter = healTime;
                         healActivated = true;
 
@@ -205,10 +205,9 @@ public class Alchemist : PlayerController
 
         if (healActivated)
         {
-            Debug.Log("Curando...");
             if (healCounter <= 0)
             {
-                if (_attacked)
+                if (!_attacked)
                 {
                     if (inside)
                     {

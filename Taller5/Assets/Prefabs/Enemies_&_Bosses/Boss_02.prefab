@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2244855303436442212}
   - component: {fileID: 2244855303436442211}
   - component: {fileID: 5503148872229034987}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boss_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,3 +131,13 @@ MonoBehaviour:
   _alchies: {fileID: 0}
   currentRoom: {fileID: 0}
   left: 1
+  _characterBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  _blockLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _detectorCount: 3
+  _detectionRayLength: 0.1
+  _rayBuffer: 0.1
+  StartHealth: 0
