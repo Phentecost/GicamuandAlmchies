@@ -91,6 +91,13 @@ namespace Code_Proyectiles
                         _direction = Vector3.Reflect(_direction, hit.normal);
                         _timer = _timeBetweenBounces;
                     }
+
+                    PlayerController pj2 = hit.collider.GetComponent<PlayerController>();
+                    if (pj2 != null)
+                    {
+                        pj2.TakeDamage(-1);
+                    }
+
                     return;
                 }
 

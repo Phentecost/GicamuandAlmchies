@@ -1697,8 +1697,7 @@ MonoBehaviour:
   incrisingProbabilityRate: 20
   currentProbability: 0
   spawnRoom: {fileID: 8422183762335144074, guid: 39f74cc01a0043d4883fa97ba42a40a3, type: 3}
-  enemyRooms:
-  - {fileID: 5016909667632657784, guid: c132451a3bdf7a347a475ff1d417302e, type: 3}
+  enemyRooms: []
   bossRoom: {fileID: 8422183762335144074, guid: 36dfdcdb910af1a46b53b1a576331e70, type: 3}
   secretRoom: {fileID: 4206009192890022995, guid: 51e8d483d8d89364ea06877299dba6ea, type: 3}
   dungeonRooms: []

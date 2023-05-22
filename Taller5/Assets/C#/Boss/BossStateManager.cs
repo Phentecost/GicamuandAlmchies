@@ -136,7 +136,12 @@ namespace Code_Boses
             RaycastHit2D hit = ReturnHit();
             if (hit)
             {
+                PlayerController p = hit.collider.GetComponent<PlayerController>();
 
+                if (p!= null)
+                {
+                    p.TakeDamage(-1);
+                }
             }
         }
 
