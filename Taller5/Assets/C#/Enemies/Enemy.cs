@@ -353,6 +353,39 @@ namespace Code_EnemiesAndAI
 
         #endregion
 
+        #region StunSystem
+
+        [SerializeField] private float StunTimer;
+        private float _stuntimer;
+        private bool _stuned = false;
+
+        public void Stun()
+        {
+            if (_stuned) return;
+            _stuntimer = StunTimer;
+            _stuned = true;
+        }
+
+        private void StunSystem()
+        {
+            Debug.Log(_stuned);
+            if (_stuned)
+            {
+                _currentHorizontalSpeed = 0;
+                _currentVerticalSpeed = 0;
+                if (_stuntimer <= 0)
+                {
+                    _stuned = false;
+                }
+                else
+                {
+                    _stuntimer -= Time.deltaTime;
+                }
+            }
+        }
+
+        #endregion
+
     }
 
 

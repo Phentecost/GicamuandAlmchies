@@ -11,6 +11,8 @@ public class Wizard : PlayerController
     #region Wizard components configuration
 
     [SerializeField] private ElementalBall abilityB;
+    [SerializeField] private StunSpellIcon abilityN;
+    [SerializeField] private HealthStealSpellIcon abilityM;
 
     [Header("Wizard's Abilities")]
     [Header("Elemental ball")] //velocidad media
@@ -25,7 +27,7 @@ public class Wizard : PlayerController
     private GameObject[] enemiesInside;
     [SerializeField] private float stunTime = 2.5f;
     [SerializeField] private float stunCounter;
-    [SerializeField] private float stunCoolDown = 6f; //enemigo -> 2.5 | jefe -> 1 
+    [SerializeField] private float stunCoolDown = 0f; //enemigo -> 2.5 | jefe -> 1 
     [SerializeField] private bool stunActivated = false;
 
     [Header("Health steal spell")] //rango global - random
@@ -53,11 +55,13 @@ public class Wizard : PlayerController
         base.Update();
         AbilitiesSystem();
 
+        inside = Physics2D.OverlapCircle(stunRadius.position, 50f, layerEnemies);
+
         animator = GetComponent<Animator>();
         
         ElementalBall();
         StunSpell();
-        HealthStealSpeel();
+        HealthStealSpell();
     }
 
     protected override void GatherInput()
@@ -93,7 +97,6 @@ public class Wizard : PlayerController
         //Bola elemental diagonal
         if (Input.A1)
         {
-            
             if (ballAmmo > 0f)
             {
                 if (!ballActivated)
@@ -122,11 +125,13 @@ public class Wizard : PlayerController
                         stunCounter = stunTime;
 
                         stunActivated = true;
+
+                        abilityN.projectileSpeed = 5f;
+                        Instantiate(abilityN, launchPosition.position, transform.rotation);
                     }
 
                     if (stunCounter > 0f)
                     {
-
                         //Debug.Log("Enemigos stuneados");
                         //speedMovement = 0;
                     }
@@ -154,6 +159,9 @@ public class Wizard : PlayerController
                     random = Random.Range(0, enemies.Length);
                     if (enemies[random] != null)
                     {
+                        abilityM.projectileSpeed = 0f;
+                        Instantiate(abilityM, launchPosition.position, transform.rotation);
+
                         enemies[random].HealthSystem(-healthStole, false);
                         alchemist.TakeDamage(healthSpellRestored);
                     }
@@ -225,7 +233,7 @@ public class Wizard : PlayerController
         }
     }
 
-    private void HealthStealSpeel()
+    private void HealthStealSpell()
     {
         stealCounter -= Time.deltaTime;
 

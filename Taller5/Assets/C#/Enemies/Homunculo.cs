@@ -54,6 +54,5 @@ namespace Code_EnemiesAndAI
             base.TakeDamage(damage);
             AudioManager.instance.PlayAudio(2);
         }
-
     }
 }

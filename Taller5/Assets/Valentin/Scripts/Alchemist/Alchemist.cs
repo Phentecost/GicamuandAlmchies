@@ -1,13 +1,18 @@
+using Code;
 using System.Collections;
 using System.Collections.Generic;
 using TarodevController;
 using UnityEngine;
+using UnityEngine.Windows;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Alchemist : PlayerController
 {
+    #region Alchemist components configuration
+
     [SerializeField] private BoxBarrier abilityQ;
     [SerializeField] private MagicPellets abilityE;
-    
+    [SerializeField] private HealPowerIcon abilityF;
 
     [Header("Alchemist's Abilities")]
     [Header("Barrier")]
@@ -37,11 +42,15 @@ public class Alchemist : PlayerController
     [SerializeField] Animator animator;
 
 
+    #endregion
+
     protected override void Update()
     {
         GatherInput();
         base.Update();
         AbilitiesSystem();
+
+        inside = Physics2D.OverlapCircle(healRadius.position, 50f, layerOtherPlayer);
 
         animator = GetComponent<Animator>();
         
@@ -91,7 +100,6 @@ public class Alchemist : PlayerController
 
                 abilityQ.projectileSpeed = 0f;
                 Instantiate(abilityQ, launchPosition.position, transform.rotation);
-                //animator.SetBool("Attack", Input.A1);
             }
         }
 
@@ -108,8 +116,6 @@ public class Alchemist : PlayerController
 
                     abilityE.projectileSpeed = 10f;
                     Instantiate(abilityE, launchPosition.position, transform.rotation);
-
-                    //animator.SetBool("Attack", Input.A2);
                 }
             }
             else
@@ -129,10 +135,12 @@ public class Alchemist : PlayerController
                 {
                     if (!healActivated)
                     {
+                        Debug.Log("activando");
                         healCounter = healTime;
                         healActivated = true;
 
-                        //animator.SetBool("Attack", Input.A3);
+                        abilityF.projectileSpeed = 0f;
+                        Instantiate(abilityF, launchPosition.position, transform.rotation);
                     }
                 }
                 else
@@ -197,13 +205,14 @@ public class Alchemist : PlayerController
 
         if (healActivated)
         {
-            //Debug.Log("Curando...");
+            Debug.Log("Curando...");
             if (healCounter <= 0)
             {
                 if (_attacked)
                 {
                     if (inside)
                     {
+                        Debug.Log("adentro");
                         wizard.TakeDamage(healthPowerRestored);
                         healAmmo--;
                     }

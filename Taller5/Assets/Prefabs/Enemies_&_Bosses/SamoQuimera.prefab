@@ -112,10 +112,10 @@ MonoBehaviour:
     m_Extent: {x: 0.5, y: 0.5, z: 0}
   _blockLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 776
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 840
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
@@ -125,6 +125,7 @@ MonoBehaviour:
   damage: 0
   attackTheshold: 1.5
   StartHealth: 3
+  StunTimer: 0
   tongue: {fileID: 2218541338935521161}
   tongueTimer: 1
   waitForTimerATK: 1
