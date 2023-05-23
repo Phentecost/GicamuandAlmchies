@@ -91,9 +91,9 @@ public class MagicPellets : MonoBehaviour
             }
 
             BossStateManager boss2 = hit.collider.GetComponent<BossStateManager>();
-            if (boss != null) 
+            if (boss2 != null) 
             {
-                boss.TakeDamage(-3);
+                boss2.TakeDamage(-3);
             }
 
             Destroy(this.gameObject);

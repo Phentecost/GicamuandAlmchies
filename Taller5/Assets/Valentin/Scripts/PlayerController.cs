@@ -9,6 +9,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using TarodevController;
 using Code;
+using Code_DungeonSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public bool pauseControllers = false;
 
     private GameObject footsteps;
+
+    [SerializeField] public int currentRoom = 0;
 
     private Vector3 _lastPosition;
     private float _currentHorizontalSpeed, _currentVerticalSpeed;
@@ -414,7 +417,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float InvensivilityTime;
     private float _invensibleTimer;
     protected bool _attacked;
-    private int _health;
+    [SerializeField] public int _health;
     public int Health { get => _health;}
     private bool _dead = false;
     private bool _invensible;
@@ -423,8 +426,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_attacked || _invensible) return;
         _health = Mathf.Clamp(_health + dagame, 0, MaxHealth);
-        //Debug.Log(_health);
-        _attacked= true;
+        Debug.Log(_health);
+        _attacked = true;
         _invensibleTimer = InvensivilityTime;
         _invensible = true;
         OnChangeLife();
@@ -529,7 +532,6 @@ public class PlayerController : MonoBehaviour
 
         magicPellets.damage *= i;
         elementalBall.damage *= i;
-
     }
 
     public void plusHealth() 
@@ -540,9 +542,15 @@ public class PlayerController : MonoBehaviour
         GameUIManager.instance.SetLifeToFull();
     }
 
-    public void lessCooldown() 
+    public void lessCooldown(float i) 
     {
-        
+        Alchemist alchemist = DungeonManager.instance.Gicamu.GetComponent<Alchemist>();
+        Wizard wizard = DungeonManager.instance.Gicamu.GetComponent<Wizard>();
+
+        alchemist.barrierCoolDown -= i;
+        alchemist.pelletsCoolDown -= i;
+        wizard.ballCoolDown -= i;
+        wizard.stunCoolDown -= i;
     }
 
     #endregion

@@ -23,14 +23,14 @@ public class Wizard : PlayerController
     [SerializeField] private float ballTime = 1.5f;
     [SerializeField] private float ballCounter;
     [SerializeField] private int ballAmmo = 5;
-    [SerializeField] private float ballCoolDown = 4f;
+    [SerializeField] public float ballCoolDown = 4f;
     [SerializeField] private bool ballActivated = false;
 
     [Header("Stun spell")] //rango cercano
     [SerializeField] private Transform stunRadius;
     [SerializeField] private float stunTime = 2.5f;
     [SerializeField] private float stunCounter;
-    [SerializeField] private float stunCoolDown = 0f; //enemigo -> 2.5 | jefe -> 1 
+    [SerializeField] public float stunCoolDown = 0f; //enemigo -> 2.5 | jefe -> 1 
     [SerializeField] private bool stunActivated = false;
     [SerializeField] public Collider2D inside;
 
@@ -46,7 +46,7 @@ public class Wizard : PlayerController
     [SerializeField] private float stealTime = 2.5f; 
     [SerializeField] private float stealCounter;
     [SerializeField] private bool healthStealActivated = false;
-
+    
     private Room room;
     private Alchemist alchemist;
     
@@ -64,9 +64,9 @@ public class Wizard : PlayerController
 
         inside = Physics2D.OverlapCircle(stunRadius.position, 1f, layerEnemies);
 
-        room = GameObject.FindObjectOfType<Room>();
-        
-        alchemist = GameObject.FindObjectOfType<Alchemist>();
+        room = DungeonManager.instance.dungeonRooms[currentRoom];
+
+        alchemist = DungeonManager.instance.Gicamu.GetComponent<Alchemist>();
 
         boss = GameObject.FindObjectOfType<BossStateManager>();
 
@@ -165,24 +165,18 @@ public class Wizard : PlayerController
             {
                 if (!healthStealActivated)
                 {
-                    if(room.ID != 0)
+                    if(currentRoom != 0)
                     {
                         stealCounter = stealTime;
                         healthStealActivated = true;
 
-                        
-
-                        random = Random.Range(0, room.enemies.Count);
+                        //random = Random.Range(0, room.enemies.Count);
                         if (room.enemies.Count != 0)
                         {
-                            //if (enemies[random] != null)
-                            //{
-                            //    abilityM.projectileSpeed = 0f;
-                            //    Instantiate(abilityM, launchPosition.position, transform.rotation);
-                            //}
+                            abilityM.projectileSpeed = 0f;
+                            Instantiate(abilityM, launchPosition.position, transform.rotation);
                         }
                     }
-
                     else if (boss != null)
                     {
                         abilityM.projectileSpeed = 0f;
@@ -274,24 +268,22 @@ public class Wizard : PlayerController
             {
                 if (!_attacked)
                 {
-                    //if(enemies.Length > 0)
-                    //    healthSpellAmmo--;
+                    if (room.enemies.Count > 0)
+                        healthSpellAmmo--;
 
-                    //if (enemies[random] == null)
-                    //{
-                    //    foreach (Enemy e in enemies)
-                    //    {
-                    //        int i = 0;
-                    //        if (enemies[i] == null)
-                    //            i++;
-                    //        else
-                    //        {
-                    //            enemies[i].TakeDamage(-healthStole);
-                    //            alchemist.TakeDamage(healthSpellRestored);
-                    //            Debug.Log("Encontro enemigo");
-                    //            break;
-                    //        }
-                    //    }
+                    foreach (Enemy e in room.enemies)
+                    {
+                        int i = 0;
+                        if (room.enemies[i] == null)
+                            i++;
+                        else
+                        {
+                            room.enemies[i].TakeDamage(-healthStole);
+                            alchemist.TakeDamage(healthSpellRestored);
+                            Debug.Log("Encontro enemigo");
+                            break;
+                        }
+                    }
                     //    //Debug.Log("Foreach rompido/terminado");
                     //}
                     //else if (boss != null)

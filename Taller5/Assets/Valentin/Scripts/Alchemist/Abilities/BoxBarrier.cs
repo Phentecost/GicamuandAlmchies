@@ -24,4 +24,5 @@ public class BoxBarrier : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetFloat("LifeTime", lifeTime);
     }
+
 }

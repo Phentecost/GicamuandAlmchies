@@ -1,4 +1,5 @@
 using Code;
+using Code_DungeonSystem;
 using System.Collections;
 using System.Collections.Generic;
 using TarodevController;
@@ -16,14 +17,14 @@ public class Alchemist : PlayerController
 
     [Header("Alchemist's Abilities")]
     [Header("Barrier")]
-    [SerializeField] private float barrierCoolDown = 12f;
+    [SerializeField] public float barrierCoolDown = 12f;
     [SerializeField] private bool barrierActivated = false;
 
     [Header("Magic pellets")]
     [SerializeField] private int pelletsAmmo = 3;
     [SerializeField] private float pelletsTime = 1.5f;
     [SerializeField] private float pelletsCounter;
-    [SerializeField] private float pelletsCoolDown = 0.5f;
+    [SerializeField] public float pelletsCoolDown = 0.5f;
     [SerializeField] private bool pelletsActivated = false;
 
     [Header("Heal power")]
@@ -47,7 +48,7 @@ public class Alchemist : PlayerController
         base.Update();
         AbilitiesSystem();
 
-        wizard = GetComponent<Wizard>();
+        wizard = DungeonManager.instance.Gicamu.GetComponent<Wizard>();
 
         inside = Physics2D.OverlapCircle(healRadius.position, 0.5f, layerOtherPlayer);
 
@@ -116,7 +117,6 @@ public class Alchemist : PlayerController
                     Instantiate(abilityE, launchPosition.position, transform.rotation);
 
                     cd(2);
-
                 }
             }
             else
@@ -206,7 +206,7 @@ public class Alchemist : PlayerController
             //Debug.Log("Curando...");
             if (healCounter <= 0)
             {
-                if (_attacked)
+                if (!_attacked)
                 {
                     if (inside)
                     {

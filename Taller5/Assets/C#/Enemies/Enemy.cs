@@ -40,6 +40,7 @@ namespace Code_EnemiesAndAI
         void Update()
         {
             Behaviour();
+            StunSystem();
             HealthSystem();
         }
 
