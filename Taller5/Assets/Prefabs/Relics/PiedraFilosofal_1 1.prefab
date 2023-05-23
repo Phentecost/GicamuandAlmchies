@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5711752487895189911
+--- !u!1 &2119177593790849386
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 84609679032543618}
-  - component: {fileID: 7612439015994528417}
+  - component: {fileID: 5201073600911211905}
+  - component: {fileID: 7740625466689802351}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &84609679032543618
+--- !u!4 &5201073600911211905
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5711752487895189911}
+  m_GameObject: {fileID: 2119177593790849386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.039, y: -0.03, z: 0}
+  m_LocalPosition: {x: -0.038999993, y: -0.029999975, z: 0}
   m_LocalScale: {x: 1.1161089, y: 1.042114, z: 1.2444156}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4853994719777227879}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7612439015994528417
+--- !u!114 &7740625466689802351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5711752487895189911}
+  m_GameObject: {fileID: 2119177593790849386}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7550182800264274956}
   - component: {fileID: 701834633700228591}
   m_Layer: 0
-  m_Name: PiedraFilosofal_1
+  m_Name: PiedraFilosofal_1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ Transform:
   m_LocalScale: {x: 0.8959699, y: 0.95958793, z: 0.80359}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 84609679032543618}
+  - {fileID: 5201073600911211905}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,7 +186,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9358c53b05dad124cb25994eefed65f9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c3817c2dd833a14181bfe013c5f54c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

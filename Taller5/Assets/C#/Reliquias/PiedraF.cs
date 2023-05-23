@@ -14,6 +14,8 @@ namespace Code
 
         public override void ConsumeRelic()
         {
+            DungeonManager.instance.Gicamu.GetComponent<PlayerController>().RP++;
+            DungeonManager.instance.Alchies.GetComponent<PlayerController>().RP++;
             Destroy(gameObject);
         }
     }

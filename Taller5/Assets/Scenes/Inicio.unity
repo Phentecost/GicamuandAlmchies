@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 581928041}
   - component: {fileID: 581928040}
   - component: {fileID: 581928042}
+  - component: {fileID: 581928043}
   m_Layer: 5
   m_Name: Contorno
   m_TagString: Untagged
@@ -397,18 +398,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2043523072}
-        m_TargetAssemblyTypeName: Code.LoadManager, Assembly-CSharp
-        m_MethodName: GameScene
-        m_Mode: 1
+      - m_Target: {fileID: 581928043}
+        m_TargetAssemblyTypeName: Code.ButonInteraction, Assembly-CSharp
+        m_MethodName: OnChanginLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &581928043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581928038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ce5951beb0234b9ab377e188e1014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &778029431
 GameObject:
   m_ObjectHideFlags: 0

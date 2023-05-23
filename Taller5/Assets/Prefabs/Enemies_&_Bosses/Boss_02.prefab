@@ -124,11 +124,15 @@ MonoBehaviour:
   idle: {fileID: 11400000, guid: e16f95af6750f4a49a51d1977b8c7df0, type: 2}
   _states:
   - {fileID: 11400000, guid: e604bb9069279c94b823604112450252, type: 2}
+  - {fileID: 11400000, guid: 3514a46e6c98af44aaac717b664cc67a, type: 2}
+  - {fileID: 11400000, guid: 294814855331d0f43a546a18f251c7c7, type: 2}
+  - {fileID: 11400000, guid: 9c8a97f418806b646a5018277ad35ee3, type: 2}
+  - {fileID: 11400000, guid: b1a4397a04484084897aa0bba346c5f3, type: 2}
   _gicamu: {fileID: 0}
   _alchies: {fileID: 0}
   currentRoom: {fileID: 0}
   left: 1
-  relic: {fileID: 0}
+  relic: {fileID: 6321716973882256995, guid: 5dc8f813fa30b44418275e42541322f8, type: 3}
   _characterBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 1, y: 1, z: 0}

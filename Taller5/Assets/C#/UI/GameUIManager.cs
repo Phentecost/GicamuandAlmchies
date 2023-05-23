@@ -40,6 +40,7 @@ namespace Code
             instance = this;
 
             LosePanel.SetActive(false);
+            WinPanel.SetActive(false);
         }
 
         private void Update()

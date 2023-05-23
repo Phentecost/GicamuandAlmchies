@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _lastPosition;
     private float _currentHorizontalSpeed, _currentVerticalSpeed;
     [SerializeField] protected Transform launchPosition;
+    public int RP;
 
     public static event Action OnChangeLife, OnWining, OnLosing;
     public static event Action<int> CoolDown;
@@ -67,6 +68,11 @@ public class PlayerController : MonoBehaviour
         MoveCharacter();
 
         HealthSystem();
+
+        if (RP == 2)
+        {
+            OnWining();
+        }
     }
 
     #region Gather Input
