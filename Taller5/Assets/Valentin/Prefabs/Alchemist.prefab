@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseControllers: 0
   launchPosition: {fileID: 2333277870996609712}
+  RP: 0
   _characterBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.25, y: 0.36, z: 0}
@@ -206,13 +207,13 @@ MonoBehaviour:
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
   _acceleration: 90
-  _moveClamp: 13
+  _moveClamp: 10
   _deAcceleration: 60
   _apexBonus: 2
   _fallClamp: -20
   _minFallSpeed: 80
   _maxFallSpeed: 120
-  _jumpHeight: 30
+  _jumpHeight: 25
   _jumpApexThreshold: 10
   _coyoteTimeThreshold: 0.1
   _jumpBuffer: 0.1

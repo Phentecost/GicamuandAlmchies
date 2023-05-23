@@ -19,6 +19,7 @@ namespace Code_EnemiesAndAI
             CalculateCollisions();
             CalculateCollitionBehaviour();
             CalculateGravity();
+            float wait = 1;
 
             switch (base._currentState)
             {
@@ -38,13 +39,14 @@ namespace Code_EnemiesAndAI
 
                 case State.Walking:
 
-                    CalculateWalk(_target);
                     CalculateJump(_target);
+                    CalculateWalk(_target);
                     MoveCharacter();
 
                     if (distance <= attackTheshold)
                     {
                         _currentState = State.Shooting;
+                        wait = 1;
                     }
 
                     break;

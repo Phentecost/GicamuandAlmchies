@@ -103,7 +103,7 @@ MonoBehaviour:
   _alchies: {fileID: 0}
   _currentRoom: {fileID: 0}
   _acceleration: 90
-  _moveClamp: 13
+  _moveClamp: 5
   _deAcceleration: 60
   _fallClamp: -40
   _maxFallSpeed: 120
@@ -120,7 +120,7 @@ MonoBehaviour:
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
   fallDownTreshold: 2
-  _jumpHeight: 30
+  _jumpHeight: 25
   _freeColliderIterations: 20
   damage: 0
   attackTheshold: 1.5
