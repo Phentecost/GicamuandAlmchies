@@ -13,7 +13,11 @@ namespace Code_EnemiesAndAI
         #region Behaviour
         protected override void Behaviour()
         {
-           
+            /*if (!_currentRoom.roomBounds.Contains(transform.position - _currentRoom.transform.position))
+            {
+                dead();
+            }*/
+
             _target = GetClosestPlayer();
             distance = Vector2.Distance(_target.transform.position, transform.position);
             CalculateCollisions();

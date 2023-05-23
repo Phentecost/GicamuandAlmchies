@@ -254,9 +254,6 @@ public class PlayerController : MonoBehaviour
             footsteps.SetActive(false);
         }
 
-        Debug.Log(_hitRight.collider?.tag);
-        Debug.Log(_hitLeft.collider?.tag);
-
         if (_currentHorizontalSpeed > 0 && _colRight  || _currentHorizontalSpeed < 0 && _colLeft)
         {
             _currentHorizontalSpeed = 0;
@@ -540,6 +537,7 @@ public class PlayerController : MonoBehaviour
         MaxHealth = 8;
         _health = 8;
         OnChangeLife();
+        GameUIManager.instance.SetLifeToFull();
     }
 
     public void lessCooldown() 

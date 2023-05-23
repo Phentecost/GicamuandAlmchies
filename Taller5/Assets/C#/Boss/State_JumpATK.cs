@@ -93,7 +93,7 @@ namespace Code_Boses
                         float playerY = Mathf.Clamp(playerPos.y + 10, clampingFloor, clampingCeiling);
                         Vector3 newPosition = new Vector3(playerPos.x, playerY);
                         boss.transform.position = newPosition;
-                        float newY = Mathf.Clamp(boss.transform.position.y - 10, clampingFloor, clampingCeiling);
+                        float newY = Mathf.Clamp(boss.transform.position.y - 100, clampingFloor, clampingCeiling);
                         _movingTo = new Vector3(boss.transform.position.x, newY);
                         _currentBossPosition = boss.transform.position;
                         _elapsedTime = 0;

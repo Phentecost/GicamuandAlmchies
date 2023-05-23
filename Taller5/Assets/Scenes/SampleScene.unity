@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2593,26 +2593,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numbersOfRooms: 0
-  initialSecretRoomProbability: 100
+  initialSecretRoomProbability: 10
   incrisingProbabilityRate: 20
   currentProbability: 0
   spawnRoom: {fileID: 8422183762335144074, guid: 39f74cc01a0043d4883fa97ba42a40a3, type: 3}
-  enemyRooms:
-  - {fileID: 8422183762335144074, guid: 6290a0ae6863a1242a61572fcc363f68, type: 3}
-  - {fileID: 8422183762335144074, guid: 0e33750605464d84a8b56d5918cc5765, type: 3}
-  - {fileID: 5016909667632657784, guid: c132451a3bdf7a347a475ff1d417302e, type: 3}
-  - {fileID: 8422183762335144074, guid: bc62e852064e2694f995933f4326ef50, type: 3}
-  - {fileID: 8422183762335144074, guid: 9360b3032b98e9948987f5ac8944bbf4, type: 3}
-  - {fileID: 5016909667632657784, guid: 9ca983afda2e275449cfd374d12cd329, type: 3}
-  - {fileID: 4206009192890022995, guid: 8d02ab398ede36b4182970c5865d7fdb, type: 3}
-  enemyRooms2:
-  - {fileID: 8422183762335144074, guid: 67ece9742c3c7804397ae9604c9b87c9, type: 3}
-  - {fileID: 8422183762335144074, guid: 86304f0ddcaf6734b8340e66d92198bc, type: 3}
-  - {fileID: 5016909667632657784, guid: 84af4877d59df7a44a5bbc4a2d0b97b8, type: 3}
-  - {fileID: 8422183762335144074, guid: 4cc62beac21d4f640a17836be5fdd6a1, type: 3}
-  - {fileID: 8422183762335144074, guid: c5a01ded8d2982a4a99deb93b7276bdb, type: 3}
-  - {fileID: 8422183762335144074, guid: f4180b6c9bf512843b54101f8e4b8b93, type: 3}
-  - {fileID: 5016909667632657784, guid: 02dc7fe0e0d32144492bbc5699bdb7a6, type: 3}
+  enemyRooms: []
+  enemyRooms2: []
   bossRoom: {fileID: 8422183762335144074, guid: 36dfdcdb910af1a46b53b1a576331e70, type: 3}
   secretRoom: {fileID: 4206009192890022995, guid: 51e8d483d8d89364ea06877299dba6ea, type: 3}
   dungeonRooms: []
@@ -3084,7 +3070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

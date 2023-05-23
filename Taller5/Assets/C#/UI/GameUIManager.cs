@@ -107,7 +107,6 @@ namespace Code
             {
                 imagesAlchies[0].gameObject.SetActive(true);
                 imagesGicamu[0].gameObject.SetActive(true);
-                SetLifeToFull();
                 extraHeart = true;
             }
                 
