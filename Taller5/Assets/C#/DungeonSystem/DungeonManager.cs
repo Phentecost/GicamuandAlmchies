@@ -29,7 +29,7 @@ namespace Code_DungeonSystem
         [SerializeField] private List<GameObject> enemyRooms2 = new List<GameObject>();
         [SerializeField] private GameObject bossRoom;
         [SerializeField] private GameObject secretRoom;
-        [SerializeField] private List<Room> dungeonRooms;
+        [SerializeField] public List<Room> dungeonRooms;
         [Header("Characters")]
         [SerializeField] private GameObject gicamuPrefab;
         [SerializeField] private GameObject alchiesPrefab;
@@ -101,6 +101,8 @@ namespace Code_DungeonSystem
             yield return new WaitForSeconds(secondOfTransition);
             if (i >=0)
                 dungeonRooms[i + 1].ActivateEnemies(_gicamuPlayerController, _alchiesPlayerController);
+
+            _gicamuPlayerController.currentRoom++;
         }
 
         IEnumerator SpawnPlayers(Room initRoom) 
