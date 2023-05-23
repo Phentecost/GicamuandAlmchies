@@ -889,6 +889,37 @@ MonoBehaviour:
   - {x: 0.15902424, y: -3.203404, z: 0}
   - {x: 8.013146, y: -3.3421288, z: 0}
   - {x: 7.4830666, y: 4.154917, z: 0}
+--- !u!1 &3214068774923388670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992999511300017945}
+  m_Layer: 0
+  m_Name: PointA (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1992999511300017945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214068774923388670}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.326, y: 0.32, z: 0.013901219}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8422183762335144072}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3360261487810500983
 GameObject:
   m_ObjectHideFlags: 0
@@ -3330,6 +3361,37 @@ Transform:
   m_Father: {fileID: 8422183762335144072}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7994674081436570396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194961388306508984}
+  m_Layer: 0
+  m_Name: PointA (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1194961388306508984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994674081436570396}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.881, y: 0.32, z: 0.013901219}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8422183762335144072}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8422183762335144074
 GameObject:
   m_ObjectHideFlags: 0
@@ -3376,6 +3438,8 @@ Transform:
   - {fileID: 7215343311067739287}
   - {fileID: 4063204939024441101}
   - {fileID: 3585279704219080447}
+  - {fileID: 1194961388306508984}
+  - {fileID: 1992999511300017945}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3447,6 +3511,8 @@ MonoBehaviour:
     m_Center: {x: 10, y: 5, z: 0}
     m_Extent: {x: 10, y: 5, z: 0}
   ID: 0
+  posGicamu: {fileID: 7994674081436570396}
+  posAlchies: {fileID: 3214068774923388670}
   wall: {fileID: 5401491320923137664}
   secretRoom: 0
   pointA: {fileID: 8492205922751197080}

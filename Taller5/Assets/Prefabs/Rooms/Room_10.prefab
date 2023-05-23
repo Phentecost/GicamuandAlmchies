@@ -135,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500340357431307995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.442, y: 0.359, z: 0.0107533885}
+  m_LocalPosition: {x: 0.695, y: 0.306, z: 0.0107533885}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3764,6 +3764,37 @@ Transform:
   m_Father: {fileID: 8422183762335144072}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4963295339015964509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5440023369546588239}
+  m_Layer: 0
+  m_Name: PointA (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5440023369546588239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963295339015964509}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.743, y: 1.465, z: 0.0107533885}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8422183762335144072}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4973727121386688873
 GameObject:
   m_ObjectHideFlags: 0
@@ -5170,6 +5201,7 @@ Transform:
   - {fileID: 4351028868478887952}
   - {fileID: 3014677028682644327}
   - {fileID: 437016145756318816}
+  - {fileID: 5440023369546588239}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5241,6 +5273,8 @@ MonoBehaviour:
     m_Center: {x: 10, y: 5, z: 0}
     m_Extent: {x: 10, y: 5, z: 0}
   ID: 0
+  posGicamu: {fileID: 500340357431307995}
+  posAlchies: {fileID: 4963295339015964509}
   wall: {fileID: 5401491320923137664}
   secretRoom: 0
   pointA: {fileID: 500340357431307995}

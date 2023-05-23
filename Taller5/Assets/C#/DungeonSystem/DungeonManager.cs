@@ -73,22 +73,16 @@ namespace Code_DungeonSystem
         {
             TransitionManager.instance.FadeIn();
             yield return new WaitForSeconds(secondOfTransition);
-            /*cam.position = dungeonRooms[i].secretRoom? new Vector3(cam.position.x, cam.position.y -10, -10) : new Vector3(cam.position.x + 20, cam.position.y,-10);
-            if (cam.position.y < 0)
-            {
-                cam.position = new Vector3(cam.position.x, cam.position.y + 10, -10);
-            }*/
-
             Vector3 center = dungeonRooms[i+1].roomBounds.center;
-            _gicamu.transform.position = center + spawnOffset + dungeonRooms[i + 1].transform.position;
-            _alchies.transform.position = center - spawnOffset + dungeonRooms[i + 1].transform.position;
+            _gicamu.transform.position = dungeonRooms[i + 1].posGicamu.transform.position;
+            _alchies.transform.position = dungeonRooms[i + 1].posAlchies.transform.position;
             cam.gameObject.GetComponent<Camera>().orthographicSize = dungeonRooms[i + 1].CameraScale;
             CameraShaker.Instance.RestPositionOffset = new Vector3(center.x + dungeonRooms[i + 1].transform.position.x, dungeonRooms[i + 1].CamY, -10);
             PlayerController _gicamuPlayerController = _gicamu.GetComponent<PlayerController>();
             PlayerController _alchiesPlayerController = _alchies.GetComponent<PlayerController>();
-            dungeonRooms[i+1].ActivateEnemies(_gicamuPlayerController, _alchiesPlayerController);
             TransitionManager.instance.FadeOut();
             yield return new WaitForSeconds(secondOfTransition);
+            dungeonRooms[i + 1].ActivateEnemies(_gicamuPlayerController, _alchiesPlayerController);
         }
 
         IEnumerator SpawnPlayers(Room initRoom) 

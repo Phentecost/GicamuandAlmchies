@@ -12,6 +12,7 @@ namespace Code_DungeonSystem
     {
         public Bounds roomBounds;
         public int ID;
+        public GameObject posGicamu, posAlchies;
         public GameObject wall;
         public bool secretRoom;
         public GameObject pointA,pointB;

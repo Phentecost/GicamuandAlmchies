@@ -2068,7 +2068,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 13
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3425,14 +3425,14 @@ Tilemap:
     m_Data: {fileID: -1275996031, guid: 093434d2d10190c4cb62e4d33f14d432, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 2143075969, guid: 093434d2d10190c4cb62e4d33f14d432, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1096612973, guid: 093434d2d10190c4cb62e4d33f14d432, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 2112618715, guid: 093434d2d10190c4cb62e4d33f14d432, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 481051346, guid: 093434d2d10190c4cb62e4d33f14d432, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1096612973, guid: 093434d2d10190c4cb62e4d33f14d432, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 1903969168, guid: 093434d2d10190c4cb62e4d33f14d432, type: 3}
   - m_RefCount: 2
@@ -3540,6 +3540,37 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1 &3639642964886718345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4499828833963489488}
+  m_Layer: 0
+  m_Name: PointA (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4499828833963489488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639642964886718345}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.546, y: 0.233, z: 0.019542105}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8422183762335144072}
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4324947107652907942
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,7 +4852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8010584327244139725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24, y: 0.368, z: 0.019542105}
+  m_LocalPosition: {x: 0.342, y: 0.233, z: 0.019542105}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5006,6 +5037,7 @@ Transform:
   - {fileID: 5301619389037399352}
   - {fileID: 4670774807237515815}
   - {fileID: 294524286847306373}
+  - {fileID: 4499828833963489488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5077,6 +5109,8 @@ MonoBehaviour:
     m_Center: {x: 10, y: 5, z: 0}
     m_Extent: {x: 10, y: 5, z: 0}
   ID: 0
+  posGicamu: {fileID: 8010584327244139725}
+  posAlchies: {fileID: 3639642964886718345}
   wall: {fileID: 5401491320923137664}
   secretRoom: 0
   pointA: {fileID: 8010584327244139725}
