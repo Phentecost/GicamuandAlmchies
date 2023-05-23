@@ -9,9 +9,14 @@ public class ElementalBall : MonoBehaviour
     [SerializeField] public float projectileXSpeed;
     [SerializeField] public float projectileYSpeed;
     [SerializeField] private float lifeTime;
+    [SerializeField] public int damage;
+    private Rigidbody2D rb;
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+
+        damage = -3;
         lifeTime = 10f;
         Destroy(gameObject, lifeTime);
     }
@@ -76,7 +81,7 @@ public class ElementalBall : MonoBehaviour
             Enemy en = hit.collider.GetComponent<Enemy>();
             if (en != null)
             {
-                en.TakeDamage(-3);
+                en.TakeDamage(damage);
             }
 
             Destroy(this.gameObject);

@@ -15,7 +15,7 @@ public class BoxBarrier : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        lifeTime = 2.5f;
+        lifeTime = 3.5f;
         Destroy(gameObject, lifeTime);
     }
 

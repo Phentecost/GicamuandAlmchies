@@ -125,7 +125,7 @@ MonoBehaviour:
   damage: 0
   attackTheshold: 1.5
   StartHealth: 3
-  StunTimer: 0
+  StunTimer: 2.5
   tongue: {fileID: 2218541338935521161}
   tongueTimer: 1
   waitForTimerATK: 3

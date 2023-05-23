@@ -40,8 +40,8 @@ public class StunSpellIcon : MonoBehaviour
 
     private Vector2 NewDirection()
     {
-        float x = Random.Range(-1f, 1f);
-        float y = Random.Range(-1f, 1f);
+        float x = Random.Range(-0.5f, 0.5f);
+        float y = Random.Range(-0.5f, 0.5f);
 
         Vector2 vector2 = new Vector2(x, y).normalized;
 
