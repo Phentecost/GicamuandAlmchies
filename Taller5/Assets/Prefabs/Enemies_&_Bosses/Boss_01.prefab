@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2716681079090689399}
   - component: {fileID: 2716681079090689392}
   - component: {fileID: 8560181476657673464}
-  m_Layer: 11
+  - component: {fileID: -4383491918967378629}
+  m_Layer: 10
   m_Name: Boss_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,13 +131,40 @@ MonoBehaviour:
   _alchies: {fileID: 0}
   currentRoom: {fileID: 0}
   left: 1
+  relic: {fileID: 6321716973882256995, guid: a1ff04a3b11285241b40fff395a51dce, type: 3}
   _characterBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 1, y: 1, z: 0}
   _blockLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
   StartHealth: 10
+--- !u!61 &-4383491918967378629
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716681079090689393}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.68, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0

@@ -151,7 +151,7 @@ namespace Code_EnemiesAndAI
         {
             CalculateRaysRanges();
 
-            (_colDown, _hitDown) = GetClosestPlayer().transform.position.y < transform.position.y && Vector2.Distance(GetClosestPlayer().transform.position, transform.position) < fallDownTreshold ?  Detection(_raysDown, _groundLayer) : Detection(_raysDown, _blockLayer);
+            (_colDown, _hitDown) = GetClosestPlayer().transform.position.y < transform.position.y && Vector2.Distance(GetClosestPlayer().transform.position, transform.position) < fallDownTreshold ? Detection(_raysDown, _blockLayer) : Detection(_raysDown, _groundLayer);
             (_colUp, _hitUp) = Detection(_raysUp, _blockLayer);
             (_colLeft, _hitLeft) = Detection(_raysLeft, _blockLayer);
             (_colRight, _hitRight) = Detection(_raysRight, _blockLayer);

@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         if(_dead || pauseControllers) return;
         RunCollisionChecks();
+        CalculateCollitionBehaviour();
 
         CalculateWalk(); // Horizontal movement
         CalculateJumpApex(); // Affects fall speed, so calculate before gravity
@@ -91,12 +92,14 @@ public class PlayerController : MonoBehaviour
     [Header("COLLISION")][SerializeField] private Bounds _characterBounds;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _roofLayer;
+    [SerializeField] private LayerMask _laserLayer;
     [SerializeField] private int _detectorCount = 3;
     [SerializeField] private float _detectionRayLength = 0.1f;
     [SerializeField][Range(0.1f, 0.3f)] private float _rayBuffer = 0.1f; // Prevents side detectors hitting the ground
 
     private RayRange _raysUp, _raysRight, _raysDown, _raysLeft;
     private bool _colUp, _colRight, _colDown, _colLeft;
+    public RaycastHit2D _hitUp, _hitDown, _hitRight, _hitLeft;
 
     private float _timeLeftGrounded;
 
@@ -108,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
         // Ground
         LandingThisFrame = false;
-        var groundedCheck = Input.FallDown? RunDetection(_raysDown, _groundLayer) : RunDetection(_raysDown, _roofLayer);
+        (bool groundedCheck, RaycastHit2D d) = Input.FallDown? Detection(_raysDown, _groundLayer) : Detection(_raysDown, _roofLayer);
         if (_colDown && !groundedCheck) _timeLeftGrounded = Time.time; // Only trigger when first leaving
         else if (!_colDown && groundedCheck)
         {
@@ -117,15 +120,51 @@ public class PlayerController : MonoBehaviour
         }
 
         _colDown = groundedCheck;
+        _hitDown = d;
+        (_colUp, _hitUp) = Detection(_raysUp, _laserLayer);
+        (_colLeft, _hitLeft) = Detection(_raysLeft, _laserLayer);
+        (_colRight, _hitRight) = Detection(_raysRight, _laserLayer);
 
-        _colUp = RunDetection(_raysUp, _groundLayer);
-        _colLeft = RunDetection(_raysLeft, _groundLayer);
-        _colRight = RunDetection(_raysRight, _groundLayer);
-
-        bool RunDetection(RayRange range, LayerMask layer)
+        (bool, RaycastHit2D) Detection(RayRange range, LayerMask layer)
         {
-            return EvaluateRayPositions(range).Any(point => Physics2D.Raycast(point, range.Dir, _detectionRayLength, layer));
+            bool Collition = false;
+            RaycastHit2D ray = new RaycastHit2D();
+
+            foreach (Vector2 point in EvaluateRayPositions(range))
+            {
+                ray = Physics2D.Raycast(point, range.Dir, _detectionRayLength, layer);
+
+                if (ray.collider != null)
+                {
+                    Collition = true;
+                }
+
+            }
+            return (Collition, ray);
+            //return CalculatePointsPositions(range).Any((point) => Physics2D.Raycast(point, range.Dir,out hit,_detectionRayLength, layer));
         }
+    }
+
+    protected void CalculateCollitionBehaviour()
+    {
+        RaycastHit2D hit = ReturnHit();
+        if (hit)
+        {
+            Laser p = hit.collider.GetComponent<Laser>();
+
+            if (p != null)
+            {
+                this.TakeDamage(-1);
+            }
+        }
+    }
+
+    protected RaycastHit2D ReturnHit()
+    {
+        if (_hitRight) return _hitRight;
+        if (_hitUp) return _hitUp;
+        if (_hitDown) return _hitDown;
+        return _hitLeft;
     }
 
     private void CalculateRayRanged()
@@ -209,11 +248,14 @@ public class PlayerController : MonoBehaviour
             footsteps.SetActive(false);
         }
 
-        if (_currentHorizontalSpeed > 0 && _colRight || _currentHorizontalSpeed < 0 && _colLeft)
+        Debug.Log(_hitRight.collider?.tag);
+        Debug.Log(_hitLeft.collider?.tag);
+
+        if (_currentHorizontalSpeed > 0 && _colRight  || _currentHorizontalSpeed < 0 && _colLeft)
         {
-            // Don't walk through walls
             _currentHorizontalSpeed = 0;
             footsteps.SetActive(false);
+
         }
     }
 
@@ -406,6 +448,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void fullHeal() 
+    {
+        _health = MaxHealth;
+        GameUIManager.instance.SetLifeToFull();
+    }
+
     #endregion
 
     #region StunSystem
@@ -423,7 +471,7 @@ public class PlayerController : MonoBehaviour
 
     private void StunSystem() 
     {
-        Debug.Log(_stuned);
+        //Debug.Log(_stuned);
         if (_stuned) 
         {
             _currentHorizontalSpeed = 0;

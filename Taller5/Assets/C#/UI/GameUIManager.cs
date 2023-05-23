@@ -106,6 +106,7 @@ namespace Code
             {
                 imagesAlchies[0].gameObject.SetActive(true);
                 imagesGicamu[0].gameObject.SetActive(true);
+                SetLifeToFull();
                 extraHeart = true;
             }
                 
@@ -120,6 +121,15 @@ namespace Code
                 {
                     imagesGicamu[dataCase.index].sprite = dataCase.gimg;
                 }
+            }
+        }
+
+        public void SetLifeToFull() 
+        {
+            for (int i = 0; i < imagesAlchies.Count; i++)
+            {
+                imagesAlchies[i].sprite = _case[0].aimg;
+                imagesGicamu[i].sprite = _case[0].gimg;
             }
         }
 

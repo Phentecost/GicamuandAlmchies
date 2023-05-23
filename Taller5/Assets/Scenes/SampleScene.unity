@@ -1648,6 +1648,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195066350}
   m_CullTransparentMesh: 1
+--- !u!1 &1257616344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1257616346}
+  - component: {fileID: 1257616345}
+  m_Layer: 0
+  m_Name: LoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1257616345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257616344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da73df103cbbd894a8b313d5517746f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1257616346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257616344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.60685, y: 5.3608356, z: 0.20659171}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356937019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,6 +2091,7 @@ MonoBehaviour:
   currentProbability: 0
   spawnRoom: {fileID: 8422183762335144074, guid: 39f74cc01a0043d4883fa97ba42a40a3, type: 3}
   enemyRooms: []
+  enemyRooms2: []
   bossRoom: {fileID: 8422183762335144074, guid: 36dfdcdb910af1a46b53b1a576331e70, type: 3}
   secretRoom: {fileID: 4206009192890022995, guid: 51e8d483d8d89364ea06877299dba6ea, type: 3}
   dungeonRooms: []
@@ -2054,7 +2099,7 @@ MonoBehaviour:
   alchiesPrefab: {fileID: 6327908040499586707, guid: 2530dd97c7f5f7243a14b9ebf31601fb, type: 3}
   spawnOffset: {x: 2, y: 0, z: 0}
   secondOfTransition: 1
-  Boss01Prefab: {fileID: 2716681079090689393, guid: 53c0899cfc7824f44a9f6b49bcf90afa, type: 3}
+  Boss01Prefab: {fileID: 2244855303436442210, guid: f0643c416410de5479dcfcbd60a0b834, type: 3}
   Boss02Prefab: {fileID: 2244855303436442210, guid: f0643c416410de5479dcfcbd60a0b834, type: 3}
   Relics:
   - {fileID: 5230414434262312720, guid: 3a9238b848aca6f40a5dcaf1172f019e, type: 3}

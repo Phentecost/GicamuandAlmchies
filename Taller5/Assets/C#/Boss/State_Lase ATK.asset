@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castingTimer: 2
   laserPrefab: {fileID: 1532176480820810117, guid: 8a74ca3c180f5704291dd9361e677a87, type: 3}
-  laserLength: 10
+  laserLength: 20
   laserSpeed: 25
   laserDuration: 5
-  _state: 2

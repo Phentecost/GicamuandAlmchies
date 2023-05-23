@@ -230,6 +230,9 @@ MonoBehaviour:
   _roofLayer:
     serializedVersion: 2
     m_Bits: 72
+  _laserLayer:
+    serializedVersion: 2
+    m_Bits: 136
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
@@ -264,6 +267,8 @@ MonoBehaviour:
   stunCoolDown: 6
   stunActivated: 0
   random: 0
+  enemies: []
+  boss: {fileID: 0}
   layerEnemies:
     serializedVersion: 2
     m_Bits: 3072

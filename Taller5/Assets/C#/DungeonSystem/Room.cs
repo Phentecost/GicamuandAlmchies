@@ -57,6 +57,8 @@ namespace Code_DungeonSystem
 
         private void Update()
         {
+            if (boss)
+                return;
             if (!clear) 
             {
                 if (enemies.Count == 0)
@@ -67,27 +69,26 @@ namespace Code_DungeonSystem
             }
         }
 
-        private void SpawnPortals() 
+        public void SpawnPortals() 
         {
-            if (!boss)
+
+            if (secretRoom)
             {
-                if (secretRoom)
-                {
-                    Instantiate(portal, pointA.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID);
-                    Instantiate(portal, pointB.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID + 1);
+                Instantiate(portal, pointA.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID);
+                Instantiate(portal, pointB.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID + 1);
 
-                }
-                else
-                {
-                    Instantiate(portal, pointB.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID);
-                }
-
-                if (relic != null)
-                {
-                    GameObject g = Instantiate(relic, roomBounds.center + transform.position, Quaternion.identity);
-                    g.GetComponent<Reliquia>().SetUp();
-                }
             }
+            else
+            {
+                Instantiate(portal, pointB.transform.position, Quaternion.identity).GetComponent<Portals>().SetUp(ID);
+            }
+
+            if (relic != null)
+            {
+                GameObject g = Instantiate(relic, roomBounds.center + transform.position, Quaternion.identity);
+                g.GetComponent<Reliquia>().SetUp();
+            }
+        
         }
     }
 }

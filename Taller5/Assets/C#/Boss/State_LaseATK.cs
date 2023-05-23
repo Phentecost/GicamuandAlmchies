@@ -2,6 +2,9 @@ using Code_VFX;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+using TarodevController;
+using Code;
 
 namespace Code_Boses
 {
@@ -13,8 +16,10 @@ namespace Code_Boses
         [SerializeField] GameObject laserPrefab;
         private VFXLaserController G;
         private LineRenderer laser;
+        private Laser L;
         [SerializeField] float laserLength;
         private float _direction;
+        private float D;
         [SerializeField] float laserSpeed;
         private float _velocity;
         [SerializeField] float laserDuration;
@@ -36,16 +41,21 @@ namespace Code_Boses
             endParticles= false;
             G = Instantiate(laserPrefab,boss.transform.position,Quaternion.identity).GetComponent<VFXLaserController>();
             laser = G.laser;
+            L = G.L;
             G.SetUP(boss.transform.position);
             _state = state.Chargind;
-            _direction = laserLength;
-            if (!boss.left) _direction *= -1;
-            laserScale = Vector3.zero;
+            _direction = boss.transform.position.x + laserLength;
+            D = laserLength;
+            if (!boss.left){ _direction *= -1; D*= -1; }
+            laserScale = boss.transform.position;
+            laser.transform.position = new Vector3(-100,-100);
             G.StartFirstHalfVFX();
         }
 
         public override void UpdateState(BossStateManager boss)
         {
+            
+
             switch (_state) 
             {
                 case state.Chargind:
@@ -64,8 +74,9 @@ namespace Code_Boses
                 case state.Fire:
 
                     float newScale = Mathf.SmoothDamp(laserScale.x, _direction, ref _velocity, laserSpeed * Time.deltaTime);
-                    laserScale = new Vector3(newScale, 0.3f, 1);
+                    laserScale = new Vector3(newScale,boss.transform.position.y, 1);
                     laser.SetPosition(1, laserScale);
+                    laser.transform.position = new Vector3(boss.transform.position.x + (D / 2) , boss.transform.position.y);
                     _laserDuration -= Time.deltaTime;
                     if (_laserDuration <= 0)
                     {
@@ -100,9 +111,9 @@ namespace Code_Boses
 
                 case state.Realese:
                     float newScale2 = Mathf.SmoothDamp(laserScale.x, boss.transform.position.x, ref _velocity, laserSpeed * Time.deltaTime);
-                    laserScale = new Vector3(newScale2, 0.3f, 1);
+                    laserScale = new Vector3(newScale2, boss.transform.position.y, 1);
                     laser.SetPosition(1, laserScale);
-
+                    laser.transform.position = new Vector3(-100, -100);
                     if (endParticles)
                     {
                         G.EndFirstHalfVFX();
@@ -120,5 +131,7 @@ namespace Code_Boses
 
             }
         }
+
+       
     }
 }

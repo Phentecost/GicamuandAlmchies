@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DisolveRelicGree
+  m_Name: DisolvePiedraF
   m_Shader: {fileID: -6465566751694194690, guid: 04c9305af68399e42b18cf114ea3b996, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -46,6 +46,6 @@ Material:
     - _DisolveWidth: 0.5
     - _NoiseScale: 25
     m_Colors:
-    - _Color: {r: 0.044735286, g: 3.1612995, b: 0.14267108, a: 1}
-    - _DisolveColor: {r: 0, g: 5.5267344, b: 0.15672308, a: 1}
+    - _Color: {r: 0.050446175, g: 3.2845538, b: 3.5648696, a: 1}
+    - _DisolveColor: {r: 0, g: 9.851044, b: 5.555732, a: 1}
   m_BuildTextureStacks: []

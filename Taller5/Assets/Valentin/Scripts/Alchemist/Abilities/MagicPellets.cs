@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TarodevController;
+using Code;
+using Code_Boses;
 
 public class MagicPellets : MonoBehaviour
 {
@@ -78,6 +80,12 @@ public class MagicPellets : MonoBehaviour
             if (en != null)
             {
                 en.TakeDamage(-3);
+            }
+
+            BossStateManager boss = hit.collider.GetComponent<BossStateManager>();
+            if (boss != null) 
+            {
+                boss.TakeDamage(-3);
             }
 
             Destroy(this.gameObject);

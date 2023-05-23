@@ -1,3 +1,4 @@
+using Code;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace Code_VFX
     public class VFXLaserController : MonoBehaviour
     {
         public LineRenderer laser;
+        public Laser L;
         [SerializeField] ParticleSystem startBeam, endBeam, startParticles, endParticles;
 
         public void SetUP(Vector3 i)

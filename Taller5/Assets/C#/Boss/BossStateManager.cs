@@ -18,6 +18,7 @@ namespace Code_Boses
         public Room currentRoom;
         public bool left = true;
         private bool ready = false;
+        [SerializeField] GameObject relic;
 
         void Update()
         {
@@ -27,6 +28,7 @@ namespace Code_Boses
                 CalculateCollisions();
                 CalculateCollitionBehaviour();
                 _currentState.UpdateState(this);
+                //Debug.Log(_currentHealth);
             }
         }
 
@@ -91,7 +93,7 @@ namespace Code_Boses
         #region Collisions
 
         [Header("Collisions")]
-        [SerializeField] protected Bounds _characterBounds;
+        [SerializeField] public Bounds _characterBounds;
         [SerializeField] protected LayerMask _blockLayer;
         [SerializeField] protected int _detectorCount = 3;
         [SerializeField] protected float _detectionRayLength = 0.1f;
@@ -202,13 +204,19 @@ namespace Code_Boses
         public void TakeDamage(int damage)
         {
             _currentHealth += damage;
-            Debug.Log(_currentHealth);
+            //Debug.Log(_currentHealth);
         }
 
         public void HealthSystem()
         {
             if (_currentHealth <= 0)
             {
+                GameObject g = Instantiate(relic, currentRoom.roomBounds.center + currentRoom.transform.position, Quaternion.identity);
+                g.GetComponent<Reliquia>().SetUp();
+                currentRoom.secretRoom = false;
+                currentRoom.SpawnPortals();
+                DungeonManager.instance.Gicamu.GetComponent<PlayerController>().fullHeal();
+                DungeonManager.instance.Alchies.GetComponent<PlayerController>().fullHeal();
                 Destroy(gameObject);
             }
         }

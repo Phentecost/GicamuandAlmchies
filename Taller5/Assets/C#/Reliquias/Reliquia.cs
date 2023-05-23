@@ -21,7 +21,7 @@ namespace Code
             SetUp();
         }
 
-        public void SetUp()
+        public virtual void SetUp()
         {
             mat = GetComponent<SpriteRenderer>().material;
             ready = false;

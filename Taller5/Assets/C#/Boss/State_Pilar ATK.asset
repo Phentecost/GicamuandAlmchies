@@ -16,6 +16,6 @@ MonoBehaviour:
   pilarPrefab: {fileID: 1457376797285514994, guid: a0d4b7dae0256b949befff7bf2654b78, type: 3}
   sealPrefab: {fileID: 4878629445200974055, guid: 7090376d0b8d42c47bbddd934c28696a, type: 3}
   pilarVelocity: 15
-  pilarHigh: 5
+  pilarHigh: 10
   pilarLifeTimerDuration: 2
-  floor: -0.8
+  floor: 0.8
