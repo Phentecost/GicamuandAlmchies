@@ -125,7 +125,7 @@ MonoBehaviour:
   damage: 0
   attackTheshold: 5
   StartHealth: 3
-  StunTimer: 0
+  StunTimer: 2.5
   jumpThreshold: 5
   bulletPrefab: {fileID: 4950402766463259929, guid: 6f51f30cfe26ff843aa45feef1df725a, type: 3}
   waitForTimerATK: 5

@@ -18,7 +18,7 @@ namespace Code_DungeonSystem
         public GameObject pointA,pointB;
         public GameObject floor;
         public GameObject portal;
-        public List<Enemy> enemies= new List<Enemy>();
+        public List<Enemy> enemies = new List<Enemy>();
         public bool clear = false;
         public bool boss;
         public BossStateManager bossOBJ;

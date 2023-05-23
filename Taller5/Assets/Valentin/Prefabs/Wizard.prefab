@@ -267,6 +267,8 @@ MonoBehaviour:
   stunCounter: 0
   stunCoolDown: 6
   stunActivated: 0
+  inside: 0
+  healthStealRadius: {fileID: 0}
   random: 0
   enemies: []
   boss: {fileID: 0}
@@ -278,7 +280,6 @@ MonoBehaviour:
   stealTime: 2.5
   stealCounter: 0
   healthStealActivated: 0
-  inside: 0
   animator: {fileID: 1505349699500317048}
 --- !u!61 &-1594514150631080684
 BoxCollider2D:

@@ -11,10 +11,12 @@ public class MagicPellets : MonoBehaviour
 {
     [SerializeField] public float projectileSpeed;
     [SerializeField] private float lifeTime;
+    [SerializeField] public int damage;
     private Rigidbody2D rb;
 
     void Awake()
     {
+        damage = -3;
         rb = GetComponent<Rigidbody2D>();
         lifeTime = 10f;
         Destroy(gameObject, lifeTime);
@@ -79,10 +81,16 @@ public class MagicPellets : MonoBehaviour
             Enemy en = hit.collider.GetComponent<Enemy>();
             if (en != null)
             {
-                en.TakeDamage(-3);
+                en.TakeDamage(damage);
             }
 
             BossStateManager boss = hit.collider.GetComponent<BossStateManager>();
+            if (boss != null) 
+            {
+                boss.TakeDamage(-3);
+            }
+
+            BossStateManager boss2 = hit.collider.GetComponent<BossStateManager>();
             if (boss != null) 
             {
                 boss.TakeDamage(-3);

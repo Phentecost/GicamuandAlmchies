@@ -1,13 +1,18 @@
+using Code;
 using System.Collections;
 using System.Collections.Generic;
 using TarodevController;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Alchemist : PlayerController
 {
     [SerializeField] private BoxBarrier abilityQ;
     [SerializeField] private MagicPellets abilityE;
-    
+    [SerializeField] private HealPowerIcon abilityF;
+
 
     [Header("Alchemist's Abilities")]
     [Header("Barrier")]
@@ -36,12 +41,15 @@ public class Alchemist : PlayerController
     [Header("Animation")]
     [SerializeField] Animator animator;
 
-
     protected override void Update()
     {
         GatherInput();
         base.Update();
         AbilitiesSystem();
+
+        wizard = GetComponent<Wizard>();
+
+        inside = Physics2D.OverlapCircle(healRadius.position, 0.5f, layerOtherPlayer);
 
         animator = GetComponent<Animator>();
         
@@ -78,7 +86,6 @@ public class Alchemist : PlayerController
             animator.SetBool("Attack", true);
     }
 
-
     protected void AbilitiesSystem()
     {
         //Barrera
@@ -91,7 +98,6 @@ public class Alchemist : PlayerController
 
                 abilityQ.projectileSpeed = 0f;
                 Instantiate(abilityQ, launchPosition.position, transform.rotation);
-                //animator.SetBool("Attack", Input.A1);
             }
         }
 
@@ -111,7 +117,6 @@ public class Alchemist : PlayerController
 
                     cd(2);
 
-                    //animator.SetBool("Attack", Input.A2);
                 }
             }
             else
@@ -121,7 +126,6 @@ public class Alchemist : PlayerController
             }
         }
 
-        
         //Heal cercano
         if (Input.A3)
         {
@@ -134,7 +138,8 @@ public class Alchemist : PlayerController
                         healCounter = healTime;
                         healActivated = true;
 
-                        //animator.SetBool("Attack", Input.A3);
+                        abilityE.projectileSpeed = 0f;
+                        Instantiate(abilityF, launchPosition.position, transform.rotation);
                     }
                 }
                 else
@@ -144,7 +149,6 @@ public class Alchemist : PlayerController
                 }
             }
         }
-        
     }
 
     private void Barrier()

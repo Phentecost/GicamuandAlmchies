@@ -421,10 +421,12 @@ public class PlayerController : MonoBehaviour
     public int Health { get => _health;}
     private bool _dead = false;
     private bool _invensible;
+
     public void TakeDamage(int dagame) 
     {
         if (_attacked || _invensible) return;
         _health = Mathf.Clamp(_health + dagame, 0, MaxHealth);
+        //Debug.Log(_health);
         _attacked= true;
         _invensibleTimer = InvensivilityTime;
         _invensible = true;
@@ -525,6 +527,11 @@ public class PlayerController : MonoBehaviour
 
     public void plusATK(int i) 
     {
+        MagicPellets magicPellets = gameObject.GetComponent<MagicPellets>();
+        ElementalBall elementalBall = gameObject.GetComponent<ElementalBall>();
+
+        magicPellets.damage *= i;
+        elementalBall.damage *= i;
 
     }
 
