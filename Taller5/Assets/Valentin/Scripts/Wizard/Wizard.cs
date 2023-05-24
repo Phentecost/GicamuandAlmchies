@@ -42,7 +42,7 @@ public class Wizard : PlayerController
     [SerializeField] private Enemy enemy;
     [SerializeField] private BossStateManager boss;
     [SerializeField] private LayerMask layerEnemies;
-    [SerializeField] private int healthStole = 4;
+    [SerializeField] private int healthStole = -4;
     private int healthSpellRestored = 2;
     [SerializeField] private int healthSpellAmmo = 2;
     [SerializeField] private float stealTime = 2.5f; 
@@ -70,7 +70,7 @@ public class Wizard : PlayerController
 
         alchemist = DungeonManager.instance.Alchies.GetComponent<Alchemist>();
 
-        boss = GameObject.FindObjectOfType<BossStateManager>();
+        boss = FindObjectOfType<BossStateManager>();
 
         animator = GetComponent<Animator>();
         
@@ -170,7 +170,7 @@ public class Wizard : PlayerController
                             Instantiate(abilityM, launchPosition.position, transform.rotation);
                             Debug.Log("entra por enemy");
                         }
-                        else if (currentRoom >= 21)
+                        else if (currentRoom >= 1 && healthSpellAmmo > 0)
                         {
                             abilityM.projectileSpeed = 0f;
                             Instantiate(abilityM, launchPosition.position, transform.rotation);
@@ -257,18 +257,17 @@ public class Wizard : PlayerController
                             i++;
                         else
                         {
-                            room.enemies[i].TakeDamage(-healthStole);
+                            room.enemies[i].TakeDamage(healthStole);
                             alchemist.TakeDamage(healthSpellRestored);
                             Debug.Log("Encontro enemigo");
                             healthSpellAmmo--;
                             break;
                         }
                     }
-                    //Debug.Log("Foreach rompido/terminado");
 
-                    if (currentRoom >= 21)
+                    if (currentRoom >= 1)
                     {
-                        boss.TakeDamage(-healthStole);
+                        boss.TakeDamage(healthStole);
                         alchemist.TakeDamage(healthSpellRestored);
                         Debug.Log("Encontro jefe");
                         healthSpellAmmo--;

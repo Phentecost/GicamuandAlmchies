@@ -205,7 +205,7 @@ namespace Code_Boses
         {
             _currentHealth += damage;
             AudioManager.instance.PlayAudio(7);
-            //Debug.Log(_currentHealth);
+            Debug.Log(_currentHealth);
         }
 
         public void HealthSystem()

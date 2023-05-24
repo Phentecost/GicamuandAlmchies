@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.023529414, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.023529414, g: 1, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseControllers: 0
+  currentRoom: 0
+  bossRoom: 0
   launchPosition: {fileID: 810969649602861254}
   RP: 0
   _characterBounds:
@@ -253,6 +255,7 @@ MonoBehaviour:
   StartHealth: 6
   MaxHealth: 6
   InvensivilityTime: 3
+  _health: 0
   StunTimer: 1
   abilityB: {fileID: 5369711609284794906, guid: f7f134b17edf73d4a91ec2345f0a2ada, type: 3}
   abilityN: {fileID: 8370765928761216842, guid: 95a4951e7d8c7b94ea42e25c2a41175a, type: 3}
@@ -261,16 +264,17 @@ MonoBehaviour:
   ballCounter: 0
   ballAmmo: 5
   ballCoolDown: 4
+  ballCoolDownCounter: 0
   ballActivated: 0
   stunRadius: {fileID: 437754387315030595}
   stunTime: 2.5
   stunCounter: 0
   stunCoolDown: 6
+  stunCoolDownCounter: 0
   stunActivated: 0
-  inside: 0
-  healthStealRadius: {fileID: 0}
+  inside: {fileID: 0}
   random: 0
-  enemies: []
+  enemy: {fileID: 0}
   boss: {fileID: 0}
   layerEnemies:
     serializedVersion: 2
@@ -402,7 +406,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.022774577, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.022774577, g: 1, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -486,7 +490,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.022774577, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.022774577, g: 1, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -570,7 +574,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9056604, g: 0.89511883, b: 0.51690996, a: 0.39215687}
+  m_Color: {r: 0.9056604, g: 0.89511883, b: 0.51690996, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

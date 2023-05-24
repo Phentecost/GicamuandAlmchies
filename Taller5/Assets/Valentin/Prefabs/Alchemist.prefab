@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5505073, g: 0.8396226, b: 0.5505073, a: 0.39215687}
+  m_Color: {r: 0.5505073, g: 0.8396226, b: 0.5505073, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseControllers: 0
+  currentRoom: 0
+  bossRoom: 0
   launchPosition: {fileID: 2333277870996609712}
   RP: 0
   _characterBounds:
@@ -222,6 +224,7 @@ MonoBehaviour:
   StartHealth: 6
   MaxHealth: 6
   InvensivilityTime: 3
+  _health: 0
   StunTimer: 1
   abilityQ: {fileID: 9162102179728132213, guid: 0f17e58cbb57e99418586fd9bd65f9fd, type: 3}
   abilityE: {fileID: 8038840281743550472, guid: a32f9c1108e274c408cf12c0d927cc1c, type: 3}
@@ -363,7 +366,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.022774577, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.022774577, g: 1, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -447,7 +450,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.022774577, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.022774577, g: 1, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -531,7 +534,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.022774577, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.022774577, g: 1, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
