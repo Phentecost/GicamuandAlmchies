@@ -32,7 +32,7 @@ namespace Code_Boses
             }
         }
 
-        public void SwichState() 
+        public void SwichState()
         {
             int i = UnityEngine.Random.Range(0, _states.Count);
             _currentState = _states[i];
@@ -64,13 +64,13 @@ namespace Code_Boses
             }
         }
 
-        public void SetUp(PlayerController _gicamu, PlayerController _alchies, Room currentRoom) 
+        public void SetUp(PlayerController _gicamu, PlayerController _alchies, Room currentRoom)
         {
-            this._gicamu= _gicamu;
-            this._alchies= _alchies;
-            this.currentRoom=currentRoom;
+            this._gicamu = _gicamu;
+            this._alchies = _alchies;
+            this.currentRoom = currentRoom;
             _currentHealth = StartHealth;
-            ready= true;
+            ready = true;
             _currentState.EnterState(this);
         }
 
@@ -80,12 +80,12 @@ namespace Code_Boses
 
         public void Flip()
         {
-           
+
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             left = !left;
             transform.localScale = localScale;
-            
+
         }
 
         #endregion
@@ -140,7 +140,7 @@ namespace Code_Boses
             {
                 PlayerController p = hit.collider.GetComponent<PlayerController>();
 
-                if (p!= null)
+                if (p != null)
                 {
                     p.TakeDamage(-1);
                 }
@@ -215,7 +215,7 @@ namespace Code_Boses
                 GameObject g = Instantiate(relic, currentRoom.roomBounds.center + currentRoom.transform.position, Quaternion.identity);
                 g.GetComponent<Reliquia>().SetUp();
                 currentRoom.secretRoom = false;
-                if(!currentRoom.f)
+                if (!currentRoom.f)
                     currentRoom.SpawnPortals();
                 DungeonManager.instance.Gicamu.GetComponent<PlayerController>().fullHeal();
                 DungeonManager.instance.Alchies.GetComponent<PlayerController>().fullHeal();

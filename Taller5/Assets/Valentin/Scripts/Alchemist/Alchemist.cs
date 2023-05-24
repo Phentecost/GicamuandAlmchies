@@ -108,6 +108,7 @@ public class Alchemist : PlayerController
         {
             if (pelletsAmmo > 0f)
             {
+                AudioManager.instance.PlayAudio(3);
                 if (!pelletsActivated)
                 {
                     pelletsCounter = pelletsTime;
@@ -116,8 +117,6 @@ public class Alchemist : PlayerController
 
                     abilityE.projectileSpeed = 10f;
                     Instantiate(abilityE, launchPosition.position, transform.rotation);
-
-                    AudioManager.instance.PlayAudio(3);
                 }
             }
             else
@@ -181,6 +180,7 @@ public class Alchemist : PlayerController
             {
                 pelletsAmmo--;
                 pelletsActivated = false;
+                
             }
             else
             {

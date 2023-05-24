@@ -24,7 +24,7 @@ public class Wizard : PlayerController
     [SerializeField] private float ballTime = 1.5f;
     [SerializeField] private float ballCounter;
     [SerializeField] private int ballAmmo = 5;
-    [SerializeField] public float ballCoolDown = 4f;
+    [SerializeField] public float ballCoolDown = 2f;
     [SerializeField] public float ballCoolDownCounter;
     [SerializeField] private bool ballActivated = false;
 
@@ -112,10 +112,12 @@ public class Wizard : PlayerController
         //Bola elemental diagonal
         if (Input.A1)
         {
+
             if (ballAmmo > 0f)
             {
                 if (!ballActivated)
                 {
+                    AudioManager.instance.PlayAudio(6);
                     ballCounter = ballTime;
                     ballCoolDownCounter = ballCoolDown;
                     ballActivated = true;
@@ -123,7 +125,7 @@ public class Wizard : PlayerController
                     abilityB.projectileXSpeed = 5f;
                     abilityB.projectileYSpeed = 5f;
                     Instantiate(abilityB, launchPosition.position, transform.rotation);
-                    AudioManager.instance.PlayAudio(6);
+                    
                 }
             }
         }
@@ -168,7 +170,7 @@ public class Wizard : PlayerController
                             Instantiate(abilityM, launchPosition.position, transform.rotation);
                             Debug.Log("entra por enemy");
                         }
-                        else if (boss != null)
+                        else if (currentRoom >= 21)
                         {
                             abilityM.projectileSpeed = 0f;
                             Instantiate(abilityM, launchPosition.position, transform.rotation);
@@ -191,6 +193,7 @@ public class Wizard : PlayerController
         {
             if (ballCounter <= 0f)
             {
+                
                 ballAmmo--;
                 ballActivated = false;
             }

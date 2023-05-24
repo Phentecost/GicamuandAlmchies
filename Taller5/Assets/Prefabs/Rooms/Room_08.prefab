@@ -1514,6 +1514,7 @@ MonoBehaviour:
   enemies: []
   clear: 0
   boss: 0
+  f: 0
   bossOBJ: {fileID: 0}
   relic: {fileID: 0}
   CameraScale: 5
@@ -1654,7 +1655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4535906419228965412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.687, y: 1.7040001, z: 0.011612515}
+  m_LocalPosition: {x: 2.687, y: 1.731, z: 0.011612515}
   m_LocalScale: {x: 0.26250002, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
