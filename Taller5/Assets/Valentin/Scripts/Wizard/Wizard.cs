@@ -170,7 +170,7 @@ public class Wizard : PlayerController
                             Instantiate(abilityM, launchPosition.position, transform.rotation);
                             Debug.Log("entra por enemy");
                         }
-                        else if (currentRoom >= 1 && healthSpellAmmo > 0)
+                        else if (currentRoom >= 21 && healthSpellAmmo > 0)
                         {
                             abilityM.projectileSpeed = 0f;
                             Instantiate(abilityM, launchPosition.position, transform.rotation);
@@ -265,7 +265,7 @@ public class Wizard : PlayerController
                         }
                     }
 
-                    if (currentRoom >= 1)
+                    if (currentRoom >= 21)
                     {
                         boss.TakeDamage(healthStole);
                         alchemist.TakeDamage(healthSpellRestored);
