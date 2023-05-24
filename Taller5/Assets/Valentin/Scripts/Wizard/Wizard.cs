@@ -25,18 +25,19 @@ public class Wizard : PlayerController
     [SerializeField] private float ballCounter;
     [SerializeField] private int ballAmmo = 5;
     [SerializeField] public float ballCoolDown = 4f;
+    [SerializeField] public float ballCoolDownCounter;
     [SerializeField] private bool ballActivated = false;
 
     [Header("Stun spell")] //rango cercano
     [SerializeField] private Transform stunRadius;
     [SerializeField] private float stunTime = 2.5f;
     [SerializeField] private float stunCounter;
-    [SerializeField] public float stunCoolDown = 0f; //enemigo -> 2.5 | jefe -> 1 
+    [SerializeField] public float stunCoolDown = 6f; //enemigo -> 2.5 | jefe -> 1 
+    [SerializeField] public float stunCoolDownCounter;
     [SerializeField] private bool stunActivated = false;
     [SerializeField] public Collider2D inside;
 
     [Header("Health steal spell")] //rango global - random
-    [SerializeField] private Transform healthStealRadius;
     [SerializeField] private int random;
     [SerializeField] private Enemy enemy;
     [SerializeField] private BossStateManager boss;
@@ -116,7 +117,7 @@ public class Wizard : PlayerController
                 if (!ballActivated)
                 {
                     ballCounter = ballTime;
-                    ballCoolDown = 4f;
+                    ballCoolDownCounter = ballCoolDown;
                     ballActivated = true;
 
                     abilityB.projectileXSpeed = 5f;
@@ -132,30 +133,18 @@ public class Wizard : PlayerController
         {
             if (!stunActivated)
             {
-                if (stunCoolDown <= 0)
+                if (inside)
                 {
-                    if (inside)
+                    if(stunCoolDownCounter <= 0)
                     {
-                        stunCoolDown = 6f;
                         stunCounter = stunTime;
-
+                        stunCoolDownCounter = stunCoolDown;
                         stunActivated = true;
 
                         abilityN.projectileSpeed = 5f;
                         Instantiate(abilityN, launchPosition.position, transform.rotation);
                     }
-
-                    if (stunCounter > 0f)
-                    {
-                        //Debug.Log("Enemigos stuneados");
-                        //speedMovement = 0;
-                    }
-                    else
-                    {
-                        //Debug.Log("Enemigos velocidad restaurada");
-                        //speedMovement = minSpeed;
-                        
-                    }
+                   
                 }
             }
         }
@@ -189,7 +178,6 @@ public class Wizard : PlayerController
                 }
             }
         }
-            
     }
 
     private void ElementalBall()
@@ -212,18 +200,17 @@ public class Wizard : PlayerController
 
         if (ballAmmo <= 0)
         {
-            ballCoolDown -= Time.deltaTime;
+            ballCoolDownCounter -= Time.deltaTime;
             //Debug.Log("Recargando elemental ball");
-            if (ballCoolDown <= 0f)
+            if (ballCoolDownCounter <= 0f)
                 ballAmmo = 5;
         }
     }
 
     private void StunSpell()
     {
-        stunCoolDown -= Time.deltaTime;
         stunCounter -= Time.deltaTime;
-
+        
         if (stunActivated)
         {
             if (stunCounter <= 0f)
@@ -231,33 +218,20 @@ public class Wizard : PlayerController
                 if (inside != null)
                 {
                     enemy = inside.GetComponent<Enemy>();
-
+                    
                     if (enemy != null)
                     {
                         enemy.Stun();
                         Debug.Log("Stuneado");
                     }
-                        
-
-                    //foreach (Enemy e in enemies)
-                    //{
-                    //    e.GetComponent<Enemy>().Stu   n();
-                    //}
-
-                    //for (int i = 0; i < enemiesInside.Length; i++)
-                    //{
-                    //    if (gameObject.tag == "EnemyInside")
-                    //    {
-
-                    //        enemiesInside[i].CompareTag("EnemyInside");
-                    //    }
-                        
-                    //}
                 }
 
                 stunActivated = false;
             }
+            
         }
+
+        stunCoolDownCounter -= Time.deltaTime;
     }
 
     private void HealthStealSpell()
