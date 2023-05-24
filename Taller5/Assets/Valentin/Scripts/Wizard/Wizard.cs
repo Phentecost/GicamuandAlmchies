@@ -68,7 +68,7 @@ public class Wizard : PlayerController
 
         room = DungeonManager.instance.dungeonRooms[currentRoom];
 
-        alchemist = DungeonManager.instance.Gicamu.GetComponent<Alchemist>();
+        alchemist = DungeonManager.instance.Alchies.GetComponent<Alchemist>();
 
         boss = GameObject.FindObjectOfType<BossStateManager>();
 
@@ -166,12 +166,15 @@ public class Wizard : PlayerController
                         {
                             abilityM.projectileSpeed = 0f;
                             Instantiate(abilityM, launchPosition.position, transform.rotation);
+                            Debug.Log("entra por enemy");
                         }
-                    }
-                    else if (boss != null)
-                    {
-                        abilityM.projectileSpeed = 0f;
-                        Instantiate(abilityM, launchPosition.position, transform.rotation);
+                        else if (boss != null)
+                        {
+                            abilityM.projectileSpeed = 0f;
+                            Instantiate(abilityM, launchPosition.position, transform.rotation);
+                            Debug.Log("entra por boss");
+                           
+                        }
                     }
                     else
                         healthStealActivated = false;
@@ -244,9 +247,6 @@ public class Wizard : PlayerController
             {
                 if (!_attacked)
                 {
-                    if (room.enemies.Count > 0)
-                        healthSpellAmmo--;
-
                     foreach (Enemy e in room.enemies)
                     {
                         int i = 0;
@@ -257,31 +257,36 @@ public class Wizard : PlayerController
                             room.enemies[i].TakeDamage(-healthStole);
                             alchemist.TakeDamage(healthSpellRestored);
                             Debug.Log("Encontro enemigo");
+                            healthSpellAmmo--;
                             break;
                         }
                     }
-                    //    //Debug.Log("Foreach rompido/terminado");
-                    //}
-                    //else if (boss != null)
-                    //{
-                    //    boss.TakeDamage(-healthStole);
-                    //    alchemist.TakeDamage(healthSpellRestored);
-                    //}
-                }
-                else
-                {
-                    //Debug.Log("Habilidad cancelada");
-                    //sfx comando invalido
-                }
+                    //Debug.Log("Foreach rompido/terminado");
 
+                    if (currentRoom >= 21)
+                    {
+                        boss.TakeDamage(-healthStole);
+                        alchemist.TakeDamage(healthSpellRestored);
+                        Debug.Log("Encontro jefe");
+                        healthSpellAmmo--;
+                    }
+                }
                 healthStealActivated = false;
             }
             else
             {
-                //Debug.Log("coolddown hechizo curacion");
+                //Debug.Log("Habilidad cancelada");
                 //sfx comando invalido
             }
+
+            
+        }
+        else
+        {
+            //Debug.Log("coolddown hechizo curacion");
+            //sfx comando invalido
         }
     }
-
 }
+
+

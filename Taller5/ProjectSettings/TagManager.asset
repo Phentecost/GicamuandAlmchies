@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - EnemyInside
   - Laser
+  - Boss
   layers:
   - Default
   - TransparentFX

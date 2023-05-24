@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private GameObject footsteps;
 
     [SerializeField] public int currentRoom = 0;
+    [SerializeField] public int bossRoom;
 
     private Vector3 _lastPosition;
     private float _currentHorizontalSpeed, _currentVerticalSpeed;
