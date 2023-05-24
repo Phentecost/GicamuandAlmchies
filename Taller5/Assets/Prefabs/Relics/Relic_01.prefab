@@ -5092,3 +5092,4 @@ MonoBehaviour:
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
+  cooldown: 2

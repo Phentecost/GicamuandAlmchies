@@ -4981,7 +4981,7 @@ MonoBehaviour:
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
-  atk: 0
+  atk: 2
 --- !u!1 &8755797929926416332
 GameObject:
   m_ObjectHideFlags: 0

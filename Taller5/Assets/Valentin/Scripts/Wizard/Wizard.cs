@@ -1,3 +1,4 @@
+using Code;
 using Code_Boses;
 using Code_DungeonSystem;
 using Code_EnemiesAndAI;
@@ -121,6 +122,7 @@ public class Wizard : PlayerController
                     abilityB.projectileXSpeed = 5f;
                     abilityB.projectileYSpeed = 5f;
                     Instantiate(abilityB, launchPosition.position, transform.rotation);
+                    AudioManager.instance.PlayAudio(6);
                 }
             }
         }

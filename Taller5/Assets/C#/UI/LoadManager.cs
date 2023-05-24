@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,11 @@ namespace Code
         public void GameScene() 
         {
             SceneManager.LoadScene(1);
+        }
+
+        public void EXIT() 
+        {
+            Application.Quit();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TarodevController;
+using Code_Boses;
 
 public class ElementalBall : MonoBehaviour
 {
@@ -82,6 +83,12 @@ public class ElementalBall : MonoBehaviour
             if (en != null)
             {
                 en.TakeDamage(damage);
+            }
+
+            BossStateManager boss = hit.collider.GetComponent<BossStateManager>();
+            if (boss != null)
+            {
+                boss.TakeDamage(damage);
             }
 
             Destroy(this.gameObject);

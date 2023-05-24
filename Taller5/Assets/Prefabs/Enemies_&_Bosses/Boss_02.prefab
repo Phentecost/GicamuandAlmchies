@@ -142,7 +142,7 @@ MonoBehaviour:
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
-  StartHealth: 50
+  StartHealth: 100
 --- !u!61 &1269272555759304930
 BoxCollider2D:
   m_ObjectHideFlags: 0

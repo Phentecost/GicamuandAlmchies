@@ -224,6 +224,7 @@ namespace Code_DungeonSystem
             room.boss = true;
             room.bossOBJ = Instantiate(Boss02Prefab, room.pointA.transform.position, Quaternion.identity).GetComponent<BossStateManager>();
             dungeonRooms.Add(room);
+            room.f = true;
             count++;
         }
 

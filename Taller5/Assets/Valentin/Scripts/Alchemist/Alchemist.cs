@@ -116,7 +116,7 @@ public class Alchemist : PlayerController
                     abilityE.projectileSpeed = 10f;
                     Instantiate(abilityE, launchPosition.position, transform.rotation);
 
-                    cd(2);
+                    AudioManager.instance.PlayAudio(3);
                 }
             }
             else

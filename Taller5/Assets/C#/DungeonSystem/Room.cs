@@ -21,6 +21,7 @@ namespace Code_DungeonSystem
         public List<Enemy> enemies = new List<Enemy>();
         public bool clear = false;
         public bool boss;
+        public bool f;
         public BossStateManager bossOBJ;
         public GameObject relic;
         public float CameraScale;

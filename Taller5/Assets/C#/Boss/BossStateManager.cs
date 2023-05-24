@@ -204,6 +204,7 @@ namespace Code_Boses
         public void TakeDamage(int damage)
         {
             _currentHealth += damage;
+            AudioManager.instance.PlayAudio(7);
             //Debug.Log(_currentHealth);
         }
 
@@ -214,7 +215,8 @@ namespace Code_Boses
                 GameObject g = Instantiate(relic, currentRoom.roomBounds.center + currentRoom.transform.position, Quaternion.identity);
                 g.GetComponent<Reliquia>().SetUp();
                 currentRoom.secretRoom = false;
-                currentRoom.SpawnPortals();
+                if(!currentRoom.f)
+                    currentRoom.SpawnPortals();
                 DungeonManager.instance.Gicamu.GetComponent<PlayerController>().fullHeal();
                 DungeonManager.instance.Alchies.GetComponent<PlayerController>().fullHeal();
                 Destroy(gameObject);

@@ -13,5 +13,10 @@ namespace Code
             else
                 LoadManager.instance.GameScene();
         }
+
+        public void exit() 
+        {
+            LoadManager.instance.EXIT();
+        }
     }
 }

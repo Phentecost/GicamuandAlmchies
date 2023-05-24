@@ -7,6 +7,7 @@ namespace Code
 {
     public class PiedraF : Reliquia
     {
+        public bool F;
         public override void SetUp()
         {
             ready = true;
@@ -14,8 +15,11 @@ namespace Code
 
         public override void ConsumeRelic()
         {
-            DungeonManager.instance.Gicamu.GetComponent<PlayerController>().RP++;
-            DungeonManager.instance.Alchies.GetComponent<PlayerController>().RP++;
+            if (F) 
+            {
+                GameUIManager.instance.Win();
+            }
+
             Destroy(gameObject);
         }
     }

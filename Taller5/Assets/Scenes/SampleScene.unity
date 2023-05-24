@@ -1741,13 +1741,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - ID: 0
-    clip: {fileID: 8300000, guid: a5c4d60aefe51214eb2c6ed7413e7308, type: 3}
+    clip: {fileID: 8300000, guid: f15860f9045f2a346a8d9e7115cfcfa0, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - ID: 1
-    clip: {fileID: 8300000, guid: 11c487ce636508d4b8134a13aa185707, type: 3}
+    clip: {fileID: 8300000, guid: 41d389bd4353361448ef2538c37a2129, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -1759,7 +1759,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - ID: 3
-    clip: {fileID: 8300000, guid: 694bc6bb155833345a83e6654d6e3210, type: 3}
+    clip: {fileID: 8300000, guid: 2f040349f562c7745a1c1526a29a99cd, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -1771,13 +1771,19 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - ID: 5
-    clip: {fileID: 8300000, guid: 322d8656b44e33143b7675b857a2e869, type: 3}
+    clip: {fileID: 8300000, guid: 897fc8f664b2de64fad21e5f2d2cfc2a, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - ID: 6
-    clip: {fileID: 8300000, guid: a43eca52bd2235d46bc03efef2269b1b, type: 3}
+    clip: {fileID: 8300000, guid: 6b24899af5e693b42a82811f1fc425fc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - ID: 7
+    clip: {fileID: 8300000, guid: 571ac72a32bc80348af76230285be4c6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -2597,8 +2603,22 @@ MonoBehaviour:
   incrisingProbabilityRate: 20
   currentProbability: 0
   spawnRoom: {fileID: 8422183762335144074, guid: 39f74cc01a0043d4883fa97ba42a40a3, type: 3}
-  enemyRooms: []
-  enemyRooms2: []
+  enemyRooms:
+  - {fileID: 8422183762335144074, guid: 6290a0ae6863a1242a61572fcc363f68, type: 3}
+  - {fileID: 8422183762335144074, guid: 0e33750605464d84a8b56d5918cc5765, type: 3}
+  - {fileID: 5016909667632657784, guid: c132451a3bdf7a347a475ff1d417302e, type: 3}
+  - {fileID: 8422183762335144074, guid: bc62e852064e2694f995933f4326ef50, type: 3}
+  - {fileID: 8422183762335144074, guid: 9360b3032b98e9948987f5ac8944bbf4, type: 3}
+  - {fileID: 5016909667632657784, guid: 9ca983afda2e275449cfd374d12cd329, type: 3}
+  - {fileID: 4206009192890022995, guid: 8d02ab398ede36b4182970c5865d7fdb, type: 3}
+  enemyRooms2:
+  - {fileID: 8422183762335144074, guid: 67ece9742c3c7804397ae9604c9b87c9, type: 3}
+  - {fileID: 8422183762335144074, guid: 86304f0ddcaf6734b8340e66d92198bc, type: 3}
+  - {fileID: 5016909667632657784, guid: 84af4877d59df7a44a5bbc4a2d0b97b8, type: 3}
+  - {fileID: 8422183762335144074, guid: 4cc62beac21d4f640a17836be5fdd6a1, type: 3}
+  - {fileID: 8422183762335144074, guid: c5a01ded8d2982a4a99deb93b7276bdb, type: 3}
+  - {fileID: 5016909667632657784, guid: 02dc7fe0e0d32144492bbc5699bdb7a6, type: 3}
+  - {fileID: 8422183762335144074, guid: f4180b6c9bf512843b54101f8e4b8b93, type: 3}
   bossRoom: {fileID: 8422183762335144074, guid: 36dfdcdb910af1a46b53b1a576331e70, type: 3}
   secretRoom: {fileID: 4206009192890022995, guid: 51e8d483d8d89364ea06877299dba6ea, type: 3}
   dungeonRooms: []
@@ -2609,7 +2629,9 @@ MonoBehaviour:
   Boss01Prefab: {fileID: 2716681079090689393, guid: 53c0899cfc7824f44a9f6b49bcf90afa, type: 3}
   Boss02Prefab: {fileID: 2244855303436442210, guid: f0643c416410de5479dcfcbd60a0b834, type: 3}
   Relics:
+  - {fileID: 6832245824289524268, guid: 671bc7bff4e7fe941a5c3746637fdb56, type: 3}
   - {fileID: 5230414434262312720, guid: 3a9238b848aca6f40a5dcaf1172f019e, type: 3}
+  - {fileID: 6321716973882256995, guid: 55378d34ff6fe6e44874187a904978ee, type: 3}
 --- !u!4 &1582793484
 Transform:
   m_ObjectHideFlags: 0

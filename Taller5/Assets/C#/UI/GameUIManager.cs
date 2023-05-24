@@ -112,12 +112,12 @@ namespace Code
                 
             foreach (HealthDataStructure dataCase in _case)
             {
-                if (alchiesLife == dataCase.life)
+                if (alchiesLife <= dataCase.life)
                 {
                     imagesAlchies[dataCase.index].sprite = dataCase.aimg;
                 }
 
-                if (gicamuLife == dataCase.life)
+                if (gicamuLife <= dataCase.life)
                 {
                     imagesGicamu[dataCase.index].sprite = dataCase.gimg;
                 }
@@ -141,7 +141,7 @@ namespace Code
             LosePanel.SetActive(true);
         }
 
-        private void Win()
+        public void Win()
         {
             DungeonManager.instance.Alchies.GetComponent<PlayerController>().pauseControllers = true;
             DungeonManager.instance.Gicamu.GetComponent<PlayerController>().pauseControllers = true;
