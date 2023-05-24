@@ -42,7 +42,7 @@ public class Wizard : PlayerController
     [SerializeField] private Enemy enemy;
     [SerializeField] private BossStateManager boss;
     [SerializeField] private LayerMask layerEnemies;
-    [SerializeField] private int healthStole = -4;
+    [SerializeField] private int healthStole;
     private int healthSpellRestored = 2;
     [SerializeField] private int healthSpellAmmo = 2;
     [SerializeField] private float stealTime = 2.5f; 
@@ -253,13 +253,14 @@ public class Wizard : PlayerController
                     foreach (Enemy e in room.enemies)
                     {
                         int i = 0;
-                        if (room.enemies[i] == null)
+                        if (e == null)
                             i++;
                         else
                         {
-                            room.enemies[i].TakeDamage(healthStole);
+                            healthStole = -4;
+                            e.TakeDamage(healthStole);
                             alchemist.TakeDamage(healthSpellRestored);
-                            Debug.Log("Encontro enemigo");
+                            Debug.Log("Encontro enemigo2");
                             healthSpellAmmo--;
                             break;
                         }
@@ -267,6 +268,7 @@ public class Wizard : PlayerController
 
                     if (currentRoom >= 21)
                     {
+                        healthStole = -4;
                         boss.TakeDamage(healthStole);
                         alchemist.TakeDamage(healthSpellRestored);
                         Debug.Log("Encontro jefe");

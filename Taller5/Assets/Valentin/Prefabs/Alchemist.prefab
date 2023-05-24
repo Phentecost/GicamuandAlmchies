@@ -208,15 +208,15 @@ MonoBehaviour:
   _detectorCount: 3
   _detectionRayLength: 0.1
   _rayBuffer: 0.1
-  _acceleration: 90
-  _moveClamp: 10
+  _acceleration: 60
+  _moveClamp: 8
   _deAcceleration: 60
   _apexBonus: 2
   _fallClamp: -20
   _minFallSpeed: 80
   _maxFallSpeed: 120
   _jumpHeight: 25
-  _jumpApexThreshold: 10
+  _jumpApexThreshold: 15
   _coyoteTimeThreshold: 0.1
   _jumpBuffer: 0.1
   _jumpEndEarlyGravityModifier: 3
@@ -258,7 +258,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.3132229, y: -0.015462637}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -269,7 +269,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.2, y: 19.2}
+  m_Size: {x: 5.835926, y: 9.416681}
   m_EdgeRadius: 0
 --- !u!95 &6060270864917824728
 Animator:

@@ -426,7 +426,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_attacked || _invensible) return;
         _health = Mathf.Clamp(_health + dagame, 0, MaxHealth);
-        Debug.Log(_health);
+        Debug.Log(_health); 
         _attacked = true;
         _invensibleTimer = InvensivilityTime;
         _invensible = true;
