@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -172.8, y: 177.8}
-  m_SizeDelta: {x: 113.7375, y: 168.48}
+  m_AnchoredPosition: {x: -156.91498, y: 170}
+  m_SizeDelta: {x: 175.0934, y: 166.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294890979
 MonoBehaviour:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -935479101, guid: b1bfbbda3fa669745bda29216e464486, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f58892c85250b0e4bb422a9912baaecb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -236,8 +236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 146.7, y: 177.8}
-  m_SizeDelta: {x: 113.275, y: 168.4797}
+  m_AnchoredPosition: {x: 179, y: 170}
+  m_SizeDelta: {x: 166.7505, y: 166.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &348213478
 MonoBehaviour:
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1320041402, guid: 28b9f8de4636cc34d9c8991c74534aaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f0c9a75f7736744d8ca6e2698bae281, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1954002558, guid: 49e915bdc41b7ad4780896f8752b2c01, type: 3}
+  m_Sprite: {fileID: -1195040297, guid: 964f5c356009d1941abdebc407947f24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -606,8 +606,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: 14}
-  m_SizeDelta: {x: 316.5855, y: 202.0922}
+  m_AnchoredPosition: {x: 33.7502, y: 14.4918}
+  m_SizeDelta: {x: 341.3372, y: 215.843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910909460
 MonoBehaviour:
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ec5db6bc29a2a6c42b37a3e08e4c7320, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e68e2b31429d6154294782977f02ca5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
